@@ -1,0 +1,37 @@
+{
+    "rules": {
+        "users": {
+            "$uid": {
+                "favorite": {
+                    ".write": "$uid === auth.uid",
+                    ".read": "$uid === auth.uid"
+                },
+                "playlists": {
+                    "$playlist_id": {
+                        "title": {
+                            ".validate": "newData.isString()"
+                        },
+                        "description": {
+                            ".validate": "newData.isString()"
+                        },
+                        "songs": {},
+                        ".validate": "newData.hasChildren(['title', 'description'])",
+                        ".write": "$uid === auth.uid",
+                        ".read": "root.child('public_playlists/' + $playlist_id).exists() || $uid === auth.uid"
+                    },
+                    ".read": "$uid === auth.uid"
+                }
+            }
+        },
+        "public_playlists": {
+            "$playlist_id": {
+                "uid": {
+                    ".validate": "newData.isString()"
+                },
+                ".validate": "newData.hasChildren(['uid'])",
+                ".write": "auth.uid === newData.child('uid').val()"
+            },
+            ".read": true
+        }
+    }
+}
