@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import * as database from "firebase/database";
 import type {Song} from "@/@types/global/song.d.ts";
-import SongCard from "./SongCard.vue";
 import PlaylistSongCard from "./PlaylistSongCard.vue";
-import {favoriteSongs} from "@/common";
+import {favoriteSongs, uidRef} from "@/common";
 import {useAppStore} from "@/store/app";
 const store = useAppStore();
 const props = defineProps<{
@@ -17,7 +17,41 @@ const playPlayList = () => {
   const playListSongsUUID = props.songs.map(song => song.uuid);
   store.setPlayList(playListSongsUUID);
   store.playNextPlayListSong();
-}
+};
+const onAddFavorite = (songUUID: string) => {
+  console.log(favoriteSongs.value);
+  if (uidRef.value === null) {
+    return;
+  }
+  if (favoriteSongs.value === null) {
+    return;
+  }
+  if (favoriteSongs.value.has(songUUID)) {
+    return;
+  }
+  const db = database.getDatabase();
+  database.set(
+    database.ref(db, `users/${uidRef.value}/favorite`),
+    [...favoriteSongs.value, songUUID]
+  );
+};
+const onRemoveFavorite = (songUUID: string) => {
+  console.log(favoriteSongs.value);
+  if (uidRef.value === null) {
+    return;
+  }
+  if (favoriteSongs.value === null) {
+    return;
+  }
+  if (!favoriteSongs.value.has(songUUID)) {
+    return;
+  }
+  const db = database.getDatabase();
+  database.set(
+    database.ref(db, `users/${uidRef.value}/favorite`),
+    [...(favoriteSongs.value || [])].filter(v => v !== songUUID)
+  );
+};
 </script>
 
 <template>
@@ -57,7 +91,7 @@ const playPlayList = () => {
             playlistIndex: index,
             visibility,
             playlistId
-          }" />
+          }" @add-favorite="onAddFavorite" @remove-favorite="onRemoveFavorite" />
         </template>
       </v-expansion-panel-text>
     </v-expansion-panel>

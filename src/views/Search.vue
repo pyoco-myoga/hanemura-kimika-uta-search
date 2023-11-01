@@ -12,8 +12,6 @@ import {StateHandler} from "v3-infinite-loading/lib/types";
 import {v4 as uuidv4} from "uuid";
 import {favoriteSongs, uidRef, songs} from "@/common";
 
-const db = database.getDatabase();
-
 const params = new URLSearchParams(location.search);
 const q = params.get("q");
 const v = params.get("v");
@@ -84,13 +82,14 @@ const onAddFavorite = (songUUID: string) => {
   if (favoriteSongs.value.has(songUUID)) {
     return;
   }
+  const db = database.getDatabase();
   database.set(
     database.ref(db, `users/${uidRef.value}/favorite`),
     [...favoriteSongs.value, songUUID]
   );
 };
 
-const onDeleteFavorite = (songUUID: string) => {
+const onRemoveFavorite = (songUUID: string) => {
   console.log(favoriteSongs.value);
   if (uidRef.value === null) {
     return;
@@ -101,6 +100,7 @@ const onDeleteFavorite = (songUUID: string) => {
   if (!favoriteSongs.value.has(songUUID)) {
     return;
   }
+  const db = database.getDatabase();
   database.set(
     database.ref(db, `users/${uidRef.value}/favorite`),
     [...(favoriteSongs.value || [])].filter(v => v !== songUUID)
@@ -217,8 +217,8 @@ const load = (state: StateHandler) => {
   <template v-for="{uuid, song} in showedSongs" :key="song.uuid">
     <SongCard :video="song.video" :artist="song.artist" :name="song.name" :t="song.t" :endt="song.endt"
       :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(uuid) ?? null" :is-full="false"
-      :recommended="song.recommended" @add-favorite="onAddFavorite" @remove-favorite="onDeleteFavorite"
-      :playlist="[uuid]" :playlist-index="0" />
+      :recommended="song.recommended" @add-favorite="onAddFavorite" @remove-favorite="onRemoveFavorite" :playlist="[uuid]"
+      :playlist-index="0" />
   </template>
   <InfiniteLoading :key="resultId" @infinite="load" :distance="100" />
 </template>
