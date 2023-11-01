@@ -9,6 +9,15 @@
             "t": 5447,
             "video": "1byyvPl_xuE"
         },
+        "1ce80ac8-3d00-4f1c-9118-4d75b0583368": {
+            "artist": "9mm Parabellum Bullet",
+            "name": "Vampiregirl",
+            "video": "wXpHspDrWdI",
+            "t": 1344,
+            "endt": 1539,
+            "length": "full",
+            "singType": "live"
+        },
         "90241711-61e4-44cd-baaa-63abca1b833c": {
             "artist": "ACIDMAN",
             "endt": 7110,
@@ -731,6 +740,15 @@
             "t": 1810,
             "video": "GSK6rLb-ibk"
         },
+        "9c60eb7b-e58d-43bd-9cc6-35cd797a6d7f": {
+            "artist": "BUMP OF CHICKEN",
+            "name": "車輪の唄",
+            "video": "xiNlG-f_9Mo",
+            "t": 1641,
+            "endt": 1891,
+            "length": "full",
+            "singType": "known"
+        },
         "4bffaf5f-8698-4ad7-bc88-a65e160e45b0": {
             "artist": "BUMP OF CHICKEN",
             "endt": 2353,
@@ -1041,6 +1059,15 @@
             "t": 5690,
             "video": "GSK6rLb-ibk"
         },
+        "abf9b177-8859-4e32-a9bc-98ea576e59f4": {
+            "artist": "GO!GO!7188",
+            "name": "こいのうた",
+            "video": "xiNlG-f_9Mo",
+            "t": 9734,
+            "endt": 10072,
+            "length": "full",
+            "singType": "known"
+        },
         "40f65156-6814-4bbc-bbe5-3cd2721dae31": {
             "artist": "GOING STEADY",
             "endt": 6914,
@@ -1280,6 +1307,15 @@
             "singType": "improvised",
             "t": 3464,
             "video": "6IHtwQ3UGhg"
+        },
+        "4a968107-35bf-48ef-9109-f11c37188d72": {
+            "artist": "Helsinki Lambda Club",
+            "name": "しゃれこうべ しゃれこうべ",
+            "video": "wXpHspDrWdI",
+            "t": 1924,
+            "endt": 2148,
+            "length": "full",
+            "singType": "live"
         },
         "45b812f4-5d41-47ea-845c-9c60fb8019e5": {
             "artist": "Helsinki Lambda Club",
@@ -2221,6 +2257,15 @@
             "t": 10010,
             "video": "TwhEO1OmEEg"
         },
+        "e1fdf5ff-2867-4294-85c1-2a30a7fc5cba": {
+            "artist": "Ken Yokoyama",
+            "name": "Popcorn Love",
+            "video": "wXpHspDrWdI",
+            "t": 4040,
+            "endt": 4157,
+            "length": "full",
+            "singType": "live"
+        },
         "8306510f-0f5b-41fe-901d-8c419c69356e": {
             "artist": "Ken Yokoyama",
             "name": "Running On The Winding Road",
@@ -2726,6 +2771,15 @@
             "t": 6063,
             "video": "3Vx8BIGWUUc"
         },
+        "0b8d7a24-626a-473b-b6e7-219e902368e4": {
+            "artist": "Poppin'Party",
+            "name": "キズナミュージック",
+            "video": "tGojUirBGR4",
+            "t": 2049,
+            "endt": 2355,
+            "length": "full",
+            "singType": "known"
+        },
         "10189c8f-b457-4694-816b-8d115ecfe644": {
             "artist": "RADWIMPS",
             "name": "5月の蝿",
@@ -2788,6 +2842,15 @@
             "singType": "known",
             "t": 5008,
             "video": "5Yd4fk4qF5g"
+        },
+        "ddf4db3e-611f-4d51-bfd5-3de513b9167c": {
+            "artist": "RADWIMPS",
+            "name": "ふたりごと",
+            "video": "xiNlG-f_9Mo",
+            "t": 4399,
+            "endt": 4636,
+            "length": "full",
+            "singType": "known"
         },
         "eefc3b44-6013-480f-b80f-afbfc5aca5da": {
             "artist": "RADWIMPS",
@@ -3004,6 +3067,15 @@
             "singType": "known",
             "t": 5791,
             "video": "jPfP9qRd9DM"
+        },
+        "29763dbe-ff46-42b0-9de2-2cfc8ed836bb": {
+            "artist": "SHAKALABBITS",
+            "name": "MONSTER TREE",
+            "video": "wXpHspDrWdI",
+            "t": 684,
+            "endt": 952,
+            "length": "full",
+            "singType": "known"
         },
         "9d20194b-7657-4bf6-b1ca-35eb6e70d9cf": {
             "artist": "SHAKALABBITS",
@@ -3689,6 +3761,15 @@
             "t": 12290,
             "video": "cise9W9QpVU"
         },
+        "e18b569b-5158-40f3-ac25-108e3f72de6b": {
+            "artist": "THE BOYS&GIRLS",
+            "name": "ハローグッバイサンキュー",
+            "video": "xiNlG-f_9Mo",
+            "t": 628,
+            "endt": 928,
+            "length": "full",
+            "singType": "improvised"
+        },
         "0d2c9909-9709-43d6-93ca-595c5bbea2e9": {
             "artist": "THE BOYS&GIRLS",
             "endt": 4520,
@@ -3805,6 +3886,15 @@
             "singType": "live",
             "t": 846,
             "video": "XqfzGDQWyow"
+        },
+        "e15ccc76-d908-45cd-aca7-4a6d7a87fb16": {
+            "artist": "THE YELLOW MONKEY",
+            "name": "プライマル。",
+            "video": "xiNlG-f_9Mo",
+            "t": 2918,
+            "endt": 3144,
+            "length": "full",
+            "singType": "known"
         },
         "e8d304d9-5c9d-4015-af96-bd4ec38c81bd": {
             "artist": "THE YELLOW MONKEY",
@@ -4118,6 +4208,15 @@
             "video": "SfiI7mHE_48",
             "t": 5468,
             "endt": 5767,
+            "length": "full",
+            "singType": "known"
+        },
+        "0f59d2cc-9994-4bf2-81db-068fb98d04c1": {
+            "artist": "aiko",
+            "name": "カブトムシ",
+            "video": "xiNlG-f_9Mo",
+            "t": 8432,
+            "endt": 8734,
             "length": "full",
             "singType": "known"
         },
@@ -4562,6 +4661,15 @@
             "length": "full",
             "singType": "known"
         },
+        "20f5e6d0-f76d-42db-928b-5e81b9fe557d": {
+            "artist": "teto",
+            "name": "高層ビルと人工衛星",
+            "video": "xiNlG-f_9Mo",
+            "t": 6346,
+            "endt": 6590,
+            "length": "full",
+            "singType": "known"
+        },
         "15e64f49-ec13-4432-bf46-95884c83b33e": {
             "artist": "the peggies",
             "endt": null,
@@ -4615,6 +4723,15 @@
             "singType": "known",
             "t": 5813,
             "video": "EodQS2CnhM4"
+        },
+        "b7f29dc9-e143-4d87-b279-254bb59b5f88": {
+            "artist": "the peggies",
+            "name": "君のせい",
+            "video": "xiNlG-f_9Mo",
+            "t": 7938,
+            "endt": 8210,
+            "length": "full",
+            "singType": "known"
         },
         "54167cad-9169-407b-adb4-f2122d3d1325": {
             "artist": "↑THE HIGH-LOWS↓",
@@ -5435,6 +5552,15 @@
             "length": "full",
             "singType": "known"
         },
+        "0ccf765a-eb6a-4263-be58-e432daf5f608": {
+            "artist": "くるり",
+            "name": "ワンダーフォーゲル",
+            "video": "xiNlG-f_9Mo",
+            "t": 4915,
+            "endt": 5150,
+            "length": "full",
+            "singType": "improvised"
+        },
         "2e1e38a8-55a7-4a33-8b9c-14c492f57d8c": {
             "artist": "くるり",
             "endt": 4861,
@@ -5821,6 +5947,15 @@
             "singType": "improvised",
             "t": 9646,
             "video": "4kJShQ7xC7c"
+        },
+        "c03f93f8-4949-4edf-9539-6c07b28db4c9": {
+            "artist": "ゆらゆら帝国",
+            "name": "夜行性の生き物3匹",
+            "video": "wXpHspDrWdI",
+            "t": 2562,
+            "endt": 2748,
+            "length": "full",
+            "singType": "live"
         },
         "f493af73-0509-4ad0-b7e0-a1033200655a": {
             "artist": "ゆらゆら帝国",
@@ -6245,6 +6380,15 @@
             "length": "full",
             "singType": "known"
         },
+        "693f9262-a3ee-4927-a314-bd04fd898222": {
+            "artist": "ガガガSP",
+            "name": "晩秋",
+            "video": "xiNlG-f_9Mo",
+            "t": 1245,
+            "endt": 1405,
+            "length": "full",
+            "singType": "known"
+        },
         "d77f0900-64fa-43d8-a648-da0e45b141be": {
             "artist": "ガガガSP",
             "endt": 5120,
@@ -6532,6 +6676,15 @@
             "singType": "known",
             "t": 1253,
             "video": "dpWnpmfchA4"
+        },
+        "f52e062e-d25b-4146-be71-b123e9fe4216": {
+            "artist": "クリープハイプ",
+            "name": "さっきはごめんね、ありがとう",
+            "video": "xiNlG-f_9Mo",
+            "t": 7359,
+            "endt": 7571,
+            "length": "full",
+            "singType": "known"
         },
         "10911aad-8886-49fe-a79d-85fdd8e05b78": {
             "artist": "クリープハイプ",
@@ -7405,6 +7558,15 @@
             "singType": "known",
             "t": 4859,
             "video": "FINKwpp4QI0"
+        },
+        "949bb0b7-57f8-4e2b-a7be-d97829877699": {
+            "artist": "フジファブリック",
+            "name": "若者のすべて",
+            "video": "xiNlG-f_9Mo",
+            "t": 5550,
+            "endt": 5864,
+            "length": "full",
+            "singType": "known"
         },
         "6b5d0f76-296a-4943-8eb1-11b4e2b7f8d9": {
             "artist": "フーバーウーバー",
@@ -8288,6 +8450,15 @@
             "length": "full",
             "singType": "known"
         },
+        "bac4ce4b-396c-4791-b1f7-9a82f94913da": {
+            "artist": "大森靖子",
+            "name": "マジックミラー",
+            "video": "xiNlG-f_9Mo",
+            "t": 2138,
+            "endt": 2411,
+            "length": "full",
+            "singType": "known"
+        },
         "3749e2f6-63dd-4538-8eba-338e6f80d110": {
             "artist": "大森靖子",
             "endt": 5541,
@@ -8710,6 +8881,15 @@
             "endt": 1717,
             "length": "full",
             "singType": "known"
+        },
+        "6b839c27-4825-4c85-a227-57a195d2bc5a": {
+            "artist": "岡崎体育",
+            "name": "エクレア",
+            "video": "wXpHspDrWdI",
+            "t": 3236,
+            "endt": 3518,
+            "length": "full",
+            "singType": "live"
         },
         "f74e4307-9f36-4794-81c4-58eea29c5d9d": {
             "artist": "川島あい",
@@ -9143,6 +9323,15 @@
             "t": 4594,
             "video": "1Zeq5yzKt7A"
         },
+        "30813ac7-d815-4c8a-aef7-976d8f007a11": {
+            "artist": "忘れらんねえよ",
+            "name": "アイラブ言う",
+            "video": "xiNlG-f_9Mo",
+            "t": 3923,
+            "endt": 4138,
+            "length": "full",
+            "singType": "known"
+        },
         "22b74306-59dd-4f05-9785-6f9f4566a24c": {
             "artist": "忘れらんねえよ",
             "endt": null,
@@ -9494,6 +9683,15 @@
             "t": 3489,
             "video": "1byyvPl_xuE"
         },
+        "42acb3e7-4bd8-4d7d-882a-ab5ac610f82a": {
+            "artist": "放課後ティータイム",
+            "name": "U&I",
+            "video": "tGojUirBGR4",
+            "t": 5244,
+            "endt": 5539,
+            "length": "full",
+            "singType": "known"
+        },
         "34da3090-1b39-46d6-b602-523479422bb9": {
             "artist": "放課後ティータイム",
             "endt": null,
@@ -9538,6 +9736,15 @@
             "singType": null,
             "t": 6943,
             "video": "hf4Zd-7AIxI"
+        },
+        "3151967c-5f1e-48cd-bc99-09325e5ca196": {
+            "artist": "放課後ティータイム",
+            "name": "ふでペン~ボールペン~",
+            "video": "tGojUirBGR4",
+            "t": 690,
+            "endt": 955,
+            "length": "full",
+            "singType": "known"
         },
         "25092a23-3b09-4374-9572-888075e40b67": {
             "artist": "放課後ティータイム",
@@ -9592,6 +9799,15 @@
             "singType": "improvised",
             "t": 5368,
             "video": "PZxQFnLKNQM"
+        },
+        "cf9b3a84-5c01-4673-a914-30852285b9b3": {
+            "artist": "放課後ティータイム",
+            "name": "ふわふわ時間",
+            "video": "tGojUirBGR4",
+            "t": 4264,
+            "endt": 4494,
+            "length": "full",
+            "singType": "known"
         },
         "547da1e3-4956-4c2f-85f1-a576b629bebd": {
             "artist": "放課後ティータイム",
@@ -10159,6 +10375,15 @@
             "singType": "known",
             "t": 3300,
             "video": "tQ2CZRKUFJE"
+        },
+        "82d295c0-4b4b-4f5f-8ff4-79564ffcc8bd": {
+            "artist": "水中、それは苦しい",
+            "name": "農業、校長、そして手品",
+            "video": "xiNlG-f_9Mo",
+            "t": 8873,
+            "endt": 10072,
+            "length": "full",
+            "singType": "known"
         },
         "2e396a4c-b41d-4e98-a2f4-01b2e1f10855": {
             "artist": "氷川きよし",
@@ -11042,6 +11267,15 @@
             "t": 4319,
             "video": "riC8ecj0bp0"
         },
+        "fdc1720b-de5d-4db2-992f-5529f8f34443": {
+            "artist": "結束バンド",
+            "name": "なにが悪い",
+            "video": "tGojUirBGR4",
+            "t": 1428,
+            "endt": 1652,
+            "length": "full",
+            "singType": "known"
+        },
         "4940fbd0-5dc3-4416-800b-e2ba8c545cae": {
             "artist": "結束バンド",
             "endt": 6378,
@@ -11077,6 +11311,15 @@
             "singType": "known",
             "t": 4331,
             "video": "76XmiF-6evQ"
+        },
+        "3b8b2abd-6b43-47a5-a115-567c34974652": {
+            "artist": "結束バンド",
+            "name": "星座になれたら",
+            "video": "tGojUirBGR4",
+            "t": 4757,
+            "endt": 5021,
+            "length": "full",
+            "singType": "known"
         },
         "0c8ce445-c765-4725-bf87-cec524fe9edc": {
             "artist": "羽村きみか",
@@ -11537,6 +11780,15 @@
             "length": "full",
             "singType": "known"
         },
+        "7146f1a7-15c4-4fec-80fe-c83e85dad716": {
+            "artist": "銀杏BOYZ",
+            "name": "メス豚",
+            "video": "xiNlG-f_9Mo",
+            "t": 10504,
+            "endt": 10598,
+            "length": "full",
+            "singType": "known"
+        },
         "83eb15d8-f624-458f-aaf6-e93c53c5be64": {
             "artist": "銀杏BOYZ",
             "endt": null,
@@ -11725,6 +11977,15 @@
             "singType": "known",
             "t": 7784,
             "video": "TwhEO1OmEEg"
+        },
+        "9e70f16b-4ff2-401b-b814-419012273234": {
+            "artist": "銀杏BOYZ",
+            "name": "援助交際",
+            "video": "xiNlG-f_9Mo",
+            "t": 10878,
+            "endt": 10953,
+            "length": "short",
+            "singType": "known"
         },
         "0618df3a-a8a7-4300-9484-9456ccb3917d": {
             "artist": "銀杏BOYZ",

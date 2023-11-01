@@ -43,8 +43,6 @@ function getVideoID(youtubeUrlOrVideoID: string): string | null {
   }
   const youtubeURL = new URL(youtubeUrlOrVideoID);
 
-  // youtu.be
-  // youtube.com
   if (youtubeURL.pathname == "/watch") {
     const videoID = youtubeURL.searchParams.get("v");
     return videoID ?? null;
@@ -191,7 +189,7 @@ const load = (state: StateHandler) => {
     </v-row>
 
     <v-row class="ma-2">
-      <v-col cols="auto">
+      <v-col cols="12" sm="auto" md="auto" lg="auto" xl="auto">
         <v-btn-toggle class="elevation-1" v-model="validSearchOptions" background-color="primary" dark multiple>
           <template v-if="uidRef">
             <v-btn value="favorite">

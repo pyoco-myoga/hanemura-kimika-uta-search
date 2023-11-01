@@ -60,6 +60,11 @@ export const storeSubscribe = () => {
         favoriteUnsubscribe();
         favoriteUnsubscribe = null;
       }
+      privatePlaylists.value = null;
+      if (privatePlaylistUnsubscribe !== null) {
+        privatePlaylistUnsubscribe();
+        privatePlaylistUnsubscribe = null;
+      }
     }
   });
 };

@@ -65,13 +65,15 @@ const onClose = () => {
     <v-footer app class="elevation-10">
       <v-container class="my-1">
         <v-row>
-          <v-col cols="auto" class="text-center">
+          <!-- player -->
+          <v-col cols="12" sm="auto" md="auto" lg="auto" xl="auto" class="text-center">
             <you-tube :src="songs[store.playingPlayList[store.indexPlayList]].video"
               :vars="{start: songs[store.playingPlayList[store.indexPlayList]].t, end: songs[store.playingPlayList[store.indexPlayList]].endt ?? undefined, controls: 0, modestbranding: 1}"
               @ready="onReady" height="20%" width="auto" @state-change="onStateChange"
               :key="store.playingPlayList[store.indexPlayList]" />
 
           </v-col>
+          <!-- controller -->
           <v-col class="text-center">
             <v-row class="text-center">
               <v-col>
@@ -97,7 +99,7 @@ const onClose = () => {
                 <v-btn class="ms-0" icon="mdi-fast-forward" variant="text" @click="store.playNextPlayListSong()" />
               </v-col>
               <v-col cols="1">
-                <v-btn icon="mdi-close" variant="text" @click="onClose" />
+                <v-btn icon="mdi-stop" variant="text" @click="onClose" />
               </v-col>
             </v-row>
           </v-col>

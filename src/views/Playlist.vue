@@ -2,9 +2,13 @@
 import {Song} from "@/@types/global/song";
 import PlaylistCard from "@/components/PlaylistCard.vue";
 import PlaylistForm from "@/components/PlaylistForm.vue";
-import AsyncPlayListCard from "@/components/AsyncPlayListCard.vue";
+import CustomPlayListCard from "@/components/CustomPlayListCard.vue";
 import {favoriteSongs, publicPlaylists, privatePlaylists, songs, uidRef} from "@/common";
 import {ref} from "vue";
+
+const params = new URLSearchParams(location.search);
+const q = params.get("q");
+const searchWord = ref(q || "");
 
 const filterSongs = (allSongs: Record<string, Song>, filter: (all: Record<string, Song>, uuid: string) => boolean): (Song & {uuid: string})[] => {
   const filteredSongs = Object.keys(allSongs).reduce((result: Record<string, Song>, uuid) => {
@@ -28,6 +32,21 @@ const showPlayListForm = ref(false);
 </script>
 
 <template>
+  <v-container>
+    <v-row>
+      <v-col class="ma-2">
+        <v-text-field label="プレイリスト名" density="compact" prepend-inner-icon="mdi-magnify"
+          append-inner-icon="mdi-close" @click:append-inner="searchWord = ''" v-model="searchWord" variant="solo"
+          single-line hide-details />
+      </v-col>
+      <template v-if="uidRef !== null">
+        <v-col class="ma-2" cols="1">
+          <v-btn icon="mdi-plus" elevation="8" @click="showPlayListForm = true" />
+        </v-col>
+      </template>
+    </v-row>
+  </v-container>
+
   <template v-if="favoriteSongs !== null">
     <div class="my-2" />
     <PlaylistCard playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト" visibility="public"
@@ -44,7 +63,7 @@ const showPlayListForm = ref(false);
     </template>
     <template v-for="(_, playlistId) of privatePlaylists" :key="playlistId">
       <div class="my-2" />
-      <AsyncPlayListCard :playlist-id="playlistId as string" :uid="uidRef!" visibility="private" />
+      <CustomPlayListCard :playlist-id="playlistId as string" :uid="uidRef!" visibility="private" />
     </template>
   </template>
 
@@ -55,17 +74,12 @@ const showPlayListForm = ref(false);
     <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
       <template v-if="uid !== uidRef">
         <div class="my-2" />
-        <AsyncPlayListCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
+        <CustomPlayListCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
       </template>
     </template>
   </template>
 
   <template v-if="uidRef !== null">
-    <v-layout-item class="text-end" model-value position="bottom" size="100">
-      <div class="ma-5">
-        <v-btn class="mt-auto" icon="mdi-plus" size="large" elevation="8" @click="showPlayListForm = true" />
-      </div>
-    </v-layout-item>
     <PlaylistForm v-model="showPlayListForm" />
   </template>
 </template>

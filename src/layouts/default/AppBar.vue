@@ -44,7 +44,6 @@ const gotoPlayListPage = () => {
   <v-app-bar>
     <v-app-bar-nav-icon v-on:click.stop="drawer = !drawer" />
     <v-app-bar-title>羽村きみか うたさーち</v-app-bar-title>
-    <v-spacer />
     <template v-if="store.user === null">
       <v-btn @click="loginEventListener">ログイン</v-btn>
     </template>

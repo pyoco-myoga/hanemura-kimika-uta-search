@@ -25,7 +25,6 @@ const playlistUnsubscribe = database.onValue(
       }
       if (Array.isArray(data.songs) && data.songs.every((v: unknown) => typeof v === "string")) {
         playlist.value = data;
-        console.debug(playlist.value!.songs.map(uuid => ({...songs[uuid], uuid: uuid})))
       }
     }
   },
