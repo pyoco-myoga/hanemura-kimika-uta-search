@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {Song} from "@/@types/global/song";
-import PlayListCard from "@/components/PlayListCard.vue";
-import PlayListForm from "@/components/PlayListForm.vue";
+import PlaylistCard from "@/components/PlaylistCard.vue";
+import PlaylistForm from "@/components/PlaylistForm.vue";
 import AsyncPlayListCard from "@/components/AsyncPlayListCard.vue";
 import {favoriteSongs, publicPlaylists, privatePlaylists, songs, uidRef} from "@/common";
 import {ref} from "vue";
@@ -30,12 +30,12 @@ const showPlayListForm = ref(false);
 <template>
   <template v-if="favoriteSongs !== null">
     <div class="my-2" />
-    <PlayListCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト"
+    <PlaylistCard playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト" visibility="public"
       :songs="filterSongs(songs, (_, uuid) => favoriteSongs?.has(uuid) ?? false)" />
   </template>
 
   <div class="my-2" />
-  <PlayListCard playlist-id="favorite" playlist-title="おすすめ" playlist-description="おすすめ曲"
+  <PlaylistCard playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public"
     :songs="filterSongs(songs, (songs, uuid) => songs[uuid].recommended ?? false)" />
 
   <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
@@ -44,7 +44,7 @@ const showPlayListForm = ref(false);
     </template>
     <template v-for="(_, playlistId) of privatePlaylists" :key="playlistId">
       <div class="my-2" />
-      <AsyncPlayListCard :playlist-id="playlistId as string" :uid="uidRef!" />
+      <AsyncPlayListCard :playlist-id="playlistId as string" :uid="uidRef!" visibility="private" />
     </template>
   </template>
 
@@ -55,7 +55,7 @@ const showPlayListForm = ref(false);
     <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
       <template v-if="uid !== uidRef">
         <div class="my-2" />
-        <AsyncPlayListCard :playlist-id="playlistId as string" :uid="uid" />
+        <AsyncPlayListCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
       </template>
     </template>
   </template>
@@ -66,6 +66,6 @@ const showPlayListForm = ref(false);
         <v-btn class="mt-auto" icon="mdi-plus" size="large" elevation="8" @click="showPlayListForm = true" />
       </div>
     </v-layout-item>
-    <PlayListForm v-model="showPlayListForm" />
+    <PlaylistForm v-model="showPlayListForm" />
   </template>
 </template>

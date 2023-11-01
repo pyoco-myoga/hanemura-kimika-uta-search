@@ -1,12 +1,15 @@
 <script lang="ts" setup>
 import type {Song} from "@/@types/global/song.d.ts";
 import SongCard from "./SongCard.vue";
+import PlaylistSongCard from "./PlaylistSongCard.vue";
 import {favoriteSongs} from "@/common";
 import {useAppStore} from "@/store/app";
 const store = useAppStore();
 const props = defineProps<{
+  playlistId?: string;
   playlistTitle: string;
   playlistDescription: string;
+  visibility: "public" | "private",
   songs: (Song & {uuid: string})[],
 }>();
 
@@ -45,11 +48,16 @@ const playPlayList = () => {
         </v-row>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        <template v-for="(song, index) in songs" :key="song.uuid">
-          <SongCard :video="song.video" :artist="song.artist" :name="song.name" :t="song.t" :endt="song.endt"
-            :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(song.uuid) ?? null"
-            :is-full="song.length === 'full'" :recommended="song.recommended"
-            :playlist="props.songs.map(song => song.uuid)" :playlist-index="index" />
+        <template v-for="({uuid, ...song}, index) in songs" :key="song.uuid">
+          <PlaylistSongCard v-bind="{
+            ...song,
+            isFavorite: favoriteSongs?.has(uuid) ?? null,
+            isFull: song.length === 'full',
+            playlist: props.songs.map(song => song.uuid),
+            playlistIndex: index,
+            visibility,
+            playlistId
+          }" />
         </template>
       </v-expansion-panel-text>
     </v-expansion-panel>

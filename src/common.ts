@@ -40,8 +40,6 @@ export const storeSubscribe = () => {
       privatePlaylistUnsubscribe = database.onValue(
         database.ref(db, `users/${uidRef.value}/playlists`),
         (snapshot: database.DataSnapshot) => {
-          console.log("FFFFFFFFFFFFFFFFFFFFFFF");
-          console.debug(snapshot.val());
           privatePlaylists.value = Object.fromEntries(
             Object.entries(snapshot.val() ?? {})
               .map(([playlistId, data]) => [
@@ -53,7 +51,6 @@ export const storeSubscribe = () => {
                   songs: (data as any).songs,
                 }
               ]));
-          console.debug(privatePlaylists.value);
         },
         e => console.log(e));
 

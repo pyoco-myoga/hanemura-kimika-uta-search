@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import PlayListCard from "./PlayListCard.vue";
+import PlayListCard from "./PlaylistCard.vue";
 import * as database from "firebase/database";
 import {Playlist, songs} from "@/common";
 import {Ref, onBeforeUnmount, ref} from "vue";
@@ -7,6 +7,7 @@ import {Ref, onBeforeUnmount, ref} from "vue";
 const props = defineProps<{
   playlistId: string;
   uid: string;
+  visibility: "public" | "private";
 }>();
 const db = database.getDatabase();
 
@@ -38,6 +39,7 @@ onBeforeUnmount(() => {
 <template>
   <template v-if="playlist !== null">
     <PlayListCard :playlist-title="playlist.title" :playlist-description="playlist.description"
-      :songs="playlist.songs.map(uuid => ({...songs[uuid], uuid: uuid}))" />
+      :songs="playlist.songs.map(uuid => ({...songs[uuid], uuid: uuid}))" :playlist-id="playlistId"
+      :visibility="visibility" />
   </template>
 </template>

@@ -18,8 +18,8 @@ const routes = [
             },
             {
                 path: "playlist",
-                name: "PlayList",
-                component: () => import("@/views/PlayList.vue"),
+                name: "Playlist",
+                component: () => import("@/views/Playlist.vue"),
             },
         ],
     },

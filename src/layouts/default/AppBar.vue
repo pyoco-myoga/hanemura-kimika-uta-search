@@ -36,7 +36,7 @@ const gotoSearchPage = () => {
   router.push({name: "Search"});
 }
 const gotoPlayListPage = () => {
-  router.push({name: "PlayList"});
+  router.push({name: "Playlist"});
 }
 </script>
 
