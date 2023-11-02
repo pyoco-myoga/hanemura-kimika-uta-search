@@ -35,9 +35,8 @@ const showPlayListForm = ref(false);
   <v-container>
     <v-row>
       <v-col class="ma-2">
-        <v-text-field label="プレイリスト名" density="compact" prepend-inner-icon="mdi-magnify"
-          append-inner-icon="mdi-close" @click:append-inner="searchWord = ''" v-model="searchWord" variant="solo"
-          single-line hide-details />
+        <v-text-field label="プレイリスト名" density="compact" prepend-inner-icon="mdi-magnify" append-inner-icon="mdi-close"
+          @click:append-inner="searchWord = ''" v-model="searchWord" variant="solo" single-line hide-details />
       </v-col>
       <template v-if="uidRef !== null">
         <v-col class="ma-2" cols="1">
@@ -47,19 +46,11 @@ const showPlayListForm = ref(false);
     </v-row>
   </v-container>
 
-  <template v-if="favoriteSongs !== null">
-    <div class="my-2" />
-    <PlaylistCard playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト" visibility="public"
-      :songs="filterSongs(songs, (_, uuid) => favoriteSongs?.has(uuid) ?? false)" />
-  </template>
 
-  <div class="my-2" />
-  <PlaylistCard playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public"
-    :songs="filterSongs(songs, (songs, uuid) => songs[uuid].recommended ?? false)" />
-
+  <!-- Private Playlist -->
   <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
     <template v-if="Object.keys(privatePlaylists).length !== 0">
-      <div>private playlist</div>
+      <div>あなたのプレイリスト</div>
     </template>
     <template v-for="(_, playlistId) of privatePlaylists" :key="playlistId">
       <div class="my-2" />
@@ -67,9 +58,22 @@ const showPlayListForm = ref(false);
     </template>
   </template>
 
+  <template v-if="favoriteSongs !== null">
+    <div class="my-2" />
+    <PlaylistCard playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト" visibility="public"
+      :songs="filterSongs(songs, (_, uuid) => favoriteSongs?.has(uuid) ?? false)" />
+  </template>
+
+  <!-- Official Playlist -->
+  <div class="my-2" />
+  <div>公式プレイリスト</div>
+  <PlaylistCard playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public"
+    :songs="filterSongs(songs, (songs, uuid) => songs[uuid].recommended ?? false)" />
+
+  <!-- Public Playlist -->
   <template v-if="publicPlaylists !== null"> <!-- <=> if loaded -->
     <template v-if="Object.values(publicPlaylists).filter(({uid}) => uid !== uidRef).length !== 0">
-      <div>public playlist</div>
+      <div>公開プレイリスト</div>
     </template>
     <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
       <template v-if="uid !== uidRef">

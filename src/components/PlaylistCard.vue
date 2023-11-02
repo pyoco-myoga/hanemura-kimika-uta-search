@@ -59,25 +59,27 @@ const onRemoveFavorite = (songUUID: string) => {
     <v-expansion-panel>
       <v-expansion-panel-title>
         <v-row no-gutters>
-          <v-col cols="1">
+          <v-col cols="auto">
             <v-btn class="mx-1" :icon="true" @click="playPlayList" @click.stop>
               <v-icon icon="mdi-play" />
             </v-btn>
           </v-col>
-          <v-col cols="3" class="d-flex align-center text-center">
+          <v-col cols="auto" class="d-flex align-center text-center">
             <v-card-title>
               {{ props.playlistTitle }}
             </v-card-title>
           </v-col>
-          <v-col cols="1" class="d-flex align-center text-center">
+          <v-col cols="auto" xs="auto" class="d-flex align-center text-center">
             <v-card-subtitle>
               {{ props.songs.length }}曲
             </v-card-subtitle>
           </v-col>
-          <v-col cols="7" class="d-flex align-center text-center">
-            <v-card-subtitle>
-              {{ playlistDescription }}
-            </v-card-subtitle>
+          <v-col cols="auto" xs="auto" class="d-flex align-center text-center">
+            <div class="d-none d-sm-block">
+              <v-card-subtitle>
+                {{ playlistDescription }}
+              </v-card-subtitle>
+            </div>
           </v-col>
         </v-row>
       </v-expansion-panel-title>
