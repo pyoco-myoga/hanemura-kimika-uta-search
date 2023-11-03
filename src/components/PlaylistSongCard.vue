@@ -2,7 +2,7 @@
 import {ref} from 'vue';
 import * as database from "firebase/database";
 import type {Song} from "@/@types/global/song.d.ts";
-import SongBottomMenu from "@/components/SongBottomMenu.vue";
+import BottomListMenu from "@/components/BottomListMenu.vue";
 import AddToPlaylistMenu from "@/components/AddToPlaylistMenu.vue";
 import BaseSongCard from './BaseSongCard.vue';
 import {uidRef} from '@/common';
@@ -85,7 +85,7 @@ if (props.visibility === "private") {
     </div>
   </v-snackbar>
 
-  <SongBottomMenu :tiles="tiles" v-model="showBottomMenu" />
+  <BottomListMenu :tiles="tiles" v-model="showBottomMenu" />
   <template v-if="uidRef !== null">
     <AddToPlaylistMenu v-model="showAddToPlaylistMenu" :song-id="playlist[playlistIndex]" />
   </template>

@@ -10,13 +10,14 @@ const props = defineProps<{
   playlistId?: string;
   title?: string;
   description?: string;
-  isPublic?: boolean;
+  isPublic?: "private" | "public";
+  songs?: string[];
 }>();
 
 const playlistId = ref(props.playlistId ?? uuidv4());
 const title = ref(props.title ?? "");
 const description = ref(props.description ?? "");
-const isPublic = ref(props.isPublic ?? false);
+const isPublic = ref(props.isPublic ?? "private");
 
 const db = database.getDatabase();
 const addOrUpdatePlayList = async () => {
@@ -26,14 +27,17 @@ const addOrUpdatePlayList = async () => {
       {
         "title": title.value,
         "description": description.value,
-        "songs": []
+        "songs": props.songs
       }
     );
-    if (isPublic.value) {
+    if (isPublic.value === "public") {
       await database.set(
         database.ref(db, `public_playlists/${playlistId.value}`), {
         "uid": uidRef.value
       });
+    } else {
+      await database.set(
+        database.ref(db, `public_playlists/${playlistId.value}`), null);
     }
   } catch (e) {
     console.log(e);
@@ -46,14 +50,20 @@ const addOrUpdatePlayList = async () => {
     <v-card>
       <v-text-field v-model="title" label="タイトル" />
       <v-textarea v-model="description" label="概要" />
-      <v-switch color="primary" v-model="isPublic">
+      <v-switch color="primary" v-model="isPublic" true-value="public" false-value="private">
         <template v-slot:label>
           <span :class="isPublic ? 'text-black' : 'text-grey-darken-3'">公開する</span>
-          <!-- <span class="black">公開する</span> -->
         </template>
       </v-switch>
       <v-card-actions>
-        <v-btn color="primary" block @click="() => {show = false; addOrUpdatePlayList()}">作成</v-btn>
+        <v-btn color="primary" block @click="() => {show = false; addOrUpdatePlayList()}">
+          <template v-if="playlistId !== undefined">
+            更新
+          </template>
+          <template v-else>
+            作成
+          </template>
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

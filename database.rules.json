@@ -29,7 +29,7 @@
                     ".validate": "newData.isString()"
                 },
                 ".validate": "newData.hasChildren(['uid'])",
-                ".write": "auth.uid === newData.child('uid').val()"
+                ".write": "auth.uid === newData.child('uid').val() || auth.uid === data.child('uid').val()"
             },
             ".read": true
         }

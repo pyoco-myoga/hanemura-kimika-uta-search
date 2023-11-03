@@ -26,6 +26,9 @@ const showBottomMenu = defineModel<boolean>();
       <v-col>
         <v-card-title>{{ props.name }}</v-card-title>
         <v-card-subtitle>{{ props.artist }}</v-card-subtitle>
+        <template v-if="props.endt === null">
+          <v-icon icon="mdi-close" />
+        </template>
       </v-col>
       <v-col cols="auto">
         <v-card-text>

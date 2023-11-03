@@ -16,7 +16,8 @@
             "t": 1344,
             "endt": 1539,
             "length": "full",
-            "singType": "live"
+            "singType": "live",
+            "recommended": true
         },
         "90241711-61e4-44cd-baaa-63abca1b833c": {
             "artist": "ACIDMAN",
@@ -2123,7 +2124,7 @@
         },
         "3caad3b9-0d45-4a4a-b673-95e0b72db5d7": {
             "artist": "KANA-BOON",
-            "endt": 712,
+            "endt": 952,
             "length": "full",
             "name": "シルエット",
             "singType": "improvised",

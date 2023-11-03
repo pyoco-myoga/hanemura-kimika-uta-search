@@ -2,7 +2,7 @@
 import {ref} from 'vue';
 import * as database from "firebase/database";
 import type {Song} from "@/@types/global/song.d.ts";
-import SongBottomMenu from "@/components/SongBottomMenu.vue";
+import BottomListMenu from "@/components/BottomListMenu.vue";
 import BaseSongCard from './BaseSongCard.vue';
 import {privatePlaylists, uidRef} from '@/common';
 import {Ref} from 'vue';
@@ -82,7 +82,7 @@ const addToPlaylist = () => {
     </div>
   </v-snackbar>
 
-  <SongBottomMenu :tiles="tiles" v-model="showBottomMenu" />
+  <BottomListMenu :tiles="tiles" v-model="showBottomMenu" />
   <template v-if="uidRef !== null">
     <v-bottom-sheet v-model="showAddToPlaylistMenu">
       <v-list>

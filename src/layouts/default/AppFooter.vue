@@ -1,12 +1,16 @@
 <script lang="ts" setup>
 import {songs} from '@/common';
 import {useAppStore} from '@/store/app';
+import {computed} from 'vue';
 import {ref, Ref} from 'vue';
 import YouTube from 'vue3-youtube';
 import PlayerStates from "youtube-player/dist/constants/PlayerStates";
 const store = useAppStore();
 
 const progress: Ref<number | null> = ref(null)
+const secondsFromStart: Ref<number> = ref(0);
+const secondsToEnd: Ref<number | null> = ref(null);
+
 let timerId: NodeJS.Timeout | null = null;
 
 const playing = ref(false);
@@ -29,13 +33,36 @@ const onReady = (e: any) => {
     } else {
       const t = songs[store.playingPlayList[store.indexPlayList]].t;
       const endt = songs[store.playingPlayList[store.indexPlayList]].endt;
+
+      secondsFromStart.value = e.target.getCurrentTime() - t;
+      secondsToEnd.value = endt !== null ? (endt - e.target.getCurrentTime()) : null;
+
       if (endt === null) {
         progress.value = 0;
       } else {
-        progress.value = 100 * (e.target.getCurrentTime() - t) / (endt - t);
+        progress.value = 100 * secondsFromStart.value / (endt - t);
       }
     }
   }, 500);
+};
+
+const displayTime = (seconds: number | null) => {
+  if (seconds === null) {
+    return "--:--";
+  }
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+
+  const formattedHours = String(hours).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+  if (hours === 0) {
+    return `${formattedMinutes}:${formattedSeconds}`;
+  } else {
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  }
 };
 
 const onStateChange = (e: any) => {
@@ -85,8 +112,14 @@ const onClose = () => {
             </v-row>
             <v-row>
               <v-progress-linear :model-value="progress ?? undefined" />
+              <v-col cols="auto" class="pa-0 text-caption">{{ displayTime(secondsFromStart) }}</v-col>
+              <v-col />
+              <v-col cols="auto" class="pa-0 text-caption">{{ displayTime(secondsToEnd) }}</v-col>
             </v-row>
             <v-row>
+              <v-col cols="auto">
+                <v-btn icon="mdi-cog-outline" color="grey" variant="text" @click="() => {}" />
+              </v-col>
               <v-col class="text-center">
                 <v-btn icon="mdi-rewind" variant="text" @click="store.playPreviousPlayListSong()" />
                 <template v-if="playing">
@@ -95,11 +128,10 @@ const onClose = () => {
                 <template v-else>
                   <v-btn icon="mdi-play" variant="text" @click="play" />
                 </template>
-
-                <v-btn class="ms-0" icon="mdi-fast-forward" variant="text" @click="store.playNextPlayListSong()" />
+                <v-btn icon="mdi-fast-forward" variant="text" @click="store.playNextPlayListSong()" />
               </v-col>
-              <v-col cols="1">
-                <v-btn icon="mdi-stop" variant="text" @click="onClose" />
+              <v-col cols="auto">
+                <v-btn icon="mdi-close" variant="text" @click="onClose" />
               </v-col>
             </v-row>
           </v-col>
