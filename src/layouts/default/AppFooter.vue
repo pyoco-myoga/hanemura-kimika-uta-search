@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {addToFavorite, favoriteSongs, removeFromFavorite, songs} from '@/common';
 import {useAppStore} from '@/store/app';
-import {ref, Ref, computed} from 'vue';
+import {ref, Ref} from 'vue';
 import YouTube from 'vue3-youtube';
 import PlayerStates from "youtube-player/dist/constants/PlayerStates";
 import {YouTubePlayer} from 'youtube-player/dist/types';

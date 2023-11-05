@@ -2020,6 +2020,15 @@
             "length": "full",
             "singType": "known"
         },
+        "6365166d-8936-4edf-8dee-9dc57c63acde": {
+            "artist": "JUDY AND MARY",
+            "name": "そばかす",
+            "video": "dw5zaOM5IkI",
+            "t": 4555,
+            "endt": 4781,
+            "length": "full",
+            "singType": "known"
+        },
         "08071cc4-527d-4c91-b8bc-2963f7e6fbcb": {
             "artist": "JUDY AND MARY",
             "endt": 6457,
@@ -2267,6 +2276,15 @@
             "t": 10010,
             "video": "TwhEO1OmEEg"
         },
+        "a5cd3edf-7f85-4204-b55a-59bf98d7cfc7": {
+            "artist": "Ken Yokoyama",
+            "name": "I Go Alone",
+            "video": "dw5zaOM5IkI",
+            "t": 4170,
+            "endt": 4295,
+            "length": "full",
+            "singType": "known"
+        },
         "e1fdf5ff-2867-4294-85c1-2a30a7fc5cba": {
             "artist": "Ken Yokoyama",
             "name": "Popcorn Love",
@@ -2275,6 +2293,15 @@
             "endt": 4157,
             "length": "full",
             "singType": "live"
+        },
+        "4320bab9-87aa-41d3-a9ac-ffeae4ed57ea": {
+            "artist": "Ken Yokoyama",
+            "name": "Popcorn Love",
+            "video": "dw5zaOM5IkI",
+            "t": 2269,
+            "endt": 2388,
+            "length": "full",
+            "singType": "known"
         },
         "8306510f-0f5b-41fe-901d-8c419c69356e": {
             "artist": "Ken Yokoyama",
@@ -3824,6 +3851,15 @@
             "singType": "live",
             "t": 3211,
             "video": "esHHMezfp8Q"
+        },
+        "37b17dc2-9cd5-43fe-8be5-a23174f55940": {
+            "artist": "THE BOYS&GIRLS",
+            "name": "パレードは続く",
+            "video": "dw5zaOM5IkI",
+            "t": 3049,
+            "endt": 3350,
+            "length": "full",
+            "singType": "known"
         },
         "19845938-1c06-46fa-b789-cc118e82073f": {
             "artist": "THE CRANE FLY",
@@ -6794,6 +6830,15 @@
             "singType": "known",
             "t": 5080,
             "video": "Bqk1okPs1w8"
+        },
+        "cab440d6-a683-4dd1-9c26-63bd87585b18": {
+            "artist": "クロマニヨンズ",
+            "name": "タリホー",
+            "video": "dw5zaOM5IkI",
+            "t": 3795,
+            "endt": 3947,
+            "length": "full",
+            "singType": "known"
         },
         "60ee7f9d-7128-4862-9164-74ad2d3c83fe": {
             "artist": "クロマニヨンズ",
@@ -11187,6 +11232,15 @@
             "length": "full",
             "singType": "known"
         },
+        "884702d3-61bd-4590-af51-c4ede5ac47d2": {
+            "artist": "紗倉ひびき&街雄鳴造",
+            "name": "お願いマッスル",
+            "video": "dw5zaOM5IkI",
+            "t": 682,
+            "endt": 916,
+            "length": "full",
+            "singType": "known"
+        },
         "9154f76f-cc2f-4d29-ba59-45fa91c616e9": {
             "artist": "細川たかし",
             "endt": null,
@@ -12221,6 +12275,15 @@
             "singType": "known",
             "t": 4878,
             "video": "gt1qIwfJ2JI"
+        },
+        "7a040ab2-48aa-4a4b-af16-99790bd3224b": {
+            "artist": "銀杏BOYZ",
+            "name": "駆け抜けて性春",
+            "video": "dw5zaOM5IkI",
+            "t": 1599,
+            "endt": 1875,
+            "length": "full",
+            "singType": "known"
         },
         "7b87fee7-d4d2-431e-bd16-8fb4638e8aa3": {
             "artist": "高野辰之・岡野貞一",
