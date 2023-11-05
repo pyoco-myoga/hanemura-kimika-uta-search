@@ -2,7 +2,9 @@
 <script lang="ts" setup>
 import {
   TwitterAuthProvider,
+  browserSessionPersistence,
   getAuth,
+  setPersistence,
   signInWithPopup,
 } from "firebase/auth";
 import {ref, Ref} from "vue";
@@ -15,6 +17,7 @@ const drawer: Ref<boolean | null> = ref(null);
 const provider = new TwitterAuthProvider();
 const loginEventListener = async () => {
   try {
+    await setPersistence(getAuth(), browserSessionPersistence);
     const result = await signInWithPopup(getAuth(), provider);
     store.setUser(result.user);
     console.log(store.user);

@@ -2,36 +2,26 @@
 import {Song} from "@/@types/global/song";
 import SongCard from "@/components/SongCard.vue";
 
+import algoliasearch from "algoliasearch";
 import {ref, Ref} from "vue";
-import * as database from "firebase/database";
-import Fuse from "fuse.js";
 import {watch} from "vue";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 import {StateHandler} from "v3-infinite-loading/lib/types";
 import {v4 as uuidv4} from "uuid";
-import {favoriteSongs, uidRef, songs} from "@/common";
+import {
+  favoriteSongs,
+  uidRef,
+  addToFavorite,
+  removeFromFavorite,
+  ALGOLIA_APP_ID,
+  ALGOLIA_SEARCH_KEY,
+  ALGOLIA_SEARCH_INDEX
+} from "@/common";
 
 const params = new URLSearchParams(location.search);
 const q = params.get("q");
 const v = params.get("v");
-
-let songList: {uuid: string; song: Song}[] = [];
-Object.keys(songs).map((uuid) => {
-  songList.push({
-    uuid: uuid,
-    song: songs[uuid],
-  });
-});
-songList.sort((a, b) => {
-  if (a.song.artist > b.song.artist) {
-    return 1;
-  } else if (a.song.artist === b.song.artist) {
-    return a.song.name > b.song.name ? 1 : -1;
-  } else {
-    return -1;
-  }
-});
 
 const searchWord = ref(q || "");
 const filterYoutubeURL = ref(v || "");
@@ -41,7 +31,13 @@ function getVideoID(youtubeUrlOrVideoID: string): string | null {
   if (IS_VIDEOID_REGEX.test(youtubeUrlOrVideoID)) {
     return youtubeUrlOrVideoID;
   }
-  const youtubeURL = new URL(youtubeUrlOrVideoID);
+
+  let youtubeURL;
+  try {
+    youtubeURL = new URL(youtubeUrlOrVideoID);
+  } catch (e) {
+    return null;
+  }
 
   if (youtubeURL.pathname == "/watch") {
     const videoID = youtubeURL.searchParams.get("v");
@@ -60,124 +56,83 @@ function getVideoID(youtubeUrlOrVideoID: string): string | null {
   }
 }
 
-const fuse = new Fuse(songList, {
-  shouldSort: true,
-  threshold: 0.4,
-  keys: ["song.artist", "song.name"],
-});
+const HITS_PER_PAGE = 30;
+const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
+const index = client.initIndex(ALGOLIA_SEARCH_INDEX)
 
 type SearchOptions = "favorite" | "full" | "recommended";
 const validSearchOptions: Ref<Array<SearchOptions>> = ref(["recommended"]);
 
-const onAddFavorite = (songUUID: string) => {
-  console.log(favoriteSongs.value);
-  if (uidRef.value === null) {
-    return;
-  }
-  if (favoriteSongs.value === null) {
-    return;
-  }
-  if (favoriteSongs.value.has(songUUID)) {
-    return;
-  }
-  const db = database.getDatabase();
-  database.set(
-    database.ref(db, `users/${uidRef.value}/favorite`),
-    [...favoriteSongs.value, songUUID]
-  );
-};
-
-const onRemoveFavorite = (songUUID: string) => {
-  console.log(favoriteSongs.value);
-  if (uidRef.value === null) {
-    return;
-  }
-  if (favoriteSongs.value === null) {
-    return;
-  }
-  if (!favoriteSongs.value.has(songUUID)) {
-    return;
-  }
-  const db = database.getDatabase();
-  database.set(
-    database.ref(db, `users/${uidRef.value}/favorite`),
-    [...(favoriteSongs.value || [])].filter(v => v !== songUUID)
-  );
-};
-
-const NUM_NEW_LOAD = 30;
-const searchResult: Ref<{uuid: string, song: Song}[]> = ref([]);
-const resultId: Ref<string> = ref(uuidv4());
+let resultId: string = uuidv4();
 const showedSongs: Ref<{uuid: string, song: Song}[]> = ref([]);
+let loadedPageNumber = -1;
+
+const search = async () => {
+  const videoID = getVideoID(filterYoutubeURL.value);
+  console.debug(searchWord.value);
+  const searchResult = await index.search<Song>(searchWord.value, {
+    page: ++loadedPageNumber,
+    hitsPerPage: HITS_PER_PAGE,
+    facets: [
+      "recommended",
+      "video",
+      "length",
+    ],
+    facetFilters: [
+      ...((validSearchOptions.value.includes("recommended")) ? ["recommended:true"] : []),
+      ...((videoID !== null) ? [`video:${videoID}`] : []),
+      ...((validSearchOptions.value.includes("full")) ? ["length:full"] : []),
+    ],
+  });
+  return searchResult.hits.map(hit => ({
+    uuid: hit.objectID,
+    song: {
+      artist: hit.artist,
+      name: hit.name,
+      video: hit.video,
+      t: hit.t,
+      endt: hit.endt,
+      length: hit.length,
+      singType: hit.singType,
+      recommended: hit.recommended
+    }
+  }));
+};
 
 let searchTimerId: NodeJS.Timeout | null = null;
 const updateSearchResult = () => {
   if (searchTimerId !== null) {
     clearTimeout(searchTimerId);
   }
-  searchTimerId = setTimeout(() => {
-    let result: Array<{uuid: string, song: Song}>;
-    if (searchWord.value === "") {
-      result = songList;
-    } else {
-      result = fuse.search(searchWord.value)
-        .map(result => ({uuid: result.item.uuid, song: result.item.song, }));
+  searchTimerId = setTimeout(async () => {
+    try {
+      loadedPageNumber = -1;
+      showedSongs.value = [];
+      resultId = uuidv4();
+    } catch (e) {
+      console.debug(e);
     }
-    result = result
-      .filter(({uuid}) => {
-        if (uidRef.value === null) {
-          return true;
-        } else if (validSearchOptions.value.includes("favorite") && !favoriteSongs.value?.has(uuid)) {
-          return false;
-        } else {
-          return true;
-        }
-      })
-      .filter(({song}) => {
-        if (validSearchOptions.value.includes("full")) {
-          return song.length === "full";
-        } else {
-          return true;
-        }
-      })
-      .filter(({song}) => {
-        if (validSearchOptions.value.includes("recommended")) {
-          return song.recommended ?? false;
-        } else {
-          return true;
-        }
-      })
-      .filter(({song}) => {
-        if (filterYoutubeURL.value === "") {
-          return true;
-        }
-        if (song.video === getVideoID(filterYoutubeURL.value)) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-
-    searchResult.value = result;
-    resultId.value = uuidv4();
-    showedSongs.value = [];
-  }, 50);
+  }, 300);
 };
 
-updateSearchResult();
 watch([searchWord, validSearchOptions, filterYoutubeURL], updateSearchResult);
 
-const load = (state: StateHandler) => {
-  if (showedSongs.value.length == searchResult.value.length) {
-    state.complete();
-  } else {
+const load = async (state: StateHandler) => {
+  try {
+    const result = await search();
     showedSongs.value.push(
-      ...searchResult.value.slice(
-        showedSongs.value.length,
-        showedSongs.value.length + NUM_NEW_LOAD));
-    state.loaded();
+      ...result
+    );
+    if (result.length < HITS_PER_PAGE) {
+      state.complete();
+    } else {
+      state.loaded();
+    }
+  } catch (e) {
+    console.debug(e);
+    state.error();
   }
-}
+};
 
 </script>
 
@@ -215,8 +170,8 @@ const load = (state: StateHandler) => {
   <template v-for="{uuid, song} in showedSongs" :key="song.uuid">
     <SongCard :video="song.video" :artist="song.artist" :name="song.name" :t="song.t" :endt="song.endt"
       :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(uuid) ?? null" :is-full="false"
-      :recommended="song.recommended" @add-favorite="onAddFavorite" @remove-favorite="onRemoveFavorite" :playlist="[uuid]"
-      :playlist-index="0" />
+      :recommended="song.recommended" @add-favorite="addToFavorite" @remove-favorite="removeFromFavorite"
+      :playlist="[uuid]" :playlist-index="0" />
   </template>
   <InfiniteLoading :key="resultId" @infinite="load" :distance="100" />
 </template>

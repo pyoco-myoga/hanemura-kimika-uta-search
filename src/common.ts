@@ -12,6 +12,10 @@ export type Playlist = {
   songs: string[];
 }
 
+export const ALGOLIA_APP_ID = "6T9A9U650D";
+export const ALGOLIA_SEARCH_KEY = "fe209ec7af26fc0524f5ef8f9adc340b";
+export const ALGOLIA_SEARCH_INDEX = "songs";
+
 export const songs = Songs.songs as {[uuid: string]: Song};
 
 export const uidRef: Ref<string | null> = ref(null);
@@ -79,3 +83,38 @@ export const publicPlaylistsSubscribe = () => {
     e => console.log(e));
 };
 
+export function addToFavorite(songUUID: string) {
+  console.log(favoriteSongs.value);
+  if (uidRef.value === null) {
+    return;
+  }
+  if (favoriteSongs.value === null) {
+    return;
+  }
+  if (favoriteSongs.value.has(songUUID)) {
+    return;
+  }
+  const db = database.getDatabase();
+  database.set(
+    database.ref(db, `users/${uidRef.value}/favorite`),
+    [...favoriteSongs.value, songUUID]
+  );
+};
+
+export function removeFromFavorite(songUUID: string) {
+  console.log(favoriteSongs.value);
+  if (uidRef.value === null) {
+    return;
+  }
+  if (favoriteSongs.value === null) {
+    return;
+  }
+  if (!favoriteSongs.value.has(songUUID)) {
+    return;
+  }
+  const db = database.getDatabase();
+  database.set(
+    database.ref(db, `users/${uidRef.value}/favorite`),
+    [...(favoriteSongs.value || [])].filter(v => v !== songUUID)
+  );
+};

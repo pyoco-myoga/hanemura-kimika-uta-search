@@ -1,11 +1,16 @@
 // Utilities
 import {defineStore} from "pinia";
-import {User} from "firebase/auth";
+import {User, getAuth} from "firebase/auth";
 import {Ref, ref} from "vue";
 
 
 export const useAppStore = defineStore("app", () => {
   const user: Ref<User | null> = ref(null);
+  getAuth().onAuthStateChanged((user_) => {
+    if (user_ !== null) {
+      user.value = user_;
+    }
+  });
 
   const playingPlayList: Ref<string[]> = ref([]);
   const indexPlayList: Ref<number | null> = ref(null);
