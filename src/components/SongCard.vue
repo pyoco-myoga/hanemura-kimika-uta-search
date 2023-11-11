@@ -58,17 +58,15 @@ const addToPlaylist = () => {
 
 <template>
   <BaseSongCard v-bind="{...props}" v-model="showBottomMenu">
-    <template v-slot:pre-icon>
+    <template v-slot:post-icon>
       <template v-if="isFavorite !== null">
-        <v-col cols="auto" class="mx-5 d-flex align-center">
-          <!-- favorite buttom -->
-          <template v-if="isFavorite">
-            <v-icon icon="mdi-heart" @click="emits('removeFavorite', playlist[playlistIndex])" />
-          </template>
-          <template v-else>
-            <v-icon icon="mdi-heart-outline" @click="emits('addFavorite', playlist[playlistIndex])" />
-          </template>
-        </v-col>
+        <!-- favorite buttom -->
+        <template v-if="isFavorite">
+          <v-btn icon="mdi-heart" @click="emits('removeFavorite', playlist[playlistIndex])" :elevation="0" />
+        </template>
+        <template v-else>
+          <v-btn icon="mdi-heart-outline" @click="emits('addFavorite', playlist[playlistIndex])" :elevation="0" />
+        </template>
       </template>
     </template>
   </BaseSongCard>

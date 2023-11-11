@@ -4,21 +4,32 @@ import type {Song} from "@/@types/global/song.d.ts";
 import PlaylistSongCard from "./PlaylistSongCard.vue";
 import BottomListMenu from "./BottomListMenu.vue";
 import PlaylistForm from "./PlaylistForm.vue";
-import {favoriteSongs, uidRef} from "@/common";
+import {algoliaIndex, favoriteSongs, uidRef} from "@/common";
 import {useAppStore} from "@/store/app";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import {Ref} from "vue";
 const store = useAppStore();
 const props = defineProps<{
   playlistId?: string;
   playlistTitle: string;
   playlistDescription: string;
   visibility: "public" | "private",
-  songs: (Song & {uuid: string})[],
+  songs: string[],
 }>();
+import {ObjectWithObjectID} from "@algolia/client-search";
+
+
+const playlistSongs: Ref<({uuid: string} & Song)[] | null> = ref(null);
+
+onMounted(async () => {
+  const searchSongs = await algoliaIndex.getObjects<Song>(props.songs);
+  playlistSongs.value = searchSongs.results
+    .filter((song): song is Song & ObjectWithObjectID => song !== null)
+    .map(({objectID, ...song}) => ({uuid: objectID, ...song}));
+})
 
 const playPlayList = () => {
-  const playListSongsUUID = props.songs.map(song => song.uuid);
-  store.setPlayList(playListSongsUUID);
+  store.setPlayList(props.songs);
   store.playNextPlayListSong();
 };
 const onAddFavorite = (songUUID: string) => {
@@ -107,16 +118,20 @@ const tiles = ref([
         </v-row>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        <template v-for="({uuid, ...song}, index) in songs" :key="song.uuid">
-          <PlaylistSongCard v-bind="{
-            ...song,
-            isFavorite: favoriteSongs?.has(uuid) ?? null,
-            isFull: song.length === 'full',
-            playlist: props.songs.map(song => song.uuid),
-            playlistIndex: index,
-            visibility,
-            playlistId
-          }" @add-favorite="onAddFavorite" @remove-favorite="onRemoveFavorite" />
+        <template v-if="playlistSongs !== null">
+          <template v-for="({uuid, ...song}, index) in playlistSongs" :key="uuid">
+            <v-lazy :min-height="30" :options="{threshold: 0.5}" transition="fade-transition">
+              <PlaylistSongCard v-bind="{
+                ...song,
+                isFavorite: favoriteSongs?.has(uuid) ?? null,
+                isFull: song.length === 'full',
+                playlist: songs,
+                playlistIndex: index,
+                visibility,
+                playlistId
+              }" @add-favorite="onAddFavorite" @remove-favorite="onRemoveFavorite" />
+            </v-lazy>
+          </template>
         </template>
       </v-expansion-panel-text>
     </v-expansion-panel>
@@ -124,6 +139,6 @@ const tiles = ref([
   <BottomListMenu v-model="showBottomMenu" :tiles="tiles" />
   <template v-if="playlistId !== undefined">
     <PlaylistForm v-model="showPlaylistForm" :playlist-id="playlistId" :title="playlistTitle"
-      :description="playlistDescription" :is-public="visibility" :songs="songs.map(song => song.uuid)" />
+      :description="playlistDescription" :is-public="visibility" :songs="songs" />
   </template>
 </template>

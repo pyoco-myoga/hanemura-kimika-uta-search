@@ -464,6 +464,15 @@
             "length": "full",
             "singType": "improvised"
         },
+        "968b0a6c-58f2-4bc7-b13f-c80b0e4112ab": {
+            "artist": "BUMP OF CHICKEN",
+            "name": "ガラスのブルース",
+            "video": "8-Axz3BGJ0w",
+            "t": 1830,
+            "endt": 2209,
+            "length": "full",
+            "singType": "known"
+        },
         "a0b1d738-10b5-4750-be9d-4f5c13700b13": {
             "artist": "BUMP OF CHICKEN",
             "endt": 6273,
@@ -977,6 +986,15 @@
             "t": 8808,
             "video": "ArOdT1uSdCA"
         },
+        "8b468611-52ae-48c7-8aa9-9af3bf89680d": {
+            "artist": "DOES",
+            "name": "曇天",
+            "video": "24BVa45R9dE",
+            "t": 3430,
+            "endt": 3584,
+            "length": "short",
+            "singType": "improvised"
+        },
         "7202b2c8-f919-43ac-af31-3b49f3ec2bc0": {
             "artist": "Dream5",
             "endt": 518,
@@ -1066,6 +1084,15 @@
             "video": "xiNlG-f_9Mo",
             "t": 9734,
             "endt": 10072,
+            "length": "full",
+            "singType": "known"
+        },
+        "276036da-cb1a-48a2-835c-b885b010ee37": {
+            "artist": "GO!GO!7188",
+            "name": "こいのうた",
+            "video": "8-Axz3BGJ0w",
+            "t": 3164,
+            "endt": 3519,
             "length": "full",
             "singType": "known"
         },
@@ -1508,6 +1535,15 @@
             "video": "q4BVGiAEBYk",
             "t": 1940,
             "endt": 2141,
+            "length": "full",
+            "singType": "known"
+        },
+        "ccdd5993-b1f9-4695-97ee-b4c03a7a841b": {
+            "artist": "Hi-STANDARD",
+            "name": "MY FIRST KISS",
+            "video": "8-Axz3BGJ0w",
+            "t": 4534,
+            "endt": 4744,
             "length": "full",
             "singType": "known"
         },
@@ -2158,6 +2194,15 @@
             "t": 4225,
             "video": "46BxnYxsHoY"
         },
+        "21d240f6-35d3-4792-936e-93f8409253ca": {
+            "artist": "KANA-BOON",
+            "name": "シルエット",
+            "video": "8-Axz3BGJ0w",
+            "t": 1209,
+            "endt": 1471,
+            "length": "full",
+            "singType": "known"
+        },
         "07883796-6bd8-4397-9b67-d39949256d40": {
             "artist": "Kanaria",
             "endt": null,
@@ -2438,6 +2483,15 @@
             "singType": "known",
             "t": 4427,
             "video": "eijbyG27ovY"
+        },
+        "2540c47e-6eb3-4996-b627-ae5300172f8f": {
+            "artist": "MONGOL800",
+            "name": "小さな恋のうた",
+            "video": "24BVa45R9dE",
+            "t": 2456,
+            "endt": 2703,
+            "length": "full",
+            "singType": "known"
         },
         "cd141def-6ea6-4164-8b2f-0e97a95d26d6": {
             "artist": "Mi",
@@ -3365,6 +3419,15 @@
             "singType": "known",
             "t": 4714,
             "video": "wS1jFMR7WsQ"
+        },
+        "a0182848-39f0-4426-8806-c48735d64ebc": {
+            "artist": "THE BACK HORN",
+            "name": "コバルトブルー",
+            "video": "24BVa45R9dE",
+            "t": 5511,
+            "endt": 5765,
+            "length": "full",
+            "singType": "known"
         },
         "0e8cde6f-ef5f-4d4b-8d50-a666164a9382": {
             "artist": "THE BACK HORN",
@@ -5265,6 +5328,15 @@
             "t": 5358,
             "video": "EodQS2CnhM4"
         },
+        "816c3638-3920-4ba7-9e31-50bf447ad9ae": {
+            "artist": "あいみょん",
+            "name": "君はロックを聴かない",
+            "video": "8-Axz3BGJ0w",
+            "t": 2550,
+            "endt": 2814,
+            "length": "full",
+            "singType": "known"
+        },
         "5f928edd-b505-47b9-896e-bd87164235d0": {
             "artist": "あいみょん",
             "endt": 4832,
@@ -5282,6 +5354,15 @@
             "singType": "improvised",
             "t": 3861,
             "video": "xBwOc_0dnSQ"
+        },
+        "c60118af-4c36-4001-a857-a5ef7b5c8881": {
+            "artist": "あいみょん",
+            "name": "貴方解剖純愛歌",
+            "video": "24BVa45R9dE",
+            "t": 3004,
+            "endt": 3086,
+            "length": "short",
+            "singType": "improvised"
         },
         "ef823cc0-690c-44e5-b169-c0feb8032deb": {
             "artist": "あんしんパパ",
@@ -5469,6 +5550,15 @@
             "video": "UNkILr8yJuc",
             "t": 4555,
             "endt": 4802,
+            "length": "full",
+            "singType": "known"
+        },
+        "3d56d0c4-b162-4f47-b824-d27ab92bdb22": {
+            "artist": "くるり",
+            "name": "ばらの花",
+            "video": "24BVa45R9dE",
+            "t": 3888,
+            "endt": 4132,
             "length": "full",
             "singType": "known"
         },
@@ -6732,6 +6822,15 @@
             "length": "full",
             "singType": "known"
         },
+        "3dfca9b3-08c1-45f3-b6af-15e279cc2f82": {
+            "artist": "クリープハイプ",
+            "name": "イノチミジカシコイセヨオトメ",
+            "video": "24BVa45R9dE",
+            "t": 1612,
+            "endt": 1803,
+            "length": "full",
+            "singType": "known"
+        },
         "10911aad-8886-49fe-a79d-85fdd8e05b78": {
             "artist": "クリープハイプ",
             "endt": 1928,
@@ -7722,6 +7821,15 @@
             "t": 8619,
             "video": "-OeM_LWr_2Q"
         },
+        "3aef6b30-ee49-413d-a18e-1bb3185e5d26": {
+            "artist": "マキシマムザホルモン",
+            "name": "falling jimmy",
+            "video": "24BVa45R9dE",
+            "t": 1053,
+            "endt": 1216,
+            "length": "full",
+            "singType": "known"
+        },
         "3b366063-f2b0-4372-86f0-1f1edf5107e2": {
             "artist": "マキシマムザホルモン",
             "endt": 5503,
@@ -8433,6 +8541,15 @@
             "length": "full",
             "singType": "known"
         },
+        "af548f78-3ab5-4cfa-aef9-4bd56c667309": {
+            "artist": "大森靖子",
+            "name": "ノスタルジックJ-pop",
+            "video": "24BVa45R9dE",
+            "t": 6849,
+            "endt": 7089,
+            "length": "full",
+            "singType": "known"
+        },
         "585fb454-b96a-4d00-b692-772289bb2ddb": {
             "artist": "大森靖子",
             "endt": 1625,
@@ -8946,6 +9063,15 @@
             "length": "full",
             "singType": "live"
         },
+        "07b24c2e-cb11-4626-a601-8c16726bb23b": {
+            "artist": "岡崎体育",
+            "name": "エクレア",
+            "video": "24BVa45R9dE",
+            "t": 4552,
+            "endt": 4835,
+            "length": "full",
+            "singType": "known"
+        },
         "f74e4307-9f36-4794-81c4-58eea29c5d9d": {
             "artist": "川島あい",
             "endt": null,
@@ -9062,6 +9188,15 @@
             "singType": "known",
             "t": 602,
             "video": "-OeM_LWr_2Q"
+        },
+        "52a4be2e-3744-4d5b-8245-6ac9522f546d": {
+            "artist": "川本真琴",
+            "name": "1/2",
+            "video": "24BVa45R9dE",
+            "t": 6172,
+            "endt": 6457,
+            "length": "full",
+            "singType": "known"
         },
         "00d55077-ba6d-4e10-be64-ba471460fe88": {
             "artist": "広末涼子",
@@ -11715,6 +11850,15 @@
             "video": "Okx8b9Can28",
             "t": 3267,
             "endt": 3521,
+            "length": "full",
+            "singType": "known"
+        },
+        "04d88df3-6e1f-45f9-9cf1-33186187e51d": {
+            "artist": "銀杏BOYZ",
+            "name": "BABY BABY",
+            "video": "8-Axz3BGJ0w",
+            "t": 3915,
+            "endt": 4156,
             "length": "full",
             "singType": "known"
         },

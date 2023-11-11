@@ -2,7 +2,6 @@
 import {Song} from "@/@types/global/song";
 import SongCard from "@/components/SongCard.vue";
 
-import algoliasearch from "algoliasearch";
 import {ref, Ref} from "vue";
 import {watch} from "vue";
 import InfiniteLoading from "v3-infinite-loading";
@@ -14,9 +13,7 @@ import {
   uidRef,
   addToFavorite,
   removeFromFavorite,
-  ALGOLIA_APP_ID,
-  ALGOLIA_SEARCH_KEY,
-  ALGOLIA_SEARCH_INDEX
+  algoliaIndex
 } from "@/common";
 
 const params = new URLSearchParams(location.search);
@@ -56,9 +53,7 @@ function getVideoID(youtubeUrlOrVideoID: string): string | null {
   }
 }
 
-const HITS_PER_PAGE = 30;
-const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
-const index = client.initIndex(ALGOLIA_SEARCH_INDEX)
+const HITS_PER_PAGE = 100;
 
 type SearchOptions = "favorite" | "full" | "recommended";
 const validSearchOptions: Ref<Array<SearchOptions>> = ref(["recommended"]);
@@ -70,9 +65,11 @@ let loadedPageNumber = -1;
 const search = async () => {
   const videoID = getVideoID(filterYoutubeURL.value);
   console.debug(searchWord.value);
-  const searchResult = await index.search<Song>(searchWord.value, {
+  const searchResult = await algoliaIndex.search<Song>(searchWord.value, {
     page: ++loadedPageNumber,
     hitsPerPage: HITS_PER_PAGE,
+    filters: (validSearchOptions.value.includes("favorite") && favoriteSongs.value !== null) ?
+      Array.from(favoriteSongs.value).map(uuid => `objectID:${uuid}`).join(" OR ") : "",
     facets: [
       "recommended",
       "video",

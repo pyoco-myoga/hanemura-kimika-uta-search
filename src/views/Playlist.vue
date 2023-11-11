@@ -3,9 +3,10 @@ import {Song} from "@/@types/global/song";
 import PlaylistCard from "@/components/PlaylistCard.vue";
 import PlaylistForm from "@/components/PlaylistForm.vue";
 import CustomPlayListCard from "@/components/CustomPlayListCard.vue";
-import {favoriteSongs, publicPlaylists, privatePlaylists, songs, uidRef} from "@/common";
+import {favoriteSongs, publicPlaylists, privatePlaylists, uidRef, algoliaIndex} from "@/common";
 import {ref} from "vue";
 import {Ref} from "vue";
+import {onMounted} from "vue";
 
 const params = new URLSearchParams(location.search);
 const q = params.get("q");
@@ -28,6 +29,20 @@ const filterSongs = (allSongs: Record<string, Song>, filter: (all: Record<string
   }
   return result;
 }
+
+
+// 持ち曲がこの数を超えることはないだろう
+const MAX_HITS_PER_PAGE = 5000;
+const recommendedSongs: Ref<string[] | null> = ref(null);
+onMounted(async () => {
+  const searchResult = await algoliaIndex.search<string>(searchWord.value, {
+    attributesToRetrieve: ["objectID"],
+    hitsPerPage: MAX_HITS_PER_PAGE,
+    facets: ["recommended"],
+    facetFilters: ["recommended:true"],
+  });
+  recommendedSongs.value = searchResult.hits.map(hit => hit.objectID);
+})
 
 const showPlayListForm = ref(false);
 
@@ -67,18 +82,21 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
     <v-window-item value="private">
       <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
         <template v-for="(_, playlistId) of privatePlaylists" :key="playlistId">
-          <CustomPlayListCard :playlist-id="playlistId as string" :uid="uidRef!" visibility="private" />
+          <v-lazy :min-height="30" :options="{threshold: 0.5}" transition="fade-transition">
+            <CustomPlayListCard :playlist-id="playlistId as string" :uid="uidRef!" visibility="private" />
+          </v-lazy>
         </template>
       </template>
       <template v-if="favoriteSongs !== null">
         <PlaylistCard playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト" visibility="public"
-          :songs="filterSongs(songs, (_, uuid) => favoriteSongs?.has(uuid) ?? false)" />
+          :songs="Array.from(favoriteSongs)" />
       </template>
     </v-window-item>
 
     <v-window-item value="official">
-      <PlaylistCard playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public"
-        :songs="filterSongs(songs, (songs, uuid) => songs[uuid].recommended ?? false)" />
+      <template v-if="recommendedSongs !== null">
+        <PlaylistCard playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public" :songs="recommendedSongs" />
+      </template>
     </v-window-item>
 
     <v-window-item value="public">
@@ -86,7 +104,9 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
         <template v-if="Object.values(publicPlaylists).filter(({uid}) => uid !== uidRef).length !== 0">
         </template>
         <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
-          <CustomPlayListCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
+          <v-lazy :min-height="30" :options="{threshold: 0.5}" transition="fade-transition">
+            <CustomPlayListCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
+          </v-lazy>
         </template>
       </template>
     </v-window-item>

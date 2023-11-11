@@ -1,5 +1,6 @@
 import {Ref, ref} from "vue";
 import * as database from "firebase/database";
+import algoliasearch from "algoliasearch";
 
 import {useAppStore} from "./store/app";
 import {Song} from "@/@types/global/song";
@@ -15,6 +16,9 @@ export type Playlist = {
 export const ALGOLIA_APP_ID = "6T9A9U650D";
 export const ALGOLIA_SEARCH_KEY = "fe209ec7af26fc0524f5ef8f9adc340b";
 export const ALGOLIA_SEARCH_INDEX = "songs";
+
+const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
+export const algoliaIndex = algoliaClient.initIndex(ALGOLIA_SEARCH_INDEX)
 
 export const songs = Songs.songs as {[uuid: string]: Song};
 

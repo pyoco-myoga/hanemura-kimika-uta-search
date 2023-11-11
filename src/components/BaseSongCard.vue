@@ -17,12 +17,23 @@ const resetNextSongsAndSetNext = (playlist: string[], index: number) => {
 }
 
 const showBottomMenu = defineModel<boolean>();
+
+const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url).href;
 </script>
 
 <template>
   <v-card class="mx-auto" elevation="2">
     <v-row>
-      <slot name="pre-icon" />
+      <v-col cols="2" class="d-flex align-center">
+        <v-btn width="100%" height="100%" @click="resetNextSongsAndSetNext(props.playlist, props.playlistIndex)" :style="{
+          backgroundImage: `url(${img})`,
+          backgroundSize: '100% auto',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }" elevation="0">
+          <v-icon size="x-large" icon="mdi-play" />
+        </v-btn>
+      </v-col>
       <v-col>
         <v-card-title>{{ props.name }}</v-card-title>
         <v-card-subtitle>{{ props.artist }}</v-card-subtitle>
@@ -33,12 +44,8 @@ const showBottomMenu = defineModel<boolean>();
       <v-col cols="auto">
         <v-card-text>
           <div>
-            <v-btn class="mx-1" :icon="true" @click="resetNextSongsAndSetNext(props.playlist, props.playlistIndex)">
-              <v-icon icon="mdi-play" />
-            </v-btn>
-            <v-btn class="mx-1" :icon="true" @click="showBottomMenu = !showBottomMenu">
-              <v-icon icon="mdi-dots-vertical" />
-            </v-btn>
+            <slot name="post-icon" />
+            <v-btn class="mx-1" icon="mdi-dots-vertical" @click="showBottomMenu = !showBottomMenu" :elevation="0" />
           </div>
         </v-card-text>
       </v-col>
