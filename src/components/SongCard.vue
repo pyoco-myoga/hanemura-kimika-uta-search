@@ -4,7 +4,8 @@ import * as database from "firebase/database";
 import type {Song} from "@/@types/global/song.d.ts";
 import BottomListMenu from "@/components/BottomListMenu.vue";
 import BaseSongCard from "./BaseSongCard.vue";
-import {privatePlaylists, uidRef} from "@/common";
+import ShareYoutube from "./ShareYoutube.vue";
+import {privatePlaylists, uidRef, getYoutubeURL} from "@/common";
 
 const props = defineProps<Song & {
   uuid: string,
@@ -16,24 +17,16 @@ const emits = defineEmits<{
   removeFavorite: [songUUID: string],
 }>();
 
-const youtubeURL = `https://www.youtube.com/watch?v=${props.video}&t=${props.t}`;
+const youtubeURL = getYoutubeURL(props.video, props.t);
 
-const showCopiedPopup = ref(false);
-const shareButtonEvent = async () => {
-  try {
-    await navigator.clipboard.writeText(`${props.name} / ${props.artist}: ${youtubeURL}`);
-    showCopiedPopup.value = true;
-  } catch (e) {
-    console.error(e);
-  }
-};
+const fireShareEvent = ref(false);
 
 const youtubeThumbnailURL = `https://img.youtube.com/vi/${props.video}/0.jpg`;
 
 const showBottomMenu = ref(false);
 const tiles = ref([
   {icon: "mdi-youtube", color: "red", title: "YouTubeへ移動", click: () => window.open(youtubeURL), requireLogin: false},
-  {icon: "mdi-share-variant", color: "blue-lighten-4", title: "共有", click: shareButtonEvent, requireLogin: false},
+  {icon: "mdi-share-variant", color: "blue-lighten-4", title: "共有", click: () => {fireShareEvent.value = true;}, requireLogin: false},
   {icon: "mdi-image-area", color: "blue-grey", title: "サムネ画像を取得", click: () => window.open(youtubeThumbnailURL), requireLogin: false},
   {icon: "mdi-playlist-music", color: "black", title: "プレイリストに追加", click: () => {showAddToPlaylistMenu.value = true;}, requireLogin: true},
 ]);
@@ -73,14 +66,7 @@ const addToPlaylist = () => {
     </template>
   </BaseSongCard>
 
-  <v-snackbar v-model="showCopiedPopup" :timeout="1000">
-    <div>
-      クリップボードにコピーしました
-    </div>
-    <div>
-      {{ name }} / {{ artist }}
-    </div>
-  </v-snackbar>
+  <ShareYoutube v-model="fireShareEvent" :name="props.name" :artist="props.artist" :video="props.video" :t="props.t" />
 
   <BottomListMenu :tiles="tiles" v-model="showBottomMenu" />
   <template v-if="uidRef !== null">

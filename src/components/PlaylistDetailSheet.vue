@@ -1,10 +1,9 @@
 
 <script lang="ts" setup>
-import {useRoute} from "vue-router";
 import type {Song} from "@/@types/global/song.d.ts";
-import {addToFavorite, algoliaIndex, favoriteSongs, removeFromFavorite, removePlayList} from "@/common";
+import {addToFavorite, algoliaIndex, favoriteSongs, removeFromFavorite, playPlaylist, playPlaylistRandom} from "@/common";
 import {ObjectWithObjectID} from "@algolia/client-search";
-import {onBeforeMount, onMounted} from "vue";
+import {onBeforeMount} from "vue";
 import PlaylistSongCard from "@/components/PlaylistSongCard.vue";
 import {ref} from "vue";
 import {Ref} from "vue";
@@ -20,6 +19,7 @@ const props = defineProps<{
 }>();
 
 let playlistSongs: Ref<({uuid: string} & Song)[] | null> = ref(null);
+
 onBeforeMount(async () => {
   const searchSongs = await algoliaIndex.getObjects<Song>(props.songs);
   playlistSongs.value = searchSongs.results
@@ -33,6 +33,9 @@ onBeforeMount(async () => {
   <v-bottom-sheet v-model="show" inset>
     <v-card>
       <v-col>
+        <div class="text-end">
+          <v-btn icon="mdi-close" elevation="0" @click="show = false"/>
+        </div>
         <v-card-title>
           {{ title }}
         </v-card-title>
@@ -41,17 +44,15 @@ onBeforeMount(async () => {
         </v-card-subtitle>
       </v-col>
       <v-col>
-        <v-btn class="mx-1" :icon="true" elevation="1">
-          <v-icon icon="mdi-play" />
-        </v-btn>
-        <v-btn class="mx-1" :icon="true" elevation="1">
-          <v-icon icon="mdi-shuffle" />
-        </v-btn>
+      </v-col>
+      <v-col>
+        <v-btn class="mx-1" icon="mdi-play" elevation="1" @click="playPlaylist(songs)" />
+        <v-btn class="mx-1" icon="mdi-shuffle" elevation="1" @click="playPlaylistRandom(songs)" />
       </v-col>
       <v-col>
         <template v-if="playlistSongs === null">
           <div class="text-center">
-            <v-progress-circular intermediate />
+            <v-progress-circular indeterminate />
           </div>
         </template>
         <template v-else-if="playlistSongs.length === 0">

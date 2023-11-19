@@ -22,10 +22,10 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
 </script>
 
 <template>
-  <v-card class="mx-auto" elevation="2">
+  <v-card class="mx-auto" elevation="2" @click="resetNextSongsAndSetNext()">
     <v-row>
       <v-col cols="auto">
-        <v-btn height="100%" @click="resetNextSongsAndSetNext()" :style="{
+        <v-btn height="100%" @click.stop="resetNextSongsAndSetNext()" :style="{
           backgroundImage: `url(${img})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -45,7 +45,7 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
         <v-card-text>
           <div>
             <slot name="post-icon" />
-            <v-btn icon="mdi-dots-vertical" @click="showBottomMenu = !showBottomMenu" :elevation="0" />
+            <v-btn icon="mdi-dots-vertical" @click.stop="showBottomMenu = !showBottomMenu" :elevation="0" />
           </div>
         </v-card-text>
       </v-col>

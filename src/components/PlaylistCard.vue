@@ -1,13 +1,9 @@
 <script lang="ts" setup>
-import {algoliaIndex, removePlayList} from "@/common";
+import {removePlayList, playPlaylist, playPlaylistRandom} from "@/common";
 import BottomListMenu from "./BottomListMenu.vue";
 import PlaylistForm from "./PlaylistForm.vue";
-import {useAppStore} from "@/store/app";
-import {Song} from "@/@types/global/song";
 import {ref} from "vue";
-import {ObjectWithObjectID} from "@algolia/client-search";
 import PlaylistDetailSheet from "./PlaylistDetailSheet.vue";
-const store = useAppStore();
 const props = defineProps<{
   playlistId: string | "favorite" | "recommended";
   playlistTitle: string;
@@ -15,26 +11,6 @@ const props = defineProps<{
   visibility: "public" | "private",
   songs: string[],
 }>();
-
-async function getPlaylistSongs(): Promise<({uuid: string} & Song)[]> {
-  const searchSongs = await algoliaIndex.getObjects<Song>(props.songs);
-  return searchSongs.results
-    .filter((song): song is Song & ObjectWithObjectID => song !== null)
-    .map(({objectID, ...song}) => ({uuid: objectID, ...song}));
-}
-
-const playPlayList = async () => {
-  const playlistSongs = await getPlaylistSongs();
-  store.setPlayList(playlistSongs);
-  store.playNextPlayListSong();
-};
-const playPlayListRandom = async () => {
-  const playlistSongs = await getPlaylistSongs();
-  let randomPlaylist = playlistSongs;
-  randomPlaylist.sort(() => 0.5 - Math.random());
-  store.setPlayList(randomPlaylist);
-  store.playNextPlayListSong();
-};
 
 const showPlaylistForm = ref(false);
 
@@ -68,12 +44,11 @@ const img = new URL(`../assets/image/smile.png`, import.meta.url).href;
 
 <template>
   <v-card class="mx-auto" @click.stop="showPlaylistBottom = true" link>
-    <v-img :src="img" height="200px" cover />
+    <v-img :src="img" :height="200" cover />
 
     <v-card-title>
       {{ playlistTitle }}
     </v-card-title>
-
     <v-card-subtitle>
       {{ playlistDescription }}
       <div>{{ props.songs.length }}曲</div>
@@ -82,10 +57,10 @@ const img = new URL(`../assets/image/smile.png`, import.meta.url).href;
     <v-card-actions>
       <v-col>
         <v-btn :icon="true" elevation="1" @click.stop>
-          <v-icon icon="mdi-play" @click.prevent="playPlayList" />
+          <v-icon icon="mdi-play" @click.prevent="playPlaylist(songs)" />
         </v-btn>
         <v-btn :icon="true" elevation="1" @click.stop>
-          <v-icon icon="mdi-shuffle" @click.prevent="playPlayListRandom" />
+          <v-icon icon="mdi-shuffle" @click.prevent="playPlaylistRandom(songs)" />
         </v-btn>
       </v-col>
       <v-col cols="auto">

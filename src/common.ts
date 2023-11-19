@@ -1,8 +1,10 @@
 import {Ref, ref} from "vue";
 import * as database from "firebase/database";
 import algoliasearch from "algoliasearch";
+import {ObjectWithObjectID} from "@algolia/client-search";
 
 import {useAppStore} from "./store/app";
+import {Song} from "./@types/global/song";
 
 
 export type Playlist = {
@@ -72,6 +74,7 @@ export const storeSubscribe = () => {
     }
   });
 };
+
 
 export const publicPlaylistsSubscribe = () => {
   const db = database.getDatabase();
@@ -160,3 +163,32 @@ export async function removePlayList(
     console.log(e);
   }
 };
+
+
+async function getPlaylistSongs(songs: string[]): Promise<({uuid: string} & Song)[]> {
+  const searchSongs = await algoliaIndex.getObjects<Song>(songs);
+  return searchSongs.results
+    .filter((song): song is Song & ObjectWithObjectID => song !== null)
+    .map(({objectID, ...song}) => ({uuid: objectID, ...song}));
+}
+
+export async function playPlaylist(songs: string[]) {
+  const store = useAppStore();
+  const playlistSongs = await getPlaylistSongs(songs);
+  store.setPlayList(playlistSongs);
+  store.playNextPlayListSong();
+};
+export async function playPlaylistRandom(songs: string[]) {
+  const store = useAppStore();
+  const playlistSongs = await getPlaylistSongs(songs);
+  let randomPlaylist = playlistSongs;
+  randomPlaylist.sort(() => 0.5 - Math.random());
+  store.setPlayList(randomPlaylist);
+  store.playNextPlayListSong();
+};
+
+
+export function getYoutubeURL(video: string, t: number): string {
+  return `https://www.youtube.com/watch?v=${video}&t=${t}`;
+}
+

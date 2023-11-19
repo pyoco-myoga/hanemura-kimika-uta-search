@@ -169,5 +169,14 @@ const load = async (state: StateHandler) => {
       :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(uuid) ?? null" :is-full="false"
       :recommended="song.recommended" @add-favorite="addToFavorite" @remove-favorite="removeFromFavorite" :uuid="uuid" />
   </template>
-  <InfiniteLoading :key="resultId" @infinite="load" :distance="100" />
+  <InfiniteLoading :key="resultId" @infinite="load" :distance="100">
+    <template v-slot:spinner>
+      <div class="text-center">
+        <v-progress-circular indeterminate />
+      </div>
+    </template>
+    <template v-slot:complete>
+      <v-divider />
+    </template>
+  </InfiniteLoading>
 </template>

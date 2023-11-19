@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import {addToFavorite, favoriteSongs, removeFromFavorite, uidRef} from '@/common';
-import {useAppStore} from '@/store/app';
-import {ref, Ref} from 'vue';
-import YouTube from 'vue3-youtube';
+import {addToFavorite, favoriteSongs, removeFromFavorite, uidRef, getYoutubeURL} from "@/common";
+import {useAppStore} from "@/store/app";
+import {ref, Ref} from "vue";
+import YouTube from "vue3-youtube";
 import PlayerStates from "youtube-player/dist/constants/PlayerStates";
-import {YouTubePlayer} from 'youtube-player/dist/types';
+import {YouTubePlayer} from "youtube-player/dist/types";
+import ShareYoutube from "@/components/ShareYoutube.vue";
+import {computed} from "vue";
 const store = useAppStore();
 
 const progress: Ref<number | null> = ref(null)
@@ -16,6 +18,8 @@ let timerId: NodeJS.Timeout | null = null;
 
 const youtube: Ref<YouTubePlayer | null> = ref(null);
 const playing = ref(false);
+
+const fireShareEvent = ref(false);
 
 const onReady = () => {
   if (timerId !== null) {
@@ -84,6 +88,22 @@ const onClose = () => {
   }
 }
 
+const youtubeURL = computed(() => {
+  if (store.indexPlayList !== null) {
+    return getYoutubeURL(
+      store.playingPlayList[store.indexPlayList].video,
+      store.playingPlayList[store.indexPlayList].t)
+  } else {
+    return null;
+  }
+});
+
+const gotoYoutube = () => {
+  if (youtubeURL.value !== null) {
+    window.open(youtubeURL.value);
+  }
+}
+
 </script>
 
 <template>
@@ -102,9 +122,15 @@ const onClose = () => {
           <!-- controller -->
           <v-col class="text-center">
             <v-row class="text-center">
+              <v-col cols="auto">
+                <v-btn icon="mdi-share-variant" variant="text" @click="fireShareEvent = true;" />
+              </v-col>
               <v-col>
                 <v-list-item-title>{{ store.playingPlayList[store.indexPlayList].name }}</v-list-item-title>
                 <v-list-item-subtitle>{{ store.playingPlayList[store.indexPlayList].artist }}</v-list-item-subtitle>
+              </v-col>
+              <v-col cols="auto">
+                <v-btn icon="mdi-youtube" variant="text" @click="gotoYoutube" />
               </v-col>
             </v-row>
             <v-row>
@@ -145,5 +171,8 @@ const onClose = () => {
         </v-row>
       </v-container>
     </v-footer>
+    <ShareYoutube v-model="fireShareEvent" :name="store.playingPlayList[store.indexPlayList].name"
+      :artist="store.playingPlayList[store.indexPlayList].artist"
+      :video="store.playingPlayList[store.indexPlayList].video" :t="store.playingPlayList[store.indexPlayList].t" />
   </template>
 </template>

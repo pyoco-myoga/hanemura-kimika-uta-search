@@ -27,8 +27,8 @@ onMounted(async () => {
 const showPlayListForm = ref(false);
 
 const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? "private" : "official");
-</script>
 
+</script>
 <template>
   <v-tabs v-model="tab" fixed-tabs>
     <template v-if="uidRef !== null">
@@ -64,13 +64,13 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
         <v-row>
           <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
             <template v-for="(_, playlistId) of privatePlaylists" :key="playlistId">
-              <v-col sm="12" md="6" lg="4" xl="4">
+              <v-col sm="12" md="4" lg="4" xl="4">
                 <CustomPlaylistCard :playlist-id="playlistId as string" :uid="uidRef!" visibility="private" />
               </v-col>
             </template>
           </template>
           <template v-if="favoriteSongs !== null">
-            <v-col sm="12" md="6" lg="4" xl="4">
+            <v-col sm="12" md="4" lg="4" xl="4">
               <PlaylistCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト"
                 visibility="public" :songs="Array.from(favoriteSongs)" />
             </v-col>
@@ -80,7 +80,7 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
 
       <v-window-item value="official">
         <template v-if="recommendedSongs !== null">
-          <v-col sm="12" md="6" lg="4" xl="4">
+          <v-col sm="12" md="4" lg="4" xl="4">
             <PlaylistCard playlist-id="recommended" playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public"
               :songs="recommendedSongs" />
           </v-col>
@@ -92,7 +92,7 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
           <template v-if="Object.values(publicPlaylists).filter(({uid}) => uid !== uidRef).length !== 0">
           </template>
           <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
-            <v-col sm="12" md="6" lg="4" xl="4">
+            <v-col sm="12" md="4" lg="4" xl="4">
               <CustomPlaylistCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
             </v-col>
           </template>
