@@ -167,8 +167,7 @@ const load = async (state: StateHandler) => {
   <template v-for="{uuid, song} in showedSongs" :key="song.uuid">
     <SongCard :video="song.video" :artist="song.artist" :name="song.name" :t="song.t" :endt="song.endt"
       :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(uuid) ?? null" :is-full="false"
-      :recommended="song.recommended" @add-favorite="addToFavorite" @remove-favorite="removeFromFavorite"
-      :playlist="[uuid]" :playlist-index="0" />
+      :recommended="song.recommended" @add-favorite="addToFavorite" @remove-favorite="removeFromFavorite" :uuid="uuid" />
   </template>
   <InfiniteLoading :key="resultId" @infinite="load" :distance="100" />
 </template>

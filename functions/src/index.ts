@@ -11,6 +11,10 @@ import {onRequest} from "firebase-functions/v2/https";
 
 import * as https from "https";
 
+const secondsInMinute = 60;
+const secondsInHour = 60 * secondsInMinute;
+const secondsInDay = 24 * secondsInHour;
+
 export const getTwitterIcon = onRequest(async (req, res) => {
   const twitterIconUrl = req.query.url;
   if (twitterIconUrl === undefined || typeof twitterIconUrl !== "string") {
@@ -20,14 +24,8 @@ export const getTwitterIcon = onRequest(async (req, res) => {
 
   https.get(twitterIconUrl, (response) => {
     res.set("Content-Type", "image/jpeg");
+    res.set("Cache-Control", `public, max-age=${2 * secondsInDay}`);
     response.pipe(res);
   });
 });
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
-
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });

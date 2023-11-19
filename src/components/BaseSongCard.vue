@@ -7,13 +7,13 @@ const store = useAppStore();
 const props = defineProps<Song & {
   isFavorite: boolean | null;
   isFull: boolean | null;
-  playlist: string[],
+  playlist: ({uuid: string} & Song)[],
   playlistIndex: number
 }>();
 
-const resetNextSongsAndSetNext = (playlist: string[], index: number) => {
-  store.setPlayList(playlist);
-  store.setPlayListIndex(index);
+const resetNextSongsAndSetNext = () => {
+  store.setPlayList(props.playlist);
+  store.setPlayListIndex(props.playlistIndex);
 }
 
 const showBottomMenu = defineModel<boolean>();
@@ -24,10 +24,10 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
 <template>
   <v-card class="mx-auto" elevation="2">
     <v-row>
-      <v-col cols="2" class="d-flex align-center">
-        <v-btn width="100%" height="100%" @click="resetNextSongsAndSetNext(props.playlist, props.playlistIndex)" :style="{
+      <v-col cols="auto">
+        <v-btn height="100%" @click="resetNextSongsAndSetNext()" :style="{
           backgroundImage: `url(${img})`,
-          backgroundSize: '100% auto',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }" elevation="0">
@@ -45,7 +45,7 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
         <v-card-text>
           <div>
             <slot name="post-icon" />
-            <v-btn class="mx-1" icon="mdi-dots-vertical" @click="showBottomMenu = !showBottomMenu" :elevation="0" />
+            <v-btn icon="mdi-dots-vertical" @click="showBottomMenu = !showBottomMenu" :elevation="0" />
           </div>
         </v-card-text>
       </v-col>

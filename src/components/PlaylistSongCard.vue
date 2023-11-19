@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import {ref} from 'vue';
+import {ref} from "vue";
 import * as database from "firebase/database";
 import type {Song} from "@/@types/global/song.d.ts";
 import BottomListMenu from "@/components/BottomListMenu.vue";
 import AddToPlaylistMenu from "@/components/AddToPlaylistMenu.vue";
-import BaseSongCard from './BaseSongCard.vue';
-import {uidRef} from '@/common';
+import BaseSongCard from "./BaseSongCard.vue";
+import {uidRef} from "@/common";
 
 const props = defineProps<Song & {
   isFavorite: boolean | null;
   isFull: boolean | null;
   visibility: "public" | "private",
   playlistId?: string,
-  playlist: string[],
+  playlist: ({uuid: string} & Song)[],
   playlistIndex: number
 }>();
 const emits = defineEmits<{
@@ -43,8 +43,8 @@ const removeFromPlaylist = () => {
     database.set(
       database.ref(db, `users/${uidRef.value}/playlists/${props.playlistId}/songs`),
       [
-        ...props.playlist.slice(0, props.playlistIndex),
-        ...props.playlist.slice(props.playlistIndex + 1)
+        ...props.playlist.slice(0, props.playlistIndex).map(song => song.uuid),
+        ...props.playlist.slice(props.playlistIndex + 1).map(song => song.uuid),
       ]);
   }
 };
@@ -64,10 +64,10 @@ if (props.visibility === "private") {
     <template v-slot:post-icon>
       <template v-if="isFavorite !== null">
         <template v-if="isFavorite">
-          <v-btn icon="mdi-heart" @click="emits('removeFavorite', playlist[playlistIndex])" :elevation="0" />
+          <v-btn icon="mdi-heart" @click="emits('removeFavorite', playlist[playlistIndex].uuid)" :elevation="0" />
         </template>
         <template v-else>
-          <v-btn icon="mdi-heart-outline" @click="emits('addFavorite', playlist[playlistIndex])" :elevation="0" />
+          <v-btn icon="mdi-heart-outline" @click="emits('addFavorite', playlist[playlistIndex].uuid)" :elevation="0" />
         </template>
       </template>
     </template>
@@ -84,6 +84,6 @@ if (props.visibility === "private") {
 
   <BottomListMenu :tiles="tiles" v-model="showBottomMenu" />
   <template v-if="uidRef !== null">
-    <AddToPlaylistMenu v-model="showAddToPlaylistMenu" :song-id="playlist[playlistIndex]" />
+    <AddToPlaylistMenu v-model="showAddToPlaylistMenu" :song-id="playlist[playlistIndex].uuid" />
   </template>
 </template>

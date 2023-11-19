@@ -3,8 +3,6 @@ import * as database from "firebase/database";
 import algoliasearch from "algoliasearch";
 
 import {useAppStore} from "./store/app";
-import {Song} from "@/@types/global/song";
-import Songs from "@/songs.json";
 
 
 export type Playlist = {
@@ -19,8 +17,6 @@ export const ALGOLIA_SEARCH_INDEX = "songs";
 
 const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
 export const algoliaIndex = algoliaClient.initIndex(ALGOLIA_SEARCH_INDEX)
-
-export const songs = Songs.songs as {[uuid: string]: Song};
 
 export const uidRef: Ref<string | null> = ref(null);
 export const favoriteSongs: Ref<Set<string> | null> = ref(null);
@@ -92,10 +88,7 @@ export function addToFavorite(songUUID: string) {
   if (uidRef.value === null) {
     return;
   }
-  if (favoriteSongs.value === null) {
-    return;
-  }
-  if (favoriteSongs.value.has(songUUID)) {
+  if (favoriteSongs.value === null || favoriteSongs.value.has(songUUID)) {
     return;
   }
   const db = database.getDatabase();
@@ -110,10 +103,7 @@ export function removeFromFavorite(songUUID: string) {
   if (uidRef.value === null) {
     return;
   }
-  if (favoriteSongs.value === null) {
-    return;
-  }
-  if (!favoriteSongs.value.has(songUUID)) {
+  if (favoriteSongs.value === null || !favoriteSongs.value.has(songUUID)) {
     return;
   }
   const db = database.getDatabase();
@@ -121,4 +111,52 @@ export function removeFromFavorite(songUUID: string) {
     database.ref(db, `users/${uidRef.value}/favorite`),
     [...(favoriteSongs.value || [])].filter(v => v !== songUUID)
   );
+};
+
+export async function addOrUpdatePlayList(
+  playlistId: string,
+  title: string,
+  description: string,
+  songs: string[],
+  visibility: "public" | "private",
+) {
+  try {
+    const db = database.getDatabase();
+    await database.set(
+      database.ref(db, `users/${uidRef.value}/playlists/${playlistId}`),
+      {
+        "title": title,
+        "description": description,
+        "songs": songs,
+      }
+    );
+    if (visibility === "public") {
+      await database.set(
+        database.ref(db, `public_playlists/${playlistId}`), {
+        "uid": uidRef.value
+      });
+    } else {
+      await database.set(
+        database.ref(db, `public_playlists/${playlistId}`), null);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export async function removePlayList(
+  playlistId: string,
+  visibility: "public" | "private",
+) {
+  try {
+    const db = database.getDatabase();
+    await database.set(
+      database.ref(db, `users/${uidRef.value}/playlists/${playlistId}`), null);
+    if (visibility === "public") {
+      await database.set(
+        database.ref(db, `public_playlists/${playlistId}`), null);
+    }
+  } catch (e) {
+    console.log(e);
+  }
 };

@@ -2,6 +2,7 @@
 import {defineStore} from "pinia";
 import {User, getAuth} from "firebase/auth";
 import {Ref, ref} from "vue";
+import {Song} from "@/@types/global/song";
 
 
 export const useAppStore = defineStore("app", () => {
@@ -12,12 +13,13 @@ export const useAppStore = defineStore("app", () => {
     }
   });
 
-  const playingPlayList: Ref<string[]> = ref([]);
-  const indexPlayList: Ref<number | null> = ref(null);
   function setUser(user_: User | null) {
     user.value = user_;
   }
-  function setPlayList(uuids: string[]) {
+
+  const playingPlayList: Ref<({uuid: string} & Song)[]> = ref([]);
+  const indexPlayList: Ref<number | null> = ref(null);
+  function setPlayList(uuids: ({uuid: string} & Song)[]) {
     indexPlayList.value = null;
     playingPlayList.value = uuids;
   }

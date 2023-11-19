@@ -1,144 +1,108 @@
 <script lang="ts" setup>
-import * as database from "firebase/database";
-import type {Song} from "@/@types/global/song.d.ts";
-import PlaylistSongCard from "./PlaylistSongCard.vue";
+import {algoliaIndex, removePlayList} from "@/common";
 import BottomListMenu from "./BottomListMenu.vue";
 import PlaylistForm from "./PlaylistForm.vue";
-import {algoliaIndex, favoriteSongs, uidRef} from "@/common";
 import {useAppStore} from "@/store/app";
-import {onMounted, ref} from "vue";
-import {Ref} from "vue";
+import {Song} from "@/@types/global/song";
+import {ref} from "vue";
+import {ObjectWithObjectID} from "@algolia/client-search";
+import PlaylistDetailSheet from "./PlaylistDetailSheet.vue";
 const store = useAppStore();
 const props = defineProps<{
-  playlistId?: string;
+  playlistId: string | "favorite" | "recommended";
   playlistTitle: string;
   playlistDescription: string;
   visibility: "public" | "private",
   songs: string[],
 }>();
-import {ObjectWithObjectID} from "@algolia/client-search";
 
-
-const playlistSongs: Ref<({uuid: string} & Song)[] | null> = ref(null);
-
-onMounted(async () => {
+async function getPlaylistSongs(): Promise<({uuid: string} & Song)[]> {
   const searchSongs = await algoliaIndex.getObjects<Song>(props.songs);
-  playlistSongs.value = searchSongs.results
+  return searchSongs.results
     .filter((song): song is Song & ObjectWithObjectID => song !== null)
     .map(({objectID, ...song}) => ({uuid: objectID, ...song}));
-})
+}
 
-const playPlayList = () => {
-  store.setPlayList(props.songs);
+const playPlayList = async () => {
+  const playlistSongs = await getPlaylistSongs();
+  store.setPlayList(playlistSongs);
   store.playNextPlayListSong();
 };
-const onAddFavorite = (songUUID: string) => {
-  console.log(favoriteSongs.value);
-  if (uidRef.value === null) {
-    return;
-  }
-  if (favoriteSongs.value === null) {
-    return;
-  }
-  if (favoriteSongs.value.has(songUUID)) {
-    return;
-  }
-  const db = database.getDatabase();
-  database.set(
-    database.ref(db, `users/${uidRef.value}/favorite`),
-    [...favoriteSongs.value, songUUID]
-  );
-};
-const onRemoveFavorite = (songUUID: string) => {
-  console.log(favoriteSongs.value);
-  if (uidRef.value === null) {
-    return;
-  }
-  if (favoriteSongs.value === null) {
-    return;
-  }
-  if (!favoriteSongs.value.has(songUUID)) {
-    return;
-  }
-  const db = database.getDatabase();
-  database.set(
-    database.ref(db, `users/${uidRef.value}/favorite`),
-    [...(favoriteSongs.value || [])].filter(v => v !== songUUID)
-  );
+const playPlayListRandom = async () => {
+  const playlistSongs = await getPlaylistSongs();
+  let randomPlaylist = playlistSongs;
+  randomPlaylist.sort(() => 0.5 - Math.random());
+  store.setPlayList(randomPlaylist);
+  store.playNextPlayListSong();
 };
 
 const showPlaylistForm = ref(false);
 
 const showBottomMenu = ref(false);
 const tiles = ref([
-  ...(props.playlistId !== undefined) ?
+  ...(props.playlistId !== "favorite" && props.playlistId !== "recommended") ?
     [
-      {icon: "mdi-pencil", color: "black", title: "タイトル/概要/公開・非公開を編集", click: () => {showPlaylistForm.value = true;}, requireLogin: true},
-      {icon: "mdi-delete", color: "red", title: "プレイリストを削除", click: () => {}, requireLogin: true},
+      {
+        icon: "mdi-pencil",
+        color: "black",
+        title: "タイトル/概要/公開・非公開を編集",
+        click: () => {showPlaylistForm.value = true;},
+        requireLogin: true
+      },
+      {
+        icon: "mdi-delete",
+        color: "red",
+        title: "プレイリストを削除",
+        click: () => {removePlayList(props.playlistId!, props.visibility)},
+        requireLogin: true
+      },
     ]
     : [],
-  {icon: "mdi-share-variant", color: "blue-lighten-4", title: "共有", click: () => {}, requireLogin: false},
+  {icon: "mdi-share-variant", color: "blue-lighten-4", title: "共有", click: () => {console.log("TODO")}, requireLogin: false},
 ]);
+
+const showPlaylistBottom = ref(false);
+
+const img = new URL(`../assets/image/smile.png`, import.meta.url).href;
 </script>
 
 <template>
-  <v-expansion-panels>
-    <v-expansion-panel>
-      <v-expansion-panel-title>
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <v-btn class="mx-1" :icon="true" @click="playPlayList" @click.stop>
-              <v-icon icon="mdi-play" />
-            </v-btn>
-          </v-col>
-          <v-col cols="2" class="d-flex align-center text-center">
-            <v-card-title>
-              {{ props.playlistTitle }}
-            </v-card-title>
-          </v-col>
-          <v-col class="d-flex align-center text-center">
-            <div class="d-none d-sm-block">
-              <v-card-subtitle>
-                {{ props.songs.length }}曲
-              </v-card-subtitle>
-            </div>
-          </v-col>
-          <v-col cols="6" class="d-flex align-center text-center">
-            <div class="d-none d-sm-block">
-              <v-card-subtitle>
-                {{ playlistDescription }}
-              </v-card-subtitle>
-            </div>
-          </v-col>
-          <v-col cols="auto">
-            <v-btn class="mx-1" :icon="true" elevation="0" @click.stop>
-              <v-icon icon="mdi-dots-vertical" @click="showBottomMenu = true;" />
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-expansion-panel-title>
-      <v-expansion-panel-text>
-        <template v-if="playlistSongs !== null">
-          <template v-for="({uuid, ...song}, index) in playlistSongs" :key="uuid">
-            <v-lazy :min-height="30" :options="{threshold: 0.5}" transition="fade-transition">
-              <PlaylistSongCard v-bind="{
-                ...song,
-                isFavorite: favoriteSongs?.has(uuid) ?? null,
-                isFull: song.length === 'full',
-                playlist: songs,
-                playlistIndex: index,
-                visibility,
-                playlistId
-              }" @add-favorite="onAddFavorite" @remove-favorite="onRemoveFavorite" />
-            </v-lazy>
-          </template>
-        </template>
-      </v-expansion-panel-text>
-    </v-expansion-panel>
-  </v-expansion-panels>
+  <v-card class="mx-auto" @click.stop="showPlaylistBottom = true" link>
+    <v-img :src="img" height="200px" cover />
+
+    <v-card-title>
+      {{ playlistTitle }}
+    </v-card-title>
+
+    <v-card-subtitle>
+      {{ playlistDescription }}
+      <div>{{ props.songs.length }}曲</div>
+    </v-card-subtitle>
+
+    <v-card-actions>
+      <v-col>
+        <v-btn :icon="true" elevation="1" @click.stop>
+          <v-icon icon="mdi-play" @click.prevent="playPlayList" />
+        </v-btn>
+        <v-btn :icon="true" elevation="1" @click.stop>
+          <v-icon icon="mdi-shuffle" @click.prevent="playPlayListRandom" />
+        </v-btn>
+      </v-col>
+      <v-col cols="auto">
+        <v-btn :icon="true" elevation="1" @click.stop>
+          <v-icon icon="mdi-dots-vertical" @click.prevent="showBottomMenu = true;" />
+        </v-btn>
+      </v-col>
+    </v-card-actions>
+  </v-card>
+
   <BottomListMenu v-model="showBottomMenu" :tiles="tiles" />
   <template v-if="playlistId !== undefined">
     <PlaylistForm v-model="showPlaylistForm" :playlist-id="playlistId" :title="playlistTitle"
       :description="playlistDescription" :is-public="visibility" :songs="songs" />
+  </template>
+  <template v-if="showPlaylistBottom">
+    <PlaylistDetailSheet v-model="showPlaylistBottom" :playlist-id="playlistId" :title="playlistTitle"
+      :description="playlistDescription" :visibility="visibility" :songs="songs" />
   </template>
 </template>

@@ -1,17 +1,15 @@
 <script lang="ts" setup>
-import {ref} from 'vue';
+import {ref, Ref} from "vue";
 import * as database from "firebase/database";
 import type {Song} from "@/@types/global/song.d.ts";
 import BottomListMenu from "@/components/BottomListMenu.vue";
-import BaseSongCard from './BaseSongCard.vue';
-import {privatePlaylists, uidRef} from '@/common';
-import {Ref} from 'vue';
+import BaseSongCard from "./BaseSongCard.vue";
+import {privatePlaylists, uidRef} from "@/common";
 
 const props = defineProps<Song & {
+  uuid: string,
   isFavorite: boolean | null;
   isFull: boolean | null;
-  playlist: string[],
-  playlistIndex: number
 }>();
 const emits = defineEmits<{
   addFavorite: [songUUID: string],
@@ -42,30 +40,34 @@ const tiles = ref([
 
 
 const showAddToPlaylistMenu = ref(false);
-const selected: Ref<string[]> = ref([]);
+const selectedPlaylist: Ref<string[]> = ref([]);
 const db = database.getDatabase();
 const addToPlaylist = () => {
-  for (const playlistId of selected.value) {
+  for (const playlistId of selectedPlaylist.value) {
     database.set(
       database.ref(db, `users/${uidRef.value}/playlists/${playlistId}/songs`),
       [
         ...privatePlaylists.value![playlistId].songs ?? [],
-        props.playlist[props.playlistIndex]
+        props.uuid
       ]);
   }
 };
 </script>
 
 <template>
-  <BaseSongCard v-bind="{...props}" v-model="showBottomMenu">
+  <BaseSongCard v-bind="{
+    playlist: [props],
+    playlistIndex: 0,
+    ...props
+  }" v-model="showBottomMenu">
     <template v-slot:post-icon>
       <template v-if="isFavorite !== null">
         <!-- favorite buttom -->
         <template v-if="isFavorite">
-          <v-btn icon="mdi-heart" @click="emits('removeFavorite', playlist[playlistIndex])" :elevation="0" />
+          <v-btn icon="mdi-heart" @click="emits('removeFavorite', uuid)" :elevation="0" />
         </template>
         <template v-else>
-          <v-btn icon="mdi-heart-outline" @click="emits('addFavorite', playlist[playlistIndex])" :elevation="0" />
+          <v-btn icon="mdi-heart-outline" @click="emits('addFavorite', uuid)" :elevation="0" />
         </template>
       </template>
     </template>
@@ -85,7 +87,7 @@ const addToPlaylist = () => {
     <v-bottom-sheet v-model="showAddToPlaylistMenu">
       <v-list>
         <v-list-item v-for="({title}, playlistId) in privatePlaylists" :key="playlistId" density="compact">
-          <v-checkbox v-model="selected" :value="playlistId" :label="title" />
+          <v-checkbox v-model="selectedPlaylist" :value="playlistId" :label="title" />
         </v-list-item>
         <v-list-item @click="() => {addToPlaylist(); showAddToPlaylistMenu = false;}">
           <span>追加</span>
