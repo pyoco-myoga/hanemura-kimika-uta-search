@@ -1,15 +1,15 @@
-from collections import OrderedDict
-import itertools
-from datetime import datetime
-import json
-from enum import Enum
 import dataclasses
-from dataclasses import dataclass
-from typing import Optional
+import itertools
+import json
 import uuid
+from dataclasses import dataclass
+from datetime import datetime
+from enum import Enum
+from typing import Optional
+
+import pyperclip
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
-import pyperclip
 
 COMMAND_LIST = {
     "write": "write to src/songs.json",
@@ -67,7 +67,7 @@ class SingTypeEnum(str, Enum):
 
 @dataclass
 class SongInfo:
-    artist: str
+    uuid: str
     name: str
     video: str
     t: int
@@ -77,48 +77,54 @@ class SongInfo:
 
     @staticmethod
     def input_artist(
-        data: dict[str, "SongInfo"], song: Optional[str] = None, default: str = ""
-    ) -> str:
-        artists_completer = WordCompleter(list(map(lambda x: x.artist, data.values())))
-        if song is not None:
+        data: dict[str, list["SongInfo"]], song: Optional[str] = None, default: str = ""
+    ) -> Optional[str]:
+        if song is None:
+            artists_completer = WordCompleter(list(data.keys()))
+        else:
             artist_candidates: set[str] = set()
-            for song_info in data.values():
-                artist_candidates.add(song_info.artist)
+            for artist, songs in data.items():
+                if song in set(map(lambda song: song.name, songs)):
+                    artist_candidates.add(artist)
             artists_completer = WordCompleter(list(artist_candidates))
         artist = (
-            prompt("artist> ", completer=artists_completer, default=default)
+            prompt("artist> ", completer=artists_completer, default=default) or None
         )
         return artist
 
     @staticmethod
     def input_song(
-        data: dict[str, "SongInfo"],
+        data: dict[str, list["SongInfo"]],
         artist: Optional[str] = None,
         default: Optional[str] = None,
     ) -> str:
         songs_completer = WordCompleter(
-            list(set(
-                map(
-                    lambda song_info: song_info.name,
-                    filter(lambda x: x.artist == artist, data.values()),
+            list(
+                set(
+                    map(
+                        lambda x: x.name,
+                        data.get(artist, []) if artist is not None else [],
+                    )
                 )
-            ))
+            )
         )
         song = prompt("song> ", completer=songs_completer, default=default or "")
         return song
 
     @staticmethod
     def input_video(
-        data: dict[str, "SongInfo"],
+        data: dict[str, list["SongInfo"]],
         default: Optional[str] = None,
     ) -> str:
         videos_completer = WordCompleter(
-            list(set(
-                map(
-                    lambda song: song.video,
-                    data.values(),
+            list(
+                set(
+                    map(
+                        lambda song: song.video,
+                        itertools.chain.from_iterable(data.values()),
+                    )
                 )
-            ))
+            )
         )
         video = prompt("video> ", completer=videos_completer, default=default or "")
         return video
@@ -172,21 +178,20 @@ class Commands:
         "exit": "write to src/songs.json and exit",
         "live": "timestamp mode in live stream",
         "merge": "merge live command result to src/songs.json",
-        "exit": "exit shell",
     }
     previous_video: Optional[str] = None
-    data: dict[str, SongInfo] = {}
+    data: dict[str, list[SongInfo]] = {}
 
     @classmethod
     def load(cls):
         with open("./src/songs.json", encoding="utf8") as f:
             cls.data = {
-                uuid: SongInfo(**song_info)
-                for uuid, song_info in json.load(f).items()
+                artist: [SongInfo(**song_info) for song_info in song_infos]
+                for artist, song_infos in json.load(f).items()
             }
 
     @classmethod
-    def input_song_info(cls) -> SongInfo:
+    def input_song_info(cls) -> tuple[str, SongInfo]:
         artist = SongInfo.input_artist(cls.data)
 
         song = SongInfo.input_song(data=cls.data, artist=artist)
@@ -205,7 +210,7 @@ class Commands:
         sing_type = SongInfo.input_singtype()
 
         song_info = SongInfo(
-            artist=artist,
+            uuid=str(uuid.uuid4()),
             name=song,
             video=video,
             t=t,
@@ -213,18 +218,14 @@ class Commands:
             length=length,
             singType=sing_type,
         )
-        return song_info
+        return artist, song_info
 
     @classmethod
     def write(cls):
         with open("./src/songs.json", "w", encoding="utf8") as f:
-            sorted_data = OrderedDict()
-            sorted_data["songs"] = OrderedDict(sorted(
-                cls.data.items(),
-                key=lambda x: (x[1].artist, x[1].name)))
             f.write(
                 json.dumps(
-                    sorted_data,
+                    cls.data,
                     ensure_ascii=False,
                     sort_keys=True,
                     indent=4,
@@ -234,9 +235,10 @@ class Commands:
 
     @classmethod
     def add(cls):
-        song_info = cls.input_song_info()
-        id = uuid.uuid4()
-        cls.data[str(id)] = song_info
+        artist, song_info = cls.input_song_info()
+        cls.data.setdefault(artist, [])
+        cls.data[artist].append(song_info)
+        cls.data[artist].sort(key=lambda x: x.name)
 
         json_str = json.dumps(
             song_info,
@@ -245,12 +247,14 @@ class Commands:
             indent=4,
             cls=ExtendedJSONEncoder,
         )
-        print(f"{id}: {json_str}")
+        print(f"{artist}: {json_str}")
 
     @classmethod
-    def merge(cls, songs: dict[str, SongInfo]):
-        cls.data |= songs
-        for id, song_info in songs.items():
+    def merge(cls, song_list: list[tuple[str, SongInfo]]):
+        for artist, song_info in song_list:
+            cls.data.setdefault(artist, [])
+            cls.data[artist].append(song_info)
+            cls.data[artist].sort(key=lambda x: x.name)
             json_str = json.dumps(
                 song_info,
                 ensure_ascii=False,
@@ -258,7 +262,7 @@ class Commands:
                 indent=4,
                 cls=ExtendedJSONEncoder,
             )
-            print(f"{id}: {json_str}")
+            print(json_str)
 
 
 class LiveCommand:
@@ -271,21 +275,24 @@ class LiveCommand:
         "exit": "exit live shell",
     }
     base: Optional[datetime] = None
-    song_list: list[SongInfo] = []
+    _song_list: list[tuple[str, SongInfo]] = []
     video: Optional[str] = None
-    data: dict[str, SongInfo]
+    data: dict[str, list[SongInfo]]
 
     @classmethod
-    def load(cls, data: dict[str, SongInfo]):
+    def load(cls, data: dict[str, list[SongInfo]]):
         cls.data = data
 
     @classmethod
-    def input_song(cls) -> SongInfo:
+    def input_song(cls) -> tuple[str, SongInfo]:
         start_timestamp = int(datetime.now().timestamp())
 
         artist = SongInfo.input_artist(cls.data)
 
         song = SongInfo.input_song(data=cls.data, artist=artist)
+
+        if artist is None:
+            artist = SongInfo.input_artist(cls.data) or ""
 
         video = SongInfo.input_video(cls.data, cls.video)
         cls.video = video
@@ -298,7 +305,7 @@ class LiveCommand:
         end_timestamp = int(datetime.now().timestamp())
 
         song_info = SongInfo(
-            artist=artist,
+            uuid=str(uuid.uuid4()),
             name=song,
             video=video,
             t=start_timestamp,
@@ -306,12 +313,12 @@ class LiveCommand:
             length=length,
             singType=sing_type,
         )
-        return song_info
+        return artist, song_info
 
     @classmethod
     def add(cls):
-        song_info = cls.input_song()
-        cls.song_list.append((song_info))
+        artist, song_info = cls.input_song()
+        cls._song_list.append((artist, song_info))
 
     @classmethod
     def input_base(cls) -> Optional[datetime]:
@@ -330,11 +337,11 @@ class LiveCommand:
             print("base_time is not set, please set")
             return
         timestamp_str = ""
-        for song_info in cls.song_list:
+        for artist, song_info in cls._song_list:
             timestamp_str += (
                 f"{datetime_to_time(datetime.fromtimestamp(song_info.t), cls.base)} "
                 f"{datetime_to_time(datetime.fromtimestamp(song_info.endt or 0), cls.base)} "
-                f"{song_info.name} / {song_info.artist}\n"
+                f"{song_info.name} / {artist}\n"
             )
         print(timestamp_str)
         pyperclip.copy(timestamp_str)
@@ -348,10 +355,10 @@ class LiveCommand:
             print("video_id is not set, please set")
             return []
         urls = []
-        for index, song_info in enumerate(cls.song_list):
+        for index, (artist, song_info) in enumerate(cls._song_list):
             delta = datetime.fromtimestamp(song_info.t) - cls.base
             url = (
-                f"{index}: {song_info.name} / {song_info.artist}\n"
+                f"{index}: {song_info.name} / {artist}\n"
                 f"t: {youtube_url(cls.video, int(delta.total_seconds()))}\n"
             )
             delta = datetime.fromtimestamp(song_info.endt or 0) - cls.base
@@ -360,28 +367,28 @@ class LiveCommand:
         return urls
 
     @classmethod
-    def export_song_list(cls) -> Optional[dict[str, SongInfo]]:
+    def export_song_list(cls) -> Optional[list[tuple[str, SongInfo]]]:
         if cls.base is None:
             print("set base")
             return None
-        songs_info = {}
-        for song_info in cls.song_list:
+        song_list = []
+        for artist, song_info in cls._song_list:
             delta = datetime.fromtimestamp(song_info.t) - cls.base
             song_info.t = int(delta.total_seconds())
             if song_info.endt is not None:
                 delta = datetime.fromtimestamp(song_info.endt) - cls.base
                 song_info.endt = int(delta.total_seconds())
-            songs_info[str(uuid.uuid4())] = song_info
-        return songs_info
+            song_list.append((artist, song_info))
+        return song_list
 
     @classmethod
     def modify(cls, index: int, attr: str):
-        if 0 <= index < len(cls.song_list):
-            song_info = cls.song_list[index]
+        if 0 <= index < len(cls._song_list):
+            artist, song_info = cls._song_list[index]
             match attr:
                 case "artist":
-                    song_info.artist = SongInfo.input_artist(
-                        cls.data, song=song_info.name, default=song_info.artist
+                    artist = SongInfo.input_artist(
+                        cls.data, song=song_info.name, default=artist
                     )
                 case "song":
                     song_info.name = SongInfo.input_song(
@@ -405,7 +412,7 @@ class LiveCommand:
                     song_info.singType = SongInfo.input_singtype(
                         default=song_info.singType
                     )
-            cls.song_list[index] = song_info
+            cls._song_list[index] = (artist or "", song_info)
 
     @classmethod
     def live_shell(cls):

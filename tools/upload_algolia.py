@@ -1,10 +1,11 @@
-import os
 import json
+import os
+import itertools
+
 import firebase_admin
-from firebase_admin import credentials, db
 from algoliasearch.search_client import SearchClient
 from dotenv import load_dotenv
-
+from firebase_admin import credentials, db
 
 if __name__ == "__main__":
     load_dotenv(".env")
@@ -27,17 +28,27 @@ if __name__ == "__main__":
     with open("./src/songs.json") as f:
         songs = json.load(f)
 
-    for uuid in songs["songs"].keys():
-        songs["songs"][uuid]["recommended"] = (uuid in recommended)
+    for artist, songs_ in songs.items():
+        for i, song in enumerate(songs_):
+            songs[artist][i]["recommended"] = (song["uuid"] in recommended)
 
     with open("./src/songs.json", "w") as f:
         f.write(json.dumps(songs, ensure_ascii=False, sort_keys=True, indent=4))
 
-    index.save_objects([
-        {
-            "objectID": key,
-            **value
-        }
-        for key, value in songs["songs"].items()
-    ])
-
+    index.save_objects(itertools.chain.from_iterable([
+        [
+            {
+                "objectID": song["uuid"],
+                "artist": artist,
+                "name": song["name"],
+                "video": song["video"],
+                "t": song["t"],
+                "endt": song["endt"],
+                "recommended": song["recommended"],
+                "singType": song["singType"],
+                "length": song["length"]
+            }
+            for song in songs_
+        ]
+        for artist, songs_ in songs.items()
+    ]))

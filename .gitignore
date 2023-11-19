@@ -1,11 +1,16 @@
+src/assets/image/
+src/assets/thumbnail/
+
 .DS_Store
 node_modules
 /dist
 .env/
+.firebase/
 
 # local env files
 .env.local
 .env.*.local
+.env
 
 # Log files
 npm-debug.log*

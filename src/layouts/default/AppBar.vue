@@ -4,8 +4,11 @@ import {
   TwitterAuthProvider,
   browserSessionPersistence,
   getAuth,
+  getRedirectResult,
+  onAuthStateChanged,
   setPersistence,
   signInWithPopup,
+  signInWithRedirect,
 } from "firebase/auth";
 import {ref, Ref} from "vue";
 import {useAppStore} from "@/store/app";
@@ -15,12 +18,19 @@ const store = useAppStore();
 const drawer: Ref<boolean | null> = ref(null);
 
 const provider = new TwitterAuthProvider();
+onAuthStateChanged(getAuth(), user => {
+  console.log("onStateChange", user);
+});
 const loginEventListener = async () => {
   try {
     await setPersistence(getAuth(), browserSessionPersistence);
-    const result = await signInWithPopup(getAuth(), provider);
+    await signInWithRedirect(getAuth(), provider);
+    const result = await getRedirectResult(getAuth());
+    if (result === null) {
+      return;
+    }
     store.setUser(result.user);
-    console.log(store.user);
+    console.log("event", store.user);
   } catch (err) {
     console.error(err);
   }

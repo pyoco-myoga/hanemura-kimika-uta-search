@@ -104,9 +104,7 @@ const onClose = () => {
             <v-row class="text-center">
               <v-col>
                 <v-list-item-title>{{ store.playingPlayList[store.indexPlayList].name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ store.playingPlayList[store.indexPlayList].artist
-                }}</v-list-item-subtitle>
-
+                <v-list-item-subtitle>{{ store.playingPlayList[store.indexPlayList].artist }}</v-list-item-subtitle>
               </v-col>
             </v-row>
             <v-row>
