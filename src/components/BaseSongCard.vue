@@ -21,10 +21,16 @@ const showBottomMenu = defineModel<boolean>();
 const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url).href;
 </script>
 
+<style scoped>
+.custom-title-style {
+  text-overflow: ellipsis;
+}
+</style>
+
 <template>
   <v-card class="mx-auto" elevation="2" @click="resetNextSongsAndSetNext()">
-    <v-row>
-      <v-col cols="auto">
+    <v-sheet height="80" class="d-flex">
+      <div class="d-flex me-3">
         <v-btn height="100%" @click.stop="resetNextSongsAndSetNext()" :style="{
           backgroundImage: `url(${img})`,
           backgroundSize: 'cover',
@@ -33,22 +39,22 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
         }" elevation="0">
           <v-icon size="x-large" icon="mdi-play" />
         </v-btn>
-      </v-col>
-      <v-col>
-        <v-card-title>{{ props.name }}</v-card-title>
-        <v-card-subtitle>{{ props.artist }}</v-card-subtitle>
-        <template v-if="props.endt === null">
-          <v-icon icon="mdi-close" />
-        </template>
-      </v-col>
-      <v-col cols="auto">
-        <v-card-text>
-          <div>
-            <slot name="post-icon" />
-            <v-btn icon="mdi-dots-vertical" @click.stop="showBottomMenu = !showBottomMenu" :elevation="0" />
-          </div>
-        </v-card-text>
-      </v-col>
-    </v-row>
+      </div>
+      <div class="d-flex flex-column flex-grow-1 overflow-hidden justify-center">
+        <v-list-item-title class="overflow-hidden custom-title-style">
+          {{ props.name }}
+          <template v-if="props.endt === null">
+            <v-icon icon="mdi-close" />
+          </template>
+        </v-list-item-title>
+        <v-list-item-subtitle class="overflow-hidden" style="white-space: nowrap;">
+          {{ props.artist }}
+        </v-list-item-subtitle>
+      </div>
+      <div class="d-flex">
+        <slot name="post-icon" />
+        <v-btn icon="mdi-dots-vertical" @click.stop="showBottomMenu = !showBottomMenu" :elevation="0" />
+      </div>
+    </v-sheet>
   </v-card>
 </template>

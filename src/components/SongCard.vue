@@ -57,10 +57,10 @@ const addToPlaylist = () => {
       <template v-if="isFavorite !== null">
         <!-- favorite buttom -->
         <template v-if="isFavorite">
-          <v-btn icon="mdi-heart" @click="emits('removeFavorite', uuid)" :elevation="0" />
+          <v-btn icon="mdi-heart" @click.stop="emits('removeFavorite', uuid)" :elevation="0" />
         </template>
         <template v-else>
-          <v-btn icon="mdi-heart-outline" @click="emits('addFavorite', uuid)" :elevation="0" />
+          <v-btn icon="mdi-heart-outline" @click.stop="emits('addFavorite', uuid)" :elevation="0" />
         </template>
       </template>
     </template>

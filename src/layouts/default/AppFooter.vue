@@ -103,16 +103,15 @@ const gotoYoutube = () => {
     window.open(youtubeURL.value);
   }
 }
-
 </script>
 
 <template>
   <template v-if="store.indexPlayList !== null">
-    <v-footer app class="elevation-10">
-      <v-container class="my-1">
-        <v-row>
+    <v-footer app class="elevation-10 justify-center">
+      <v-container class="ma-0 pa-0">
+        <v-row class="ma-0 pa-0 justify-center">
           <!-- player -->
-          <v-col cols="12" sm="auto" md="auto" lg="auto" xl="auto" class="text-center">
+          <v-col sm="auto" md="auto" lg="auto" xl="auto" class="text-center">
             <YouTube :src="store.playingPlayList[store.indexPlayList].video"
               :vars="{start: store.playingPlayList[store.indexPlayList].t, end: store.playingPlayList[store.indexPlayList].endt ?? undefined, controls: 0, modestbranding: 1}"
               @ready="onReady" height="20%" width="auto" @state-change="onStateChange"
@@ -120,16 +119,21 @@ const gotoYoutube = () => {
 
           </v-col>
           <!-- controller -->
-          <v-col class="text-center">
-            <v-row class="text-center">
-              <v-col cols="auto">
+          <v-col sm="12" md="7" lg="7" xl="7" class="justify-center">
+            <v-row class="text-center justify-center">
+              <v-col class="ma-auto" cols="1">
                 <v-btn icon="mdi-share-variant" variant="text" @click="fireShareEvent = true;" />
               </v-col>
-              <v-col>
-                <v-list-item-title>{{ store.playingPlayList[store.indexPlayList].name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ store.playingPlayList[store.indexPlayList].artist }}</v-list-item-subtitle>
+              <v-col cols="10">
+
+                <v-list-item-title>
+                  {{ store.playingPlayList[store.indexPlayList].name }}
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                  {{ store.playingPlayList[store.indexPlayList].artist }}
+                </v-list-item-subtitle>
               </v-col>
-              <v-col cols="auto">
+              <v-col class="ma-auto" cols="1">
                 <v-btn icon="mdi-youtube" variant="text" @click="gotoYoutube" />
               </v-col>
             </v-row>
