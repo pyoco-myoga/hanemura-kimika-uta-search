@@ -28,8 +28,12 @@ if __name__ == "__main__":
     with open("./src/songs.json") as f:
         songs = json.load(f)
 
+    modified_ids = []
     for artist, songs_ in songs.items():
         for i, song in enumerate(songs_):
+            if "recommended" not in songs[artist][i].keys() or \
+                songs[artist][i]["recommended"] != (song["uuid"] in recommended):
+                modified_ids.append(song["uuid"])
             songs[artist][i]["recommended"] = (song["uuid"] in recommended)
 
     with open("./src/songs.json", "w") as f:
@@ -49,6 +53,7 @@ if __name__ == "__main__":
                 "length": song["length"]
             }
             for song in songs_
+            if song["uuid"] in modified_ids
         ]
         for artist, songs_ in songs.items()
     ]))

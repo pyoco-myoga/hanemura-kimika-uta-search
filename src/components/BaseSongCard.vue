@@ -51,7 +51,7 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
           {{ props.artist }}
         </v-list-item-subtitle>
       </div>
-      <div class="d-flex">
+      <div class="d-flex align-center">
         <slot name="post-icon" />
         <v-btn icon="mdi-dots-vertical" @click.stop="showBottomMenu = !showBottomMenu" :elevation="0" />
       </div>
