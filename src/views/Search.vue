@@ -77,7 +77,7 @@ const search = async () => {
     ],
     facetFilters: [
       ...((validSearchOptions.value.includes("recommended")) ? ["recommended:true"] : []),
-      ...((videoID !== null) ? [`video:${videoID}`] : []),
+      ...((videoID !== null) ? [`video:${videoID.replace(/^(-)/, "\\$1")}`] : []),
       ...((validSearchOptions.value.includes("full")) ? ["length:full"] : []),
     ],
   });

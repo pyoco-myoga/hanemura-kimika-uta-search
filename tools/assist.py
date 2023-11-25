@@ -71,7 +71,7 @@ class SongInfo:
     name: str
     video: str
     t: int
-    recommended: bool
+    recommended: Optional[bool]
     endt: Optional[int] = None
     length: Optional[LengthEnum] = None
     singType: Optional[SingTypeEnum] = None
@@ -218,7 +218,7 @@ class Commands:
             endt=endt,
             length=length,
             singType=sing_type,
-            recommended=False,
+            recommended=None,
         )
         return artist, song_info
 
@@ -314,7 +314,7 @@ class LiveCommand:
             endt=end_timestamp,
             length=length,
             singType=sing_type,
-            recommended=False
+            recommended=None
         )
         return artist, song_info
 

@@ -39,7 +39,7 @@ if __name__ == "__main__":
     with open("./src/songs.json", "w") as f:
         f.write(json.dumps(songs, ensure_ascii=False, sort_keys=True, indent=4))
 
-    index.save_objects(itertools.chain.from_iterable([
+    songs_to_upload = list(itertools.chain.from_iterable([
         [
             {
                 "objectID": song["uuid"],
@@ -57,3 +57,5 @@ if __name__ == "__main__":
         ]
         for artist, songs_ in songs.items()
     ]))
+    print(songs_to_upload)
+    index.save_objects(songs_to_upload)
