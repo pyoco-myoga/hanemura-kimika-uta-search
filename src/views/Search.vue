@@ -64,7 +64,6 @@ let loadedPageNumber = -1;
 
 const search = async () => {
   const videoID = getVideoID(filterYoutubeURL.value);
-  console.debug(searchWord.value);
   const searchResult = await algoliaIndex.search<Song>(searchWord.value, {
     page: ++loadedPageNumber,
     hitsPerPage: HITS_PER_PAGE,
@@ -109,7 +108,7 @@ const updateSearchResult = () => {
     } catch (e) {
       console.debug(e);
     }
-  }, 300);
+  }, 500);
 };
 
 watch([searchWord, validSearchOptions, filterYoutubeURL], updateSearchResult);
@@ -164,7 +163,7 @@ const load = async (state: StateHandler) => {
     </v-row>
   </v-container>
 
-  <template v-for="{uuid, song} in showedSongs" :key="song.uuid">
+  <template v-for="{uuid, song} in showedSongs" :key="uuid">
     <SongCard :video="song.video" :artist="song.artist" :name="song.name" :t="song.t" :endt="song.endt"
       :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(uuid) ?? null" :is-full="false"
       :recommended="song.recommended" @add-favorite="addToFavorite" @remove-favorite="removeFromFavorite" :uuid="uuid" />
