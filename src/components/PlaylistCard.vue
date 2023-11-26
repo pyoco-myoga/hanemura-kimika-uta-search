@@ -8,6 +8,7 @@ const props = defineProps<{
   playlistId: string | "favorite" | "recommended";
   playlistTitle: string;
   playlistDescription: string;
+  playlistImage: string,
   visibility: "public" | "private",
   songs: string[],
 }>();
@@ -39,12 +40,12 @@ const tiles = ref([
 
 const showPlaylistBottom = ref(false);
 
-const img = new URL(`../assets/image/smile.png`, import.meta.url).href;
+const image = new URL(props.playlistImage, import.meta.url).href;
 </script>
 
 <template>
   <v-card class="mx-auto" @click.stop="showPlaylistBottom = true" link>
-    <v-img :src="img" :height="200" cover />
+    <v-img :src="image" :height="200" cover />
 
     <v-card-title>
       {{ playlistTitle }}

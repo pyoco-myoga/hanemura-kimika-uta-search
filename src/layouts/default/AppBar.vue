@@ -24,8 +24,9 @@ onAuthStateChanged(getAuth(), user => {
 const loginEventListener = async () => {
   try {
     await setPersistence(getAuth(), browserSessionPersistence);
-    await signInWithRedirect(getAuth(), provider);
-    const result = await getRedirectResult(getAuth());
+    // await signInWithRedirect(getAuth(), provider);
+    // const result = await getRedirectResult(getAuth());
+    const result = await signInWithPopup(getAuth(), provider);
     if (result === null) {
       return;
     }

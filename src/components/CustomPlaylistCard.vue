@@ -19,7 +19,8 @@ const playlistUnsubscribe = database.onValue(
     let data: any = snapshot.val();
     if (data !== undefined && data !== null &&
       data.title !== undefined && typeof data.title === "string" &&
-      data.description !== undefined && typeof data.description === "string") {
+      data.description !== undefined && typeof data.description === "string" &&
+      data.image !== undefined && typeof data.image === "string") {
       if (data.songs === undefined) {
         data.songs = [];
       }
@@ -37,7 +38,7 @@ onBeforeUnmount(() => {
 
 <template>
   <template v-if="playlist !== null">
-    <PlaylistCard :playlist-title="playlist.title" :playlist-description="playlist.description" :songs="playlist.songs"
+    <PlaylistCard :playlist-title="playlist.title" :playlist-description="playlist.description" :songs="playlist.songs" :playlist-image="playlist.image"
       :playlist-id="playlistId" :visibility="visibility" />
   </template>
 </template>

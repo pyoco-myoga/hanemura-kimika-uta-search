@@ -28,6 +28,8 @@ const showPlayListForm = ref(false);
 
 const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? "private" : "official");
 
+const favoritePlaylistImage = new URL("../assets/image/16x9/smile.png", import.meta.url).href;
+const recommendedPlaylistImage = new URL("../assets/image/16x9/angel-smile2.png", import.meta.url).href;
 </script>
 <template>
   <v-tabs v-model="tab" fixed-tabs>
@@ -72,7 +74,7 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
           <template v-if="favoriteSongs !== null">
             <v-col xs="12" sm="4" md="4" lg="4" xl="4">
               <PlaylistCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト"
-                visibility="public" :songs="Array.from(favoriteSongs)" />
+                :playlist-image="favoritePlaylistImage" visibility="public" :songs="Array.from(favoriteSongs)" />
             </v-col>
           </template>
         </v-row>
@@ -81,8 +83,8 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
       <v-window-item value="official">
         <template v-if="recommendedSongs !== null">
           <v-col xs="12" sm="4" md="4" lg="4" xl="4">
-            <PlaylistCard playlist-id="recommended" playlist-title="おすすめ" playlist-description="おすすめ曲" visibility="public"
-              :songs="recommendedSongs" />
+            <PlaylistCard playlist-id="recommended" playlist-title="おすすめ" playlist-description="おすすめ曲"
+              :playlist-image="recommendedPlaylistImage" visibility="public" :songs="recommendedSongs" />
           </v-col>
         </template>
       </v-window-item>

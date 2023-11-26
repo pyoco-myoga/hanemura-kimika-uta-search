@@ -10,6 +10,7 @@ import {Song} from "./@types/global/song";
 export type Playlist = {
   title: string;
   description: string;
+  image: string;
   songs: string[];
 }
 
@@ -54,6 +55,7 @@ export const storeSubscribe = () => {
                   uid: uidRef.value!,
                   title: (data as any).title,
                   description: (data as any).description,
+                  image: (data as any).image,
                   songs: (data as any).songs,
                 }
               ]));
@@ -116,13 +118,21 @@ export function removeFromFavorite(songUUID: string) {
   );
 };
 
-export async function addOrUpdatePlayList(
+export async function addOrUpdatePlayList({
+  playlistId,
+  title,
+  description,
+  imageURL,
+  songs,
+  visibility
+}: {
   playlistId: string,
   title: string,
   description: string,
+  imageURL: string,
   songs: string[],
   visibility: "public" | "private",
-) {
+}) {
   try {
     const db = database.getDatabase();
     await database.set(
@@ -130,6 +140,7 @@ export async function addOrUpdatePlayList(
       {
         "title": title,
         "description": description,
+        "image": imageURL,
         "songs": songs,
       }
     );
@@ -139,8 +150,10 @@ export async function addOrUpdatePlayList(
         "uid": uidRef.value
       });
     } else {
-      await database.set(
-        database.ref(db, `public_playlists/${playlistId}`), null);
+      const playlistRef = database.ref(db, `public_playlists/${playlistId}`);
+      if ((await database.get(playlistRef)).exists()) {
+        await database.set(playlistRef, null);
+      }
     }
   } catch (e) {
     console.log(e);

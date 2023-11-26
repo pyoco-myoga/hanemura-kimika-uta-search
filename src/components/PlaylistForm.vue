@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {ref} from 'vue';
-import * as database from "firebase/database";
 import {addOrUpdatePlayList} from '@/common';
 import {v4 as uuidv4} from 'uuid';
 
@@ -19,6 +18,13 @@ const title = ref(props.title ?? "");
 const description = ref(props.description ?? "");
 const visibilityRef = ref(props.visibility ?? "private");
 
+const images = import.meta.glob("../assets/image/16x9/*.png");
+
+function convertPathToURL(path: string): string {
+  return new URL(path, import.meta.url).href;
+}
+
+const image = ref(convertPathToURL("../assets/image/16x9/angel-smile.png"));
 </script>
 
 <template>
@@ -31,10 +37,32 @@ const visibilityRef = ref(props.visibility ?? "private");
           <span :class="visibilityRef ? 'text-black' : 'text-grey-darken-3'">公開する</span>
         </template>
       </v-switch>
+
+      <v-select :v-model="image" label="画像"
+        :items="Object.keys(images).map(path => ({name: path, image: convertPathToURL(path)}))">
+        <template v-slot:item="{item}">
+          <v-list-item @click="image = item.raw.image">
+            <v-img :src="item.raw.image" aspect-ratio="16/9" :width="200" cover />
+          </v-list-item>
+        </template>
+      </v-select>
+
+      <div>画像:
+        <v-img :src="image" aspect-ratio="16/9" :width="200" cover />
+      </div>
+
       <v-card-actions>
-        <v-btn color="primary" block
-          @click="() => {show = false; addOrUpdatePlayList(playlistId, title, description, songs ?? [], visibilityRef)}">
-          <template v-if="playlistId !== undefined">
+        <v-btn color="primary" block @click="() => {
+          show = false; addOrUpdatePlayList({
+            playlistId,
+            title,
+            description,
+            imageURL: image,
+            songs: songs ?? [],
+            visibility: visibilityRef
+          })
+        }">
+          <template v-if="props.playlistId !== undefined">
             更新
           </template>
           <template v-else>
