@@ -27,7 +27,9 @@ const tiles = ref([
   {icon: "mdi-youtube", color: "red", title: "YouTubeへ移動", click: () => window.open(youtubeURL), requireLogin: false},
   {icon: "mdi-share-variant", color: "blue-lighten-4", title: "共有", click: () => {fireShareEvent.value = true;}, requireLogin: false},
   {icon: "mdi-image-area", color: "blue-grey", title: "サムネ画像を取得", click: () => window.open(youtubeThumbnailURL), requireLogin: false},
-  {icon: "mdi-playlist-music", color: "black", title: "プレイリストに追加", click: () => {showAddToPlaylistMenu.value = true;}, requireLogin: true},
+  (props.endt === null) ?
+    {icon: "mdi-playlist-music", color: "black", title: "情報不足によりプレイリストに追加できません", click: () => {}, requireLogin: true} :
+    {icon: "mdi-playlist-music", color: "black", title: "プレイリストに追加", click: () => {showAddToPlaylistMenu.value = true;}, requireLogin: true},
 ]);
 
 

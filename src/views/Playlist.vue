@@ -64,14 +64,14 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
       <v-window-item value="private">
         <v-row>
           <template v-if="favoriteSongs !== null">
-            <v-col xs="12" sm="4" md="4" lg="4" xl="4">
+            <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
               <PlaylistCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト"
                 :playlist-image="favoritePlaylistImage" visibility="public" :songs="Array.from(favoriteSongs)" />
             </v-col>
           </template>
           <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
             <template v-for="({title, description, songs, image}, playlistId) of privatePlaylists" :key="playlistId">
-              <v-col xs="12" sm="4" md="4" lg="4" xl="4">
+              <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
                 <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title"
                   :playlist-description="description" :playlist-image="image" visibility="private" :songs="songs" />
               </v-col>
@@ -83,14 +83,14 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
       <v-window-item value="official">
         <v-row>
           <template v-if="recommendedSongs !== null">
-            <v-col xs="12" sm="4" md="4" lg="4" xl="4">
+            <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
               <PlaylistCard playlist-id="recommended" playlist-title="おすすめ" playlist-description="おすすめ曲"
                 :playlist-image="recommendedPlaylistImage" visibility="public" :songs="recommendedSongs" />
             </v-col>
           </template>
           <template v-if="officialPlaylists !== null">
             <template v-for="({title, description, songs, image}, playlistId) of officialPlaylists" :key="playlistId">
-              <v-col xs="12" sm="4" md="4" lg="4" xl="4">
+              <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
                 <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title"
                   :playlist-description="description" :playlist-image="image" visibility="public" :songs="songs" />
               </v-col>
@@ -105,7 +105,7 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
             <template v-if="Object.values(publicPlaylists).filter(({uid}) => uid !== uidRef).length !== 0">
             </template>
             <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
-              <v-col xs="12" sm="4" md="4" lg="4" xl="4">
+              <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
                 <CustomPlaylistCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
               </v-col>
             </template>

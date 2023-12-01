@@ -43,9 +43,6 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
       <div class="d-flex flex-column flex-grow-1 overflow-hidden justify-center">
         <v-list-item-title class="overflow-hidden custom-title-style">
           {{ props.name }}
-          <template v-if="props.endt === null">
-            <v-icon icon="mdi-close" />
-          </template>
         </v-list-item-title>
         <v-list-item-subtitle class="overflow-hidden" style="white-space: nowrap;">
           {{ props.artist }}
