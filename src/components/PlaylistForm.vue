@@ -18,13 +18,13 @@ const title = ref(props.title ?? "");
 const description = ref(props.description ?? "");
 const visibilityRef = ref(props.visibility ?? "private");
 
-const images = import.meta.glob("../assets/image/16x9/*.png");
-
-function convertPathToURL(path: string): string {
-  return new URL(path, import.meta.url).href;
+function convertRelPathToAbsPath(path: string): string {
+  return new URL(path, import.meta.url).pathname;
 }
 
-const image = ref(convertPathToURL("../assets/image/16x9/angel-smile.png"));
+const image = ref(convertRelPathToAbsPath("../../public/image/16x9/angel-smile.png"));
+// const images = import.meta.glob("../assets/image/16x9/*.png");
+const images = import.meta.glob("../../public/image/16x9/*.png");
 </script>
 
 <template>
@@ -39,28 +39,31 @@ const image = ref(convertPathToURL("../assets/image/16x9/angel-smile.png"));
       </v-switch>
 
       <v-select :v-model="image" label="画像"
-        :items="Object.keys(images).map(path => ({name: path, image: convertPathToURL(path)}))">
+        :items="Object.keys(images).map(path => ({image: convertRelPathToAbsPath(path)}))">
         <template v-slot:item="{item}">
           <v-list-item @click="image = item.raw.image">
-            <v-img :src="item.raw.image" aspect-ratio="16/9" :width="200" cover />
+            {{ convertRelPathToAbsPath(item.raw.image) }}
+            <v-img :src="convertRelPathToAbsPath(item.raw.image)" aspect-ratio="16/9" :width="200" cover />
           </v-list-item>
         </template>
       </v-select>
 
       <div>画像:
+        {{ image }}
         <v-img :src="image" aspect-ratio="16/9" :width="200" cover />
       </div>
 
       <v-card-actions>
         <v-btn color="primary" block @click="() => {
-          show = false; addOrUpdatePlayList({
+          show = false;
+          addOrUpdatePlayList({
             playlistId,
             title,
             description,
-            imageURL: image,
+            imageURL: convertRelPathToAbsPath(image),
             songs: songs ?? [],
             visibility: visibilityRef
-          })
+          });
         }">
           <template v-if="props.playlistId !== undefined">
             更新

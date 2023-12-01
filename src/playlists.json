@@ -1,0 +1,24 @@
+{
+    "f6c2473e-6ccc-4bf0-9257-54b90210b4ba": {
+        "title": "銀杏BOYZ",
+        "description": "銀杏BOYZのプレイリスト",
+        "image": "/image/16x9/p2.png",
+        "filters": [
+            {
+                "artist": "銀杏BOYZ",
+                "name": ""
+            }
+        ]
+    },
+    "c240e07c-64e5-4196-b5af-0639b1be5024": {
+        "title": "大森靖子",
+        "description": "大森靖子のプレイリスト",
+        "image": "/image/16x9/smile2.png",
+        "filters": [
+            {
+                "artist": "大森靖子",
+                "name": ""
+            }
+        ]
+    }
+}

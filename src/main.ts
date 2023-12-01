@@ -7,9 +7,9 @@
 import App from "./App.vue"
 
 
-import {createApp} from "vue"
+import {createApp} from "vue";
 import {FirebaseOptions, initializeApp} from "firebase/app";
-import {registerPlugins} from "@/plugins"
+import {registerPlugins} from "@/plugins";
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: "AIzaSyCGTVUbh92BMf27oZBhGFfrjvouPOnp6Dw",

@@ -1,5 +1,6 @@
-src/assets/image/
-src/assets/thumbnail/
+public/favicon.ico
+public/image/
+src/assets/
 
 .DS_Store
 node_modules

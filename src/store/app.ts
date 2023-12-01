@@ -2,7 +2,7 @@
 import {defineStore} from "pinia";
 import {User, getAuth} from "firebase/auth";
 import {Ref, ref} from "vue";
-import {Song} from "@/@types/global/song";
+import {Song} from "@/common";
 
 
 export const useAppStore = defineStore("app", () => {

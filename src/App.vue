@@ -3,7 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import {storeSubscribe, publicPlaylistsSubscribe} from "@/common";
+import {storeSubscribe, publicPlaylistsSubscribe, officialPlaylistsSubscribe} from "@/common";
 storeSubscribe();
 publicPlaylistsSubscribe();
+officialPlaylistsSubscribe();
 </script>

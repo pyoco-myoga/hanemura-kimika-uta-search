@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import {ref, Ref} from "vue";
 import * as database from "firebase/database";
-import type {Song} from "@/@types/global/song.d.ts";
 import BottomListMenu from "@/components/BottomListMenu.vue";
 import BaseSongCard from "./BaseSongCard.vue";
 import ShareYoutube from "./ShareYoutube.vue";
-import {privatePlaylists, uidRef, getYoutubeURL} from "@/common";
+import {privatePlaylists, uidRef, getYoutubeURL, Song} from "@/common";
 
 const props = defineProps<Song & {
   uuid: string,

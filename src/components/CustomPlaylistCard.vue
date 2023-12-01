@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
 
 <template>
   <template v-if="playlist !== null">
-    <PlaylistCard :playlist-title="playlist.title" :playlist-description="playlist.description" :songs="playlist.songs" :playlist-image="playlist.image"
-      :playlist-id="playlistId" :visibility="visibility" />
+    <PlaylistCard :playlist-title="playlist.title" :playlist-description="playlist.description" :songs="playlist.songs"
+      :playlist-image="playlist.image" :playlist-id="playlistId" :visibility="visibility" />
   </template>
 </template>

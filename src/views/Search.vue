@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import {Song} from "@/@types/global/song";
 import SongCard from "@/components/SongCard.vue";
 
 import {ref, Ref} from "vue";
@@ -13,7 +12,8 @@ import {
   uidRef,
   addToFavorite,
   removeFromFavorite,
-  algoliaIndex
+  algoliaIndex,
+  Song
 } from "@/common";
 
 const params = new URLSearchParams(location.search);
@@ -62,7 +62,7 @@ let resultId: string = uuidv4();
 const showedSongs: Ref<{uuid: string, song: Song}[]> = ref([]);
 let loadedPageNumber = -1;
 
-const search = async () => {
+async function search() {
   const videoID = getVideoID(filterYoutubeURL.value);
   const searchResult = await algoliaIndex.search<Song>(searchWord.value, {
     page: ++loadedPageNumber,
@@ -93,41 +93,41 @@ const search = async () => {
       recommended: hit.recommended
     }
   }));
-};
+}
 
 let searchTimerId: NodeJS.Timeout | null = null;
 const updateSearchResult = () => {
   if (searchTimerId !== null) {
     clearTimeout(searchTimerId);
   }
-  searchTimerId = setTimeout(async () => {
-    try {
-      loadedPageNumber = -1;
-      showedSongs.value = [];
-      resultId = uuidv4();
-    } catch (e) {
-      console.debug(e);
-    }
-  }, 500);
+  try {
+    loadedPageNumber = -1;
+    showedSongs.value = [];
+    resultId = uuidv4();
+  } catch (e) {
+    console.debug(e);
+  }
 };
 
 watch([searchWord, validSearchOptions, filterYoutubeURL], updateSearchResult);
 
 const load = async (state: StateHandler) => {
-  try {
-    const result = await search();
-    showedSongs.value.push(
-      ...result
-    );
-    if (result.length < HITS_PER_PAGE) {
-      state.complete();
-    } else {
-      state.loaded();
+  searchTimerId = setTimeout(async () => {
+    try {
+      const result = await search();
+      showedSongs.value.push(
+        ...result
+      );
+      if (result.length < HITS_PER_PAGE) {
+        state.complete();
+      } else {
+        state.loaded();
+      }
+    } catch (e) {
+      console.debug(e);
+      state.error();
     }
-  } catch (e) {
-    console.debug(e);
-    state.error();
-  }
+  }, 500);
 };
 
 </script>

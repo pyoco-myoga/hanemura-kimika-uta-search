@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import * as database from "firebase/database";
-import type {Song} from "@/@types/global/song.d.ts";
 import BottomListMenu from "@/components/BottomListMenu.vue";
 import AddToPlaylistMenu from "@/components/AddToPlaylistMenu.vue";
 import BaseSongCard from "./BaseSongCard.vue";
-import {uidRef} from "@/common";
+import {uidRef, Song} from "@/common";
 
 const props = defineProps<Song & {
   isFavorite: boolean | null;

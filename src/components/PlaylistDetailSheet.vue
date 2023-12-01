@@ -1,7 +1,6 @@
 
 <script lang="ts" setup>
-import type {Song} from "@/@types/global/song.d.ts";
-import {addToFavorite, algoliaIndex, favoriteSongs, removeFromFavorite, playPlaylist, playPlaylistRandom} from "@/common";
+import {addToFavorite, algoliaIndex, favoriteSongs, removeFromFavorite, playPlaylist, playPlaylistRandom, Song} from "@/common";
 import {ObjectWithObjectID} from "@algolia/client-search";
 import {onBeforeMount} from "vue";
 import PlaylistSongCard from "@/components/PlaylistSongCard.vue";

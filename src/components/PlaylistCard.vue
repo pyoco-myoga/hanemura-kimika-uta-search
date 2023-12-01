@@ -40,34 +40,29 @@ const tiles = ref([
 
 const showPlaylistBottom = ref(false);
 
-const image = new URL(props.playlistImage, import.meta.url).href;
+const image = new URL(props.playlistImage, window.location.toString()).href;
+console.debug(image);
 </script>
 
 <template>
   <v-card class="mx-auto" @click.stop="showPlaylistBottom = true" link>
     <v-img :src="image" :height="200" cover />
 
-    <v-card-title>
+    <v-card-title class="overflow-hidden" style="min-height: 50px;">
       {{ playlistTitle }}
     </v-card-title>
     <v-card-subtitle>
-      {{ playlistDescription }}
+      <div class="overflow-hidden" style="min-height: 30px;">{{ playlistDescription }}</div>
       <div>{{ props.songs.length }}曲</div>
     </v-card-subtitle>
 
     <v-card-actions>
       <v-col>
-        <v-btn :icon="true" elevation="1" @click.stop>
-          <v-icon icon="mdi-play" @click.prevent="playPlaylist(songs)" />
-        </v-btn>
-        <v-btn :icon="true" elevation="1" @click.stop>
-          <v-icon icon="mdi-shuffle" @click.prevent="playPlaylistRandom(songs)" />
-        </v-btn>
+        <v-btn icon="mdi-play" @click.prevent="playPlaylist(songs)" elevation="1" @click.stop />
+        <v-btn icon="mdi-shuffle" @click.prevent="playPlaylistRandom(songs)" elevation="1" @click.stop />
       </v-col>
       <v-col cols="auto">
-        <v-btn :icon="true" elevation="1" @click.stop>
-          <v-icon icon="mdi-dots-vertical" @click.prevent="showBottomMenu = true;" />
-        </v-btn>
+        <v-btn icon="mdi-dots-vertical" @click.prevent="showBottomMenu = true" elevation="1" @click.stop />
       </v-col>
     </v-card-actions>
   </v-card>

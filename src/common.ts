@@ -4,7 +4,24 @@ import algoliasearch from "algoliasearch";
 import {ObjectWithObjectID} from "@algolia/client-search";
 
 import {useAppStore} from "./store/app";
-import {Song} from "./@types/global/song";
+
+export type Length = "full" | "short";
+
+// live: セトリの決まったライブ
+// known: チャレンジではない、一度やったことがあるような歌
+// improvised: チャレンジなどの即興演奏
+export type SingType = "live" | "known" | "improvised"
+
+export interface Song {
+  artist: string;
+  name: string;
+  video: string;
+  t: number;
+  endt: number | null;
+  length: Length | null;
+  singType: SingType | null;
+  recommended?: boolean;
+}
 
 
 export type Playlist = {
@@ -25,10 +42,12 @@ export const uidRef: Ref<string | null> = ref(null);
 export const favoriteSongs: Ref<Set<string> | null> = ref(null);
 export const privatePlaylists: Ref<{[playlist_id: string]: {uid: string} & Playlist} | null> = ref(null);
 export const publicPlaylists: Ref<{[playlist_id: string]: {uid: string}} | null> = ref(null);
+export const officialPlaylists: Ref<{[playlist_id: string]: Playlist} | null> = ref(null);
 
 let favoriteUnsubscribe: database.Unsubscribe | null = null;
-let publicPlaylistUnsubscribe: database.Unsubscribe | null = null;
-let privatePlaylistUnsubscribe: database.Unsubscribe | null = null;
+let publicPlaylistsUnsubscribe: database.Unsubscribe | null = null;
+let privatePlaylistsUnsubscribe: database.Unsubscribe | null = null;
+let officialPlaylistsUnsubscribe: database.Unsubscribe | null = null;
 
 export const storeSubscribe = () => {
   const store = useAppStore();
@@ -44,7 +63,7 @@ export const storeSubscribe = () => {
         },
         (error: Error) => console.log(error));
 
-      privatePlaylistUnsubscribe = database.onValue(
+      privatePlaylistsUnsubscribe = database.onValue(
         database.ref(db, `users/${uidRef.value}/playlists`),
         (snapshot: database.DataSnapshot) => {
           privatePlaylists.value = Object.fromEntries(
@@ -56,7 +75,7 @@ export const storeSubscribe = () => {
                   title: (data as any).title,
                   description: (data as any).description,
                   image: (data as any).image,
-                  songs: (data as any).songs,
+                  songs: (data as any).songs ?? [],
                 }
               ]));
         },
@@ -69,9 +88,9 @@ export const storeSubscribe = () => {
         favoriteUnsubscribe = null;
       }
       privatePlaylists.value = null;
-      if (privatePlaylistUnsubscribe !== null) {
-        privatePlaylistUnsubscribe();
-        privatePlaylistUnsubscribe = null;
+      if (privatePlaylistsUnsubscribe !== null) {
+        privatePlaylistsUnsubscribe();
+        privatePlaylistsUnsubscribe = null;
       }
     }
   });
@@ -80,10 +99,20 @@ export const storeSubscribe = () => {
 
 export const publicPlaylistsSubscribe = () => {
   const db = database.getDatabase();
-  publicPlaylistUnsubscribe = database.onValue(
+  publicPlaylistsUnsubscribe = database.onValue(
     database.ref(db, "public_playlists"),
     (snapshot: database.DataSnapshot) => {
       publicPlaylists.value = snapshot.val() ?? null;
+    },
+    e => console.log(e));
+};
+
+export const officialPlaylistsSubscribe = () => {
+  const db = database.getDatabase();
+  officialPlaylistsUnsubscribe = database.onValue(
+    database.ref(db, "official_playlists"),
+    (snapshot: database.DataSnapshot) => {
+      officialPlaylists.value = snapshot.val() ?? null;
     },
     e => console.log(e));
 };

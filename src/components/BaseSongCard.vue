@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type {Song} from "@/@types/global/song.d.ts";
+import type {Song} from "@/common";
 import {useAppStore} from "@/store/app";
 
 const store = useAppStore();
