@@ -51,7 +51,7 @@ watch([favoriteSongs, privatePlaylists], () => {
     ...Object.entries(privatePlaylists.value).map(([playlistId, playlist]) => ({
       playlistId,
       ...playlist
-    }))
+    })).sort((a, b) => b.title.localeCompare(a.title))
   ];
   if (privatePlaylists.value === null) {
     privateFuse = null;
@@ -83,7 +83,7 @@ watch([recommendedSongs, officialPlaylists], () => {
     ...Object.entries(officialPlaylists.value).map(([playlistId, playlist]) => ({
       playlistId,
       ...playlist
-    }))
+    })).sort((a, b) => b.title.localeCompare(a.title))
   ];
   officialFuse = new Fuse(playlists, {
     shouldSort: true,

@@ -55,7 +55,7 @@ const gotoPlayListPage = () => {
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar image="/image/background/head.png">
     <v-app-bar-nav-icon v-on:click.stop="drawer = !drawer" />
     <v-app-bar-title>羽村きみか うたさーち</v-app-bar-title>
     <template v-if="store.user === null">
@@ -83,7 +83,7 @@ const gotoPlayListPage = () => {
     </template>
   </v-app-bar>
 
-  <v-navigation-drawer v-model="drawer" fixed app>
+  <v-navigation-drawer image="/image/background/atsu.png" v-model="drawer" fixed app>
     <v-list>
       <v-list-item @click="gotoSearchPage">
         <template v-slot:prepend>

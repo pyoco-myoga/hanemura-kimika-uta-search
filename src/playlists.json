@@ -54,5 +54,16 @@
                 "name": ""
             }
         ]
+    },
+    "9b529543-de57-4982-af7b-ea44367f3e78": {
+        "title": "ガガガSP",
+        "description": "ガガガSPのプレイリスト",
+        "image": "/image/16x9/angel.png",
+        "filters": [
+            {
+                "artist": "ガガガSP",
+                "name": ""
+            }
+        ]
     }
 }
