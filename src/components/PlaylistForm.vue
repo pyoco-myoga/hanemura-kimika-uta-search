@@ -23,33 +23,31 @@ function convertRelPathToAbsPath(path: string): string {
 }
 
 const image = ref(convertRelPathToAbsPath("../../public/image/16x9/angel-smile.png"));
-// const images = import.meta.glob("../assets/image/16x9/*.png");
 const images = import.meta.glob("../../public/image/16x9/*.png");
 </script>
 
 <template>
   <v-dialog v-model="show" width="80%">
     <v-card>
-      <v-text-field v-model="title" label="タイトル" />
-      <v-textarea v-model="description" label="概要" />
-      <v-switch color="primary" v-model="visibilityRef" true-value="public" false-value="private">
-        <template v-slot:label>
-          <span :class="visibilityRef ? 'text-black' : 'text-grey-darken-3'">公開する</span>
-        </template>
-      </v-switch>
+      <v-text-field v-model="title" label="タイトル" single-line />
+      <v-textarea v-model="description" label="概要" :max-rows="50" />
+      <!-- <v-switch color="primary" v-model="visibilityRef" true-value="public" false-value="private"> -->
+      <!--   <template v-slot:label> -->
+      <!--     <span :class="visibilityRef ? 'text-black' : 'text-grey-darken-3'">公開する</span> -->
+      <!--   </template> -->
+      <!-- </v-switch> -->
 
       <v-select :v-model="image" label="画像"
-        :items="Object.keys(images).map(path => ({image: convertRelPathToAbsPath(path)}))">
+        :items="Object.keys(images).map(path => ({image: convertRelPathToAbsPath(path)}))"
+        :menu-props="{closeOnContentClick: true}">
         <template v-slot:item="{item}">
           <v-list-item @click="image = item.raw.image">
-            {{ convertRelPathToAbsPath(item.raw.image) }}
             <v-img :src="convertRelPathToAbsPath(item.raw.image)" aspect-ratio="16/9" :width="200" cover />
           </v-list-item>
         </template>
       </v-select>
 
-      <div>画像:
-        {{ image }}
+      <div>
         <v-img :src="image" aspect-ratio="16/9" :width="200" cover />
       </div>
 

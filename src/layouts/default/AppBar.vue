@@ -67,7 +67,6 @@ const gotoPlayListPage = () => {
           <v-btn class="ma-3" icon v-bind="props">
             <template v-if="store.user.photoURL !== null">
               <v-avatar :image="`https://gettwittericon-zmgcsnz2sq-uc.a.run.app/?url=${store.user.photoURL}`" />
-              <!-- <v-avatar icon="mdi-account" /> -->
             </template>
             <template v-else>
               <v-avatar color="surface-variant" />
