@@ -4,6 +4,8 @@ import PlaylistForm from "@/components/PlaylistForm.vue";
 import CustomPlaylistCard from "@/components/CustomPlaylistCard.vue";
 import {favoriteSongs, publicPlaylists, privatePlaylists, officialPlaylists, uidRef, algoliaIndex} from "@/common";
 import {ref, Ref, onMounted} from "vue";
+import Fuse from "fuse.js";
+import {watch} from "vue";
 
 const params = new URLSearchParams(location.search);
 const q = params.get("q");
@@ -12,6 +14,7 @@ const searchWord = ref(q || "");
 // 持ち曲がこの数を超えることはないだろう
 const MAX_HITS_PER_PAGE = 5000;
 const recommendedSongs: Ref<string[] | null> = ref(null);
+
 onMounted(async () => {
   const searchResult = await algoliaIndex.search<string>("", {
     attributesToRetrieve: ["objectID"],
@@ -20,7 +23,72 @@ onMounted(async () => {
     facetFilters: ["recommended:true"],
   });
   recommendedSongs.value = searchResult.hits.map(hit => hit.objectID);
+
 });
+
+type PlaylistElem = {
+  title: string;
+  description: string;
+  image: string;
+  songs: string[];
+  playlistId: string;
+}
+type PlaylistFuse = Fuse<PlaylistElem>;
+
+let privateFuse: PlaylistFuse | null = null;
+watch([privatePlaylists], () => {
+  if (privatePlaylists.value === null) {
+    return;
+  }
+  const playlists =
+    Object.entries(privatePlaylists.value).map(([playlistId, playlist]) => ({
+      playlistId,
+      ...playlist
+    }));
+  if (privatePlaylists.value === null) {
+    privateFuse = null;
+  } else {
+    privateFuse = new Fuse(playlists, {
+      shouldSort: true,
+      threshold: 0.4,
+      keys: [
+        "title",
+        "description"
+      ]
+    });
+  }
+}, {immediate: true});
+
+let officialFuse: PlaylistFuse | null = null;
+watch([officialPlaylists], () => {
+  if (officialPlaylists.value === null) {
+    return;
+  }
+  const playlists =
+    Object.entries(officialPlaylists.value).map(([playlistId, playlist]) => ({
+      playlistId,
+      ...playlist
+    }));
+  officialFuse = new Fuse(playlists, {
+    shouldSort: true,
+    threshold: 0.4,
+    keys: [
+      "title",
+      "description"
+    ]
+  });
+}, {immediate: true});
+
+function getSearchResults(fuse: PlaylistFuse | null, searchWord: string): PlaylistElem[] {
+  if (fuse === null) {
+    console.debug(fuse);
+    return [];
+  }
+  if (searchWord === "") {
+    return (fuse as any)._docs;
+  }
+  return fuse.search(searchWord).map(({item}) => item);
+}
 
 const showPlaylistForm = ref(false);
 
@@ -28,6 +96,7 @@ const tab: Ref<"private" | "official" | "public"> = ref(uidRef.value !== null ? 
 
 const favoritePlaylistImage = new URL("../../public/image/16x9/smile.png", import.meta.url).pathname;
 const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.png", import.meta.url).pathname;
+
 
 </script>
 <template>
@@ -64,18 +133,35 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
       <v-window-item value="private">
         <v-row>
           <template v-if="favoriteSongs !== null">
-            <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
+            <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
               <PlaylistCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト"
                 :playlist-image="favoritePlaylistImage" visibility="public" :songs="Array.from(favoriteSongs)" />
             </v-col>
           </template>
           <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
-            <template v-for="({title, description, songs, image}, playlistId) of privatePlaylists" :key="playlistId">
-              <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
-                <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title"
-                  :playlist-description="description" :playlist-image="image" visibility="private" :songs="songs" />
-              </v-col>
+            <template v-if="privateFuse !== null">
+              <template
+                v-for="({playlistId, title, description, songs, image}) of getSearchResults(privateFuse, searchWord)"
+                :key="playlistId">
+                <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
+                  <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title"
+                    :playlist-description="description" :playlist-image="image" visibility="private" :songs="songs" />
+                </v-col>
+              </template>
+              <!-- <template v-for="({item: {playlistId, title, description, songs, image}}) of privateFuse.search(searchWord)" -->
+              <!--   :key="playlistId"> -->
+              <!--   <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4"> -->
+              <!--     <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title" -->
+              <!--       :playlist-description="description" :playlist-image="image" visibility="private" :songs="songs" /> -->
+              <!--   </v-col> -->
+              <!-- </template> -->
             </template>
+            <!-- <template v-for="({title, description, songs, image}, playlistId) of privatePlaylists" :key="playlistId"> -->
+            <!--   <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4"> -->
+            <!--     <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title" -->
+            <!--       :playlist-description="description" :playlist-image="image" visibility="private" :songs="songs" /> -->
+            <!--   </v-col> -->
+            <!-- </template> -->
           </template>
         </v-row>
       </v-window-item>
@@ -89,8 +175,10 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
             </v-col>
           </template>
           <template v-if="officialPlaylists !== null">
-            <template v-for="({title, description, songs, image}, playlistId) of officialPlaylists" :key="playlistId">
-              <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
+            <template
+              v-for="({playlistId, title, description, songs, image}) of getSearchResults(officialFuse, searchWord)"
+              :key="playlistId">
+              <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
                 <PlaylistCard :playlist-id="playlistId as string" :playlist-title="title"
                   :playlist-description="description" :playlist-image="image" visibility="public" :songs="songs" />
               </v-col>
@@ -102,12 +190,12 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
       <v-window-item value="public">
         <v-row>
           <template v-if="publicPlaylists !== null"> <!-- <=> if loaded -->
-            <template v-if="Object.values(publicPlaylists).filter(({uid}) => uid !== uidRef).length !== 0">
-            </template>
             <template v-for="({uid}, playlistId) of publicPlaylists" :key="playlistId">
-              <v-col cols="12"  xs="12" sm="4" md="4" lg="4" xl="4">
-                <CustomPlaylistCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
-              </v-col>
+              <template v-if="uid !== uidRef">
+                <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
+                  <CustomPlaylistCard :playlist-id="playlistId as string" :uid="uid" visibility="public" />
+                </v-col>
+              </template>
             </template>
           </template>
         </v-row>

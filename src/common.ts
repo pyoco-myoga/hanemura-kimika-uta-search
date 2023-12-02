@@ -40,7 +40,7 @@ export const algoliaIndex = algoliaClient.initIndex(ALGOLIA_SEARCH_INDEX)
 
 export const uidRef: Ref<string | null> = ref(null);
 export const favoriteSongs: Ref<Set<string> | null> = ref(null);
-export const privatePlaylists: Ref<{[playlist_id: string]: {uid: string} & Playlist} | null> = ref(null);
+export const privatePlaylists: Ref<{[playlist_id: string]: Playlist} | null> = ref(null);
 export const publicPlaylists: Ref<{[playlist_id: string]: {uid: string}} | null> = ref(null);
 export const officialPlaylists: Ref<{[playlist_id: string]: Playlist} | null> = ref(null);
 
@@ -71,7 +71,6 @@ export const storeSubscribe = () => {
               .map(([playlistId, data]) => [
                 playlistId as string,
                 {
-                  uid: uidRef.value!,
                   title: (data as any).title,
                   description: (data as any).description,
                   image: (data as any).image,

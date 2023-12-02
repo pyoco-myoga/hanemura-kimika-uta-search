@@ -49,6 +49,9 @@ if __name__ == "__main__":
 
         ref = db.reference(
                 f"/official_playlists/{playlist_id}/")
+        if len(playlist) == 0:
+            print("`playlist` is empty")
+            continue
         ref.set({
             "title": title,
             "description": description,

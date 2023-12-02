@@ -96,7 +96,8 @@ async function search() {
 }
 
 let searchTimerId: NodeJS.Timeout | null = null;
-const updateSearchResult = () => {
+
+watch([searchWord, validSearchOptions, filterYoutubeURL], () => {
   if (searchTimerId !== null) {
     clearTimeout(searchTimerId);
   }
@@ -107,9 +108,7 @@ const updateSearchResult = () => {
   } catch (e) {
     console.debug(e);
   }
-};
-
-watch([searchWord, validSearchOptions, filterYoutubeURL], updateSearchResult);
+});
 
 const load = async (state: StateHandler) => {
   searchTimerId = setTimeout(async () => {

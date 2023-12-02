@@ -1,11 +1,15 @@
 {
     "f6c2473e-6ccc-4bf0-9257-54b90210b4ba": {
-        "title": "銀杏BOYZ",
-        "description": "銀杏BOYZのプレイリスト",
+        "title": "銀杏/ゴイステ",
+        "description": "銀杏/ゴイステのプレイリスト",
         "image": "/image/16x9/p2.png",
         "filters": [
             {
                 "artist": "銀杏BOYZ",
+                "name": ""
+            },
+            {
+                "artist": "GOING STEADY",
                 "name": ""
             }
         ]
@@ -17,6 +21,36 @@
         "filters": [
             {
                 "artist": "大森靖子",
+                "name": ""
+            }
+        ]
+    },
+    "f76be1a5-dba2-4728-9f60-63e79a732898": {
+        "title": "ブルハ/ハイロウズ/クロマニヨンズ",
+        "description": "ブルハ/ハイロウズ/クロマニヨンズのプレイリスト",
+        "image": "/image/16x9/smile3.png",
+        "filters": [
+            {
+                "artist": "THE BLUE HEARTS",
+                "name": ""
+            },
+            {
+                "artist": "↑THE HIGH-LOWS↓",
+                "name": ""
+            },
+            {
+                "artist": "クロマニヨンズ",
+                "name": ""
+            }
+        ]
+    },
+    "f5ed165c-13e0-4b95-9e5f-e5e9d395b9fb": {
+        "title": "忘れらんねえよ",
+        "description": "忘れらんねえよのプレイリスト",
+        "image": "/image/16x9/opening-mouse.png",
+        "filters": [
+            {
+                "artist": "忘れらんねえよ",
                 "name": ""
             }
         ]

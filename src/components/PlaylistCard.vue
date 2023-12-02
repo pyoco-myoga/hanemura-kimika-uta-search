@@ -41,7 +41,6 @@ const tiles = ref([
 const showPlaylistBottom = ref(false);
 
 const image = new URL(props.playlistImage, window.location.toString()).href;
-console.debug(image);
 </script>
 
 <template>
