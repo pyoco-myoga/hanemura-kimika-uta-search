@@ -21,32 +21,16 @@ const playing = ref(false);
 
 const fireShareEvent = ref(false);
 
-const onReady = () => {
-  if (timerId !== null) {
-    clearInterval(timerId)
+const playingSong = computed(() => {
+  if (store.indexPlayList === null) {
+    return null;
+  } else {
+    return store.playingPlayList[store.indexPlayList];
   }
+});
+
+const onReady = () => {
   youtube.value?.playVideo();
-
-  timerId = setInterval(async () => {
-    if (store.indexPlayList === null) {
-      progress.value = 0;
-    } else {
-      const t = store.playingPlayList[store.indexPlayList].t;
-      const endt = store.playingPlayList[store.indexPlayList].endt;
-
-      const currentTime = await youtube?.value?.getCurrentTime();
-      if (currentTime !== undefined) {
-        secondsFromStart.value = currentTime - t;
-        secondsToEnd.value = endt !== null ? (endt - currentTime) : null;
-      }
-
-      if (endt === null) {
-        progress.value = 0;
-      } else {
-        progress.value = 100 * secondsFromStart.value / (endt - t);
-      }
-    }
-  }, 500);
 };
 
 const displayTime = (seconds: number | null) => {
@@ -79,6 +63,30 @@ const onStateChange = (e: any) => {
     store.playNextPlayListSong();
     playing.value = false;
   }
+
+  if (timerId !== null) {
+    clearInterval(timerId)
+  }
+  timerId = setInterval(async () => {
+    if (playingSong.value === null) {
+      progress.value = 0;
+    } else {
+      const t = playingSong.value.t;
+      const endt = playingSong.value.endt;
+
+      const currentTime = await youtube?.value?.getCurrentTime();
+      if (currentTime !== undefined) {
+        secondsFromStart.value = currentTime - t;
+        secondsToEnd.value = endt !== null ? (endt - currentTime) : null;
+      }
+
+      if (endt === null) {
+        progress.value = 0;
+      } else {
+        progress.value = 100 * secondsFromStart.value / (endt - t);
+      }
+    }
+  }, 300);
 };
 
 const onClose = () => {
@@ -103,19 +111,42 @@ const gotoYoutube = () => {
     window.open(youtubeURL.value);
   }
 }
+
+let rewindTimerId: NodeJS.Timeout | null = null;
+function onRewindClickedEvent() {
+  if (rewindTimerId === null) {
+    rewindTimerId = setTimeout(() => {
+      if (playingSong.value !== null) {
+        youtube.value?.seekTo(playingSong.value.t, true);
+      }
+      if (rewindTimerId !== null) {
+        clearTimeout(rewindTimerId);
+        rewindTimerId = null;
+      }
+    }, 100);
+  } else {
+    // footerが消えたときに間違えてその下にあった要素を押さないように
+    setTimeout(() => {
+      store.playPreviousPlayListSong();
+    }, 50);
+    clearTimeout(rewindTimerId);
+    rewindTimerId = null;
+  }
+}
+
 </script>
 
 <template>
-  <template v-if="store.indexPlayList !== null">
+  <template v-if="playingSong !== null">
     <v-footer app class="elevation-10 justify-center">
       <v-container class="ma-0 pa-0">
         <v-row class="ma-0 pa-0 justify-center">
           <!-- player -->
           <v-col xs="12" sm="5" md="5" lg="5" xl="5" class="text-center">
-            <YouTube :src="store.playingPlayList[store.indexPlayList].video"
-              :vars="{start: store.playingPlayList[store.indexPlayList].t, end: store.playingPlayList[store.indexPlayList].endt ?? undefined, controls: 0, modestbranding: 1}"
-              @ready="onReady" height="20%" width="auto" @state-change="onStateChange"
-              :key="store.playingPlayList[store.indexPlayList].uuid" ref="youtube" />
+            <YouTube :src="playingSong.video"
+              :vars="{start: playingSong.t, end: playingSong.endt ?? undefined, controls: 0, modestbranding: 1}"
+              @ready="onReady" height="20%" width="auto" @state-change="onStateChange" :key="playingSong.uuid"
+              ref="youtube" />
 
           </v-col>
           <!-- controller -->
@@ -127,10 +158,10 @@ const gotoYoutube = () => {
               <v-col cols="10">
 
                 <v-list-item-title>
-                  {{ store.playingPlayList[store.indexPlayList].name }}
+                  {{ playingSong.name }}
                 </v-list-item-title>
                 <v-list-item-subtitle>
-                  {{ store.playingPlayList[store.indexPlayList].artist }}
+                  {{ playingSong.artist }}
                 </v-list-item-subtitle>
               </v-col>
               <v-col class="ma-auto" cols="1">
@@ -148,17 +179,15 @@ const gotoYoutube = () => {
                 <template v-if="uidRef === null">
                   <v-btn :icon="true" variant="text" />
                 </template>
-                <template v-else-if="favoriteSongs?.has(store.playingPlayList[store.indexPlayList].uuid)">
-                  <v-btn icon="mdi-heart" variant="text"
-                    @click="removeFromFavorite(store.playingPlayList[store.indexPlayList].uuid)" />
+                <template v-else-if="favoriteSongs?.has(playingSong.uuid)">
+                  <v-btn icon="mdi-heart" variant="text" @click="removeFromFavorite(playingSong.uuid)" />
                 </template>
                 <template v-else>
-                  <v-btn icon="mdi-heart-outline" variant="text"
-                    @click="addToFavorite(store.playingPlayList[store.indexPlayList].uuid)" />
+                  <v-btn icon="mdi-heart-outline" variant="text" @click="addToFavorite(playingSong.uuid)" />
                 </template>
               </v-col>
               <v-col class="text-center">
-                <v-btn icon="mdi-rewind" variant="text" @click="store.playPreviousPlayListSong()" />
+                <v-btn icon="mdi-rewind" variant="text" @click.stop="onRewindClickedEvent" />
                 <template v-if="playing">
                   <v-btn icon="mdi-pause" variant="text" @click="youtube?.pauseVideo()" />
                 </template>
@@ -175,8 +204,7 @@ const gotoYoutube = () => {
         </v-row>
       </v-container>
     </v-footer>
-    <ShareYoutube v-model="fireShareEvent" :name="store.playingPlayList[store.indexPlayList].name"
-      :artist="store.playingPlayList[store.indexPlayList].artist"
-      :video="store.playingPlayList[store.indexPlayList].video" :t="store.playingPlayList[store.indexPlayList].t" />
+    <ShareYoutube v-model="fireShareEvent" :name="playingSong.name" :artist="playingSong.artist"
+      :video="playingSong.video" :t="playingSong.t" />
   </template>
 </template>

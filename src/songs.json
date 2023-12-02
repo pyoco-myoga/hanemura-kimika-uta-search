@@ -1781,6 +1781,36 @@
     ],
     "Hi-STANDARD": [
         {
+            "endt": 4829,
+            "length": "full",
+            "name": "BRAND NEW SUNSET",
+            "recommended": null,
+            "singType": "known",
+            "t": 4632,
+            "uuid": "b4084796-6f53-4205-a9db-a60166df3625",
+            "video": "1ZZQvx0qunc"
+        },
+        {
+            "endt": 3749,
+            "length": "full",
+            "name": "CLOSE TO ME",
+            "recommended": null,
+            "singType": "known",
+            "t": 3659,
+            "uuid": "eb376b1c-c098-4d14-9707-7e95c781eaaa",
+            "video": "1ZZQvx0qunc"
+        },
+        {
+            "endt": 2449,
+            "length": "full",
+            "name": "Can't Help Falling In Love",
+            "recommended": null,
+            "singType": "known",
+            "t": 2300,
+            "uuid": "2d5acbd5-f797-4f8c-bf2c-4c6d911b98e4",
+            "video": "1ZZQvx0qunc"
+        },
+        {
             "endt": 6257,
             "length": "full",
             "name": "DEAR MY FRIEND",
@@ -1801,6 +1831,16 @@
             "video": "4kJShQ7xC7c"
         },
         {
+            "endt": 2972,
+            "length": "full",
+            "name": "DEAR MY FRIEND",
+            "recommended": null,
+            "singType": "known",
+            "t": 2800,
+            "uuid": "a8241c22-6b9a-4449-9608-43c750464324",
+            "video": "1ZZQvx0qunc"
+        },
+        {
             "endt": 2890,
             "length": "full",
             "name": "Happy Xmas(War Is Over)",
@@ -1819,6 +1859,16 @@
             "t": 1714,
             "uuid": "75044191-a81d-41c5-a842-2ac3b8a19617",
             "video": "qvTeTqN2vCI"
+        },
+        {
+            "endt": 5495,
+            "length": "full",
+            "name": "MOSH UNDER THE RAINBOW",
+            "recommended": null,
+            "singType": "known",
+            "t": 5312,
+            "uuid": "fce21275-a6a9-4992-adf7-8016a2d8080c",
+            "video": "1ZZQvx0qunc"
         },
         {
             "endt": 704,
@@ -1951,6 +2001,26 @@
             "video": "cQifuD4aQrg"
         },
         {
+            "endt": 7775,
+            "length": "full",
+            "name": "MY FIRST KISS",
+            "recommended": null,
+            "singType": "known",
+            "t": 7573,
+            "uuid": "0a0ac320-b21d-43e7-8f3c-b9645f7342b5",
+            "video": "1ZZQvx0qunc"
+        },
+        {
+            "endt": 4099,
+            "length": "full",
+            "name": "PLEASE PLEASE PLEASE",
+            "recommended": null,
+            "singType": "known",
+            "t": 3938,
+            "uuid": "73733c6b-fec4-4eea-8a61-d605c9ae2ce2",
+            "video": "1ZZQvx0qunc"
+        },
+        {
             "endt": 6664,
             "length": "short",
             "name": "STAY GOLD",
@@ -1969,6 +2039,36 @@
             "t": 9081,
             "uuid": "32cac7c7-3a99-4325-9e6c-c4e5dc6c93bd",
             "video": "dpWnpmfchA4"
+        },
+        {
+            "endt": 6211,
+            "length": "full",
+            "name": "STAY GOLD",
+            "recommended": null,
+            "singType": "known",
+            "t": 6064,
+            "uuid": "729c4658-ff39-4333-91d4-ce46f2f36f0a",
+            "video": "1ZZQvx0qunc"
+        },
+        {
+            "endt": 5134,
+            "length": "full",
+            "name": "THE KIDS ARE ALRIGHT",
+            "recommended": null,
+            "singType": "known",
+            "t": 5028,
+            "uuid": "57bbc593-0062-45e6-8dba-b62b15004b2a",
+            "video": "1ZZQvx0qunc"
+        },
+        {
+            "endt": 4415,
+            "length": "short",
+            "name": "This Is Love",
+            "recommended": null,
+            "singType": "improvised",
+            "t": 4364,
+            "uuid": "11f0fdf9-92c4-435b-9da9-f39659892c18",
+            "video": "1ZZQvx0qunc"
         },
         {
             "endt": 8087,
@@ -2885,6 +2985,16 @@
             "video": "FqzOM9eWRFw"
         },
         {
+            "endt": 1907,
+            "length": "full",
+            "name": "Believer",
+            "recommended": null,
+            "singType": "known",
+            "t": 1742,
+            "uuid": "25edfa05-0c3b-4a4c-93a3-a5093995259a",
+            "video": "1ZZQvx0qunc"
+        },
+        {
             "endt": 4897,
             "length": "full",
             "name": "Can't Take My Eyes Off Of You",
@@ -2913,6 +3023,16 @@
             "t": 3790,
             "uuid": "3edc867a-f63e-47d5-8e60-ee45ff890bf6",
             "video": "OAO4iagFS_0"
+        },
+        {
+            "endt": 7287,
+            "length": "full",
+            "name": "Can't Take My Eyes Off Of You",
+            "recommended": null,
+            "singType": "known",
+            "t": 7116,
+            "uuid": "50723d51-5ee3-429e-aaad-c2faa506821e",
+            "video": "1ZZQvx0qunc"
         },
         {
             "endt": 6168,
@@ -3063,6 +3183,16 @@
             "t": 2396,
             "uuid": "8306510f-0f5b-41fe-901d-8c419c69356e",
             "video": "q4BVGiAEBYk"
+        },
+        {
+            "endt": 6841,
+            "length": "full",
+            "name": "Running On The Winding Road",
+            "recommended": null,
+            "singType": "known",
+            "t": 6694,
+            "uuid": "12c58cdf-dc0b-4020-8620-ba2ca2a61b1a",
+            "video": "1ZZQvx0qunc"
         }
     ],
     "Kinki Kids": [
@@ -10178,7 +10308,7 @@
             "name": "2学期デビュー大作戦!!",
             "recommended": false,
             "singType": "known",
-            "t": 6573,
+            "t": 6570,
             "uuid": "9754617f-f430-47d3-9967-c386950d7ccb",
             "video": "KoWWDEbG9QM"
         },
@@ -13826,7 +13956,7 @@
             "name": "地獄先生",
             "recommended": false,
             "singType": "known",
-            "t": 5154,
+            "t": 5150,
             "uuid": "176407f2-c9fe-4726-9aa6-edf368221c69",
             "video": "KoWWDEbG9QM"
         },
@@ -15652,7 +15782,7 @@
             "name": "青春時代",
             "recommended": false,
             "singType": "known",
-            "t": 5936,
+            "t": 5933,
             "uuid": "2ddc9067-7661-480a-9ddd-fd8ed61ac4e6",
             "video": "KoWWDEbG9QM"
         },

@@ -36,15 +36,23 @@ type PlaylistElem = {
 type PlaylistFuse = Fuse<PlaylistElem>;
 
 let privateFuse: PlaylistFuse | null = null;
-watch([privatePlaylists], () => {
+watch([favoriteSongs, privatePlaylists], () => {
   if (privatePlaylists.value === null) {
     return;
   }
-  const playlists =
-    Object.entries(privatePlaylists.value).map(([playlistId, playlist]) => ({
+  const playlists = [
+    {
+      playlistId: "favorite",
+      title: "お気に入り",
+      description: "お気に入り登録した曲リスト",
+      image: new URL("../../public/image/16x9/smile.png", import.meta.url).pathname,
+      songs: Array.from(favoriteSongs.value ?? []),
+    },
+    ...Object.entries(privatePlaylists.value).map(([playlistId, playlist]) => ({
       playlistId,
       ...playlist
-    }));
+    }))
+  ];
   if (privatePlaylists.value === null) {
     privateFuse = null;
   } else {
@@ -60,15 +68,23 @@ watch([privatePlaylists], () => {
 }, {immediate: true});
 
 let officialFuse: PlaylistFuse | null = null;
-watch([officialPlaylists], () => {
+watch([recommendedSongs, officialPlaylists], () => {
   if (officialPlaylists.value === null) {
     return;
   }
-  const playlists =
-    Object.entries(officialPlaylists.value).map(([playlistId, playlist]) => ({
+  const playlists = [
+    {
+      playlistId: "favorite",
+      title: "おすすめ",
+      description: "おすすめ曲",
+      image: new URL("../../public/image/16x9/angel-smile.png", import.meta.url).pathname,
+      songs: Array.from(recommendedSongs.value ?? []),
+    },
+    ...Object.entries(officialPlaylists.value).map(([playlistId, playlist]) => ({
       playlistId,
       ...playlist
-    }));
+    }))
+  ];
   officialFuse = new Fuse(playlists, {
     shouldSort: true,
     threshold: 0.4,
@@ -132,12 +148,12 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
     <v-window v-model="tab">
       <v-window-item value="private">
         <v-row>
-          <template v-if="favoriteSongs !== null">
-            <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
-              <PlaylistCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト"
-                :playlist-image="favoritePlaylistImage" visibility="public" :songs="Array.from(favoriteSongs)" />
-            </v-col>
-          </template>
+          <!-- <template v-if="favoriteSongs !== null"> -->
+          <!--   <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4"> -->
+          <!--     <PlaylistCard playlist-id="favorite" playlist-title="お気に入り" playlist-description="お気に入り登録した曲リスト" -->
+          <!--       :playlist-image="favoritePlaylistImage" visibility="public" :songs="Array.from(favoriteSongs)" /> -->
+          <!--   </v-col> -->
+          <!-- </template> -->
           <template v-if="privatePlaylists !== null"> <!-- <=> if loaded -->
             <template v-if="privateFuse !== null">
               <template
@@ -168,12 +184,12 @@ const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.p
 
       <v-window-item value="official">
         <v-row>
-          <template v-if="recommendedSongs !== null">
-            <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4">
-              <PlaylistCard playlist-id="recommended" playlist-title="おすすめ" playlist-description="おすすめ曲"
-                :playlist-image="recommendedPlaylistImage" visibility="public" :songs="recommendedSongs" />
-            </v-col>
-          </template>
+          <!-- <template v-if="recommendedSongs !== null"> -->
+          <!--   <v-col cols="12" xs="12" sm="4" md="4" lg="4" xl="4"> -->
+          <!--     <PlaylistCard playlist-id="recommended" playlist-title="おすすめ" playlist-description="おすすめ曲" -->
+          <!--       :playlist-image="recommendedPlaylistImage" visibility="public" :songs="recommendedSongs" /> -->
+          <!--   </v-col> -->
+          <!-- </template> -->
           <template v-if="officialPlaylists !== null">
             <template
               v-for="({playlistId, title, description, songs, image}) of getSearchResults(officialFuse, searchWord)"

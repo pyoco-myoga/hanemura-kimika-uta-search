@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type {Song} from "@/common";
 import {useAppStore} from "@/store/app";
+import {computed} from "vue";
 
 const store = useAppStore();
 
@@ -19,6 +20,23 @@ const resetNextSongsAndSetNext = () => {
 const showBottomMenu = defineModel<boolean>();
 
 const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url).href;
+
+const isPlaying = computed(() => {
+  if (store.indexPlayList === null) {
+    return false;
+  }
+  if (store.indexPlayList !== null && store.playingPlayList[store.indexPlayList] === props.playlist[props.playlistIndex]) {
+    return true;
+  } else {
+    return false;
+  }
+})
+
+const color = computed(() => {
+  const playingColor = "grey-lighten-2";
+  const notPlayingColor = "white";
+  return isPlaying.value ? playingColor : notPlayingColor;
+});
 </script>
 
 <style scoped>
@@ -29,7 +47,7 @@ const img = new URL(`../assets/thumbnail/${props.video}/0.jpg`, import.meta.url)
 
 <template>
   <v-card class="mx-auto" elevation="2" @click="resetNextSongsAndSetNext()">
-    <v-sheet height="80" class="d-flex">
+    <v-sheet height="80" class="d-flex" :color="color">
       <div class="d-flex me-3">
         <v-btn height="100%" @click.stop="resetNextSongsAndSetNext()" :style="{
           backgroundImage: `url(${img})`,
