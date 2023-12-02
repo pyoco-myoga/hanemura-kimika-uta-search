@@ -35,7 +35,7 @@ type PlaylistElem = {
 }
 type PlaylistFuse = Fuse<PlaylistElem>;
 
-let privateFuse: PlaylistFuse | null = null;
+let privateFuse: Ref<PlaylistFuse | null> = ref(null);
 watch([favoriteSongs, privatePlaylists], () => {
   const favoritePlaylistImage = new URL("../../public/image/16x9/smile.png", import.meta.url).pathname;
   if (privatePlaylists.value === null) {
@@ -54,21 +54,17 @@ watch([favoriteSongs, privatePlaylists], () => {
       ...playlist
     })).sort((a, b) => b.title.localeCompare(a.title))
   ];
-  if (privatePlaylists.value === null) {
-    privateFuse = null;
-  } else {
-    privateFuse = new Fuse(playlists, {
-      shouldSort: true,
-      threshold: 0.4,
-      keys: [
-        "title",
-        "description"
-      ]
-    });
-  }
+  privateFuse.value = new Fuse(playlists, {
+    shouldSort: true,
+    threshold: 0.4,
+    keys: [
+      "title",
+      "description"
+    ]
+  });
 }, {immediate: true});
 
-let officialFuse: PlaylistFuse | null = null;
+let officialFuse: Ref<PlaylistFuse | null> = ref(null);
 watch([recommendedSongs, officialPlaylists], () => {
   const recommendedPlaylistImage = new URL("../../public/image/16x9/angel-smile2.png", import.meta.url).pathname;
   if (officialPlaylists.value === null) {
@@ -87,7 +83,7 @@ watch([recommendedSongs, officialPlaylists], () => {
       ...playlist
     })).sort((a, b) => b.title.localeCompare(a.title))
   ];
-  officialFuse = new Fuse(playlists, {
+  officialFuse.value = new Fuse(playlists, {
     shouldSort: true,
     threshold: 0.4,
     keys: [
