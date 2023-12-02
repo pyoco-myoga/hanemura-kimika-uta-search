@@ -162,7 +162,7 @@ const load = async (state: StateHandler) => {
     </v-row>
   </v-container>
 
-  <template v-for="{uuid, song} in showedSongs" :key="uuid">
+  <template v-for="{uuid, song} in showedSongs" :key="`${result}-${uuid}`">
     <SongCard :video="song.video" :artist="song.artist" :name="song.name" :t="song.t" :endt="song.endt"
       :length="song.length" :sing-type="song.singType" :is-favorite="favoriteSongs?.has(uuid) ?? null" :is-full="false"
       :recommended="song.recommended" @add-favorite="addToFavorite" @remove-favorite="removeFromFavorite" :uuid="uuid" />
