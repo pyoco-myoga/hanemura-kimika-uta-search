@@ -117,7 +117,6 @@ export const officialPlaylistsSubscribe = () => {
 };
 
 export function addToFavorite(songUUID: string) {
-  console.log(favoriteSongs.value);
   if (uidRef.value === null) {
     return;
   }
@@ -132,7 +131,6 @@ export function addToFavorite(songUUID: string) {
 };
 
 export function removeFromFavorite(songUUID: string) {
-  console.log(favoriteSongs.value);
   if (uidRef.value === null) {
     return;
   }

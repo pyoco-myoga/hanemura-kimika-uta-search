@@ -15,6 +15,7 @@ import {
   algoliaIndex,
   Song
 } from "@/common";
+import {onMounted} from "vue";
 
 const params = new URLSearchParams(location.search);
 const q = params.get("q");
@@ -22,6 +23,11 @@ const v = params.get("v");
 
 const searchWord = ref(q || "");
 const filterYoutubeURL = ref(v || "");
+
+onMounted(() => {
+ const newURL = location.href.replace(/\?.*$/, "");
+  window.history.replaceState(newURL, document.title, newURL);
+});
 
 function getVideoID(youtubeUrlOrVideoID: string): string | null {
   const IS_VIDEOID_REGEX = /^[a-zA-Z0-9_-]{11}$/;

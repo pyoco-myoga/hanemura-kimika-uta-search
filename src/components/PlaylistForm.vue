@@ -18,11 +18,11 @@ const title = ref(props.title ?? "");
 const description = ref(props.description ?? "");
 const visibilityRef = ref(props.visibility ?? "private");
 
-function convertRelPathToAbsPath(path: string): string {
-  return new URL(path, import.meta.url).pathname;
+function convertRelPathToPublicPath(path: string): string {
+  return new URL(path, import.meta.url).pathname.replace(/^\/public/, "");
 }
 
-const image = ref(convertRelPathToAbsPath("../../public/image/16x9/angel-smile.png"));
+const image = ref(convertRelPathToPublicPath("../../public/image/16x9/angel-smile.png"));
 const images = import.meta.glob("../../public/image/16x9/*.png");
 </script>
 
@@ -31,18 +31,18 @@ const images = import.meta.glob("../../public/image/16x9/*.png");
     <v-card>
       <v-text-field v-model="title" label="タイトル" single-line />
       <v-textarea v-model="description" label="概要" :max-rows="50" />
-      <!-- <v-switch color="primary" v-model="visibilityRef" true-value="public" false-value="private"> -->
-      <!--   <template v-slot:label> -->
-      <!--     <span :class="visibilityRef ? 'text-black' : 'text-grey-darken-3'">公開する</span> -->
-      <!--   </template> -->
-      <!-- </v-switch> -->
+      <v-switch color="primary" v-model="visibilityRef" true-value="public" false-value="private">
+        <template v-slot:label>
+          <span :class="visibilityRef ? 'text-black' : 'text-grey-darken-3'">公開する(公開機能未実装)</span>
+        </template>
+      </v-switch>
 
       <v-select :v-model="image" label="画像"
-        :items="Object.keys(images).map(path => ({image: convertRelPathToAbsPath(path)}))"
+        :items="Object.keys(images).map(path => ({image: convertRelPathToPublicPath(path)}))"
         :menu-props="{closeOnContentClick: true}">
         <template v-slot:item="{item}">
           <v-list-item @click="image = item.raw.image">
-            <v-img :src="convertRelPathToAbsPath(item.raw.image)" aspect-ratio="16/9" :width="200" cover />
+            <v-img :src="convertRelPathToPublicPath(item.raw.image)" aspect-ratio="16/9" :width="200" cover />
           </v-list-item>
         </template>
       </v-select>
@@ -58,7 +58,7 @@ const images = import.meta.glob("../../public/image/16x9/*.png");
             playlistId,
             title,
             description,
-            imageURL: convertRelPathToAbsPath(image),
+            imageURL: convertRelPathToPublicPath(image),
             songs: songs ?? [],
             visibility: visibilityRef
           });
