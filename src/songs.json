@@ -180,7 +180,7 @@
             "endt": 4687,
             "length": "full",
             "name": "恋するフォーチュンクッキー",
-            "recommended": true,
+            "recommended": false,
             "singType": "known",
             "t": 4431,
             "uuid": "1fec2e72-41e4-461d-9357-f33eb2689092",
@@ -1941,6 +1941,16 @@
             "video": "cMIUIvYyXFc"
         },
         {
+            "endt": 4368,
+            "length": "full",
+            "name": "しゃれこうべ しゃれこうべ",
+            "recommended": false,
+            "singType": "known",
+            "t": 4151,
+            "uuid": "3c254d42-3e52-4c76-9dc1-d1137dc3ee53",
+            "video": "S5KPANdE2Ew"
+        },
+        {
             "endt": 2400,
             "length": "full",
             "name": "ぢきぢき",
@@ -3555,6 +3565,16 @@
             "t": 894,
             "uuid": "4df9140f-570e-4656-b939-a719b7e56fd5",
             "video": "1ZZQvx0qunc"
+        },
+        {
+            "endt": 836,
+            "length": "full",
+            "name": "I Go Alone",
+            "recommended": false,
+            "singType": "known",
+            "t": 699,
+            "uuid": "c14fd8b6-0666-4fb5-b34a-8d2c96eb4ae4",
+            "video": "nLH19le4AOI"
         },
         {
             "endt": 4157,
@@ -5223,6 +5243,16 @@
             "video": "2QfjFbwvSEk"
         },
         {
+            "endt": 7136,
+            "length": "full",
+            "name": "ラブレター",
+            "recommended": false,
+            "singType": "known",
+            "t": 6938,
+            "uuid": "d28dbee5-e253-4a7d-98c7-d6d0347ad6c8",
+            "video": "S5KPANdE2Ew"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "リンダリンダ",
@@ -5236,7 +5266,7 @@
             "endt": 2762,
             "length": "full",
             "name": "リンダリンダ",
-            "recommended": true,
+            "recommended": false,
             "singType": "known",
             "t": 2577,
             "uuid": "2bf1b072-8ed6-49c8-ab72-cb9c221bfe6b",
@@ -5256,7 +5286,7 @@
             "endt": 1779,
             "length": "full",
             "name": "リンダリンダ",
-            "recommended": false,
+            "recommended": true,
             "singType": "known",
             "t": 1587,
             "uuid": "0063d307-5cc2-4174-8b3c-70c3047e6d0e",
@@ -5859,6 +5889,16 @@
             "t": 4816,
             "uuid": "121c1fea-0244-44a0-b953-61eba23568d1",
             "video": "Tvt4KJ5jMiA"
+        },
+        {
+            "endt": 5660,
+            "length": "full",
+            "name": "プライマル。",
+            "recommended": false,
+            "singType": "known",
+            "t": 5410,
+            "uuid": "9cc5aaa2-da5e-46c6-990e-1d3996991bcc",
+            "video": "S5KPANdE2Ew"
         },
         {
             "endt": 10609,
@@ -7185,6 +7225,16 @@
             "video": "rd0cv0P9MHc"
         },
         {
+            "endt": 3692,
+            "length": "full",
+            "name": "不死身のエレキマン",
+            "recommended": false,
+            "singType": "known",
+            "t": 3498,
+            "uuid": "071931c5-3257-4ed8-a284-dba71a91dd9f",
+            "video": "nLH19le4AOI"
+        },
+        {
             "endt": 7653,
             "length": "full",
             "name": "俺たちに明日はない",
@@ -8297,6 +8347,16 @@
             "t": 1866,
             "uuid": "c7031acd-bfef-4017-ab6e-40c77efb6ea2",
             "video": "bhQ0FugDgqw"
+        },
+        {
+            "endt": 3640,
+            "length": "full",
+            "name": "東京",
+            "recommended": false,
+            "singType": "known",
+            "t": 3320,
+            "uuid": "67fc6941-bf15-40f6-a30d-3207e75a20b1",
+            "video": "S5KPANdE2Ew"
         },
         {
             "endt": 956,
@@ -12595,6 +12655,16 @@
             "video": "AlwoKLogVm8"
         },
         {
+            "endt": 2521,
+            "length": "full",
+            "name": "マジックミラー",
+            "recommended": false,
+            "singType": "known",
+            "t": 2217,
+            "uuid": "c6a54083-5de4-476a-8195-6238a07aef87",
+            "video": "nLH19le4AOI"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "ミッドナイト清純異性交流",
@@ -12783,6 +12853,16 @@
             "t": 3535,
             "uuid": "887ed435-add5-4ad0-8662-aabcb8a35677",
             "video": "KoWWDEbG9QM"
+        },
+        {
+            "endt": 6317,
+            "length": "full",
+            "name": "子供じゃないもん17",
+            "recommended": false,
+            "singType": "known",
+            "t": 6107,
+            "uuid": "423ba488-ec5a-4163-aba3-70d6dbe5bbc1",
+            "video": "S5KPANdE2Ew"
         },
         {
             "endt": 1300,
@@ -14213,6 +14293,16 @@
             "video": "JU9xxyrYt6Y"
         },
         {
+            "endt": 7968,
+            "length": "full",
+            "name": "僕らパンクロックで生きていくんだ",
+            "recommended": false,
+            "singType": "known",
+            "t": 7762,
+            "uuid": "75feaae3-2636-41a4-af21-fe6c72c7d636",
+            "video": "S5KPANdE2Ew"
+        },
+        {
             "endt": 3377,
             "length": "full",
             "name": "北極星",
@@ -15543,6 +15633,16 @@
             "t": 5722,
             "uuid": "95b1409c-9187-4159-b0de-71f020bcf805",
             "video": "j4pDjL1N_gU"
+        },
+        {
+            "endt": 4945,
+            "length": "full",
+            "name": "限界突破×サバイバー",
+            "recommended": false,
+            "singType": "known",
+            "t": 4730,
+            "uuid": "4fb45f9e-17a8-4627-b0a5-4b9a7111b9ab",
+            "video": "S5KPANdE2Ew"
         }
     ],
     "浜田雅功&槇原敬之": [
@@ -15936,7 +16036,7 @@
             "endt": 4246,
             "length": "full",
             "name": "アンダルシアに憧れて",
-            "recommended": true,
+            "recommended": false,
             "singType": "known",
             "t": 3982,
             "uuid": "b6485e84-d49c-40ed-9f2f-53986fc2c99d",
@@ -16885,6 +16985,16 @@
             "t": 8109,
             "uuid": "74226b5f-9005-4128-bb5d-84b4cc696bd1",
             "video": "_jESnlcU6NE"
+        },
+        {
+            "endt": 5018,
+            "length": "full",
+            "name": "きみのうた~銀杏BOYZを聴きながら~",
+            "recommended": false,
+            "singType": "known",
+            "t": 4750,
+            "uuid": "1c7b6507-bcfd-4009-b925-801dfcd70ee3",
+            "video": "nLH19le4AOI"
         }
     ],
     "茂森あゆみ&速水けんたろう": [
@@ -17083,6 +17193,18 @@
             "t": 6094,
             "uuid": "0b36e73b-8750-4b2c-aef2-b8aff413be99",
             "video": "P_51rg5kLLU"
+        }
+    ],
+    "越路吹雪": [
+        {
+            "endt": 5094,
+            "length": "short",
+            "name": "愛の讃歌",
+            "recommended": false,
+            "singType": "improvised",
+            "t": 5039,
+            "uuid": "e98bc8f5-06da-43e6-9352-12a8844b5f28",
+            "video": "S5KPANdE2Ew"
         }
     ],
     "銀杏BOYZ": [
@@ -17437,6 +17559,16 @@
             "video": "xiNlG-f_9Mo"
         },
         {
+            "endt": 6710,
+            "length": "full",
+            "name": "メス豚",
+            "recommended": false,
+            "singType": "known",
+            "t": 6588,
+            "uuid": "c8a46880-a075-4726-b13d-e960bd2a619f",
+            "video": "S5KPANdE2Ew"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "人間",
@@ -17765,6 +17897,16 @@
             "t": 4750,
             "uuid": "c0350129-579c-444b-ae8f-5b403dca3f6c",
             "video": "piYn8eSGAmY"
+        },
+        {
+            "endt": 2591,
+            "length": "full",
+            "name": "東京",
+            "recommended": false,
+            "singType": "known",
+            "t": 2078,
+            "uuid": "8aea79e2-5243-4d2e-9160-df231cc6c1c2",
+            "video": "S5KPANdE2Ew"
         },
         {
             "endt": 696,
