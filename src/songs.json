@@ -535,6 +535,16 @@
             "video": "6IHtwQ3UGhg"
         },
         {
+            "endt": 4560,
+            "length": "full",
+            "name": "K",
+            "recommended": false,
+            "singType": "improvised",
+            "t": 4285,
+            "uuid": "991d8c3e-0856-4a00-8876-40099ec6889d",
+            "video": "QkCSABl9djU"
+        },
+        {
             "endt": 5874,
             "length": "full",
             "name": "Laugh Maker",
@@ -733,6 +743,16 @@
             "t": 13102,
             "uuid": "c40a89b1-f78b-4ec3-afda-e836168bd3fe",
             "video": "TwhEO1OmEEg"
+        },
+        {
+            "endt": 5683,
+            "length": "full",
+            "name": "ダンデライオン",
+            "recommended": false,
+            "singType": "known",
+            "t": 5505,
+            "uuid": "7d6db19c-f481-41c4-8ed9-b13bea25ba21",
+            "video": "QkCSABl9djU"
         },
         {
             "endt": 3473,
@@ -1551,6 +1571,26 @@
             "t": 1959,
             "uuid": "6e6263a1-6de4-41b0-9a2f-5548ee16811a",
             "video": "cMIUIvYyXFc"
+        },
+        {
+            "endt": 8015,
+            "length": "full",
+            "name": "こいのうた",
+            "recommended": false,
+            "singType": "known",
+            "t": 7668,
+            "uuid": "8f4a6d3e-6ef3-41ee-b0a1-926940b6a00e",
+            "video": "QkCSABl9djU"
+        },
+        {
+            "endt": 6578,
+            "length": "full",
+            "name": "とかげ3号",
+            "recommended": false,
+            "singType": "known",
+            "t": 6407,
+            "uuid": "2e75a220-ac9f-41a2-8322-704d3600888a",
+            "video": "QkCSABl9djU"
         }
     ],
     "GOING STEADY": [
@@ -3047,6 +3087,16 @@
             "t": 5866,
             "uuid": "dba57f41-ac26-4563-b1c9-bbc099141f92",
             "video": "v3MocqSjBL4"
+        },
+        {
+            "endt": 6190,
+            "length": "full",
+            "name": "くじら12号",
+            "recommended": false,
+            "singType": "known",
+            "t": 5971,
+            "uuid": "841ddcb7-6f91-4f90-9b9b-72d4c27905c2",
+            "video": "QkCSABl9djU"
         },
         {
             "endt": null,
@@ -6117,6 +6167,16 @@
             "t": 5543,
             "uuid": "e44f18fa-2a1e-412f-8100-bce3c52b4d0e",
             "video": "xBwOc_0dnSQ"
+        },
+        {
+            "endt": 4073,
+            "length": "full",
+            "name": "怪獣の花唄",
+            "recommended": false,
+            "singType": "known",
+            "t": 3843,
+            "uuid": "f0456a1a-1e89-4382-ab64-cb8492dc3102",
+            "video": "QkCSABl9djU"
         }
     ],
     "Whiteberry": [
@@ -6399,6 +6459,16 @@
             "video": "xiNlG-f_9Mo"
         },
         {
+            "endt": 3706,
+            "length": "full",
+            "name": "カブトムシ",
+            "recommended": false,
+            "singType": "known",
+            "t": 3395,
+            "uuid": "a5ba4a0b-460b-4dd7-b670-d8d0c268a2b7",
+            "video": "QkCSABl9djU"
+        },
+        {
             "endt": 5958,
             "length": "full",
             "name": "花火",
@@ -6649,6 +6719,16 @@
             "t": 5783,
             "uuid": "33078b58-45af-4708-9bbc-7460775d4fd8",
             "video": "eT5TOuPGRRY"
+        },
+        {
+            "endt": 5291,
+            "length": "full",
+            "name": "ベンガルトラとウィスキー",
+            "recommended": false,
+            "singType": "known",
+            "t": 5123,
+            "uuid": "6d63bc8c-cf65-4b63-8f91-551365f2e5cf",
+            "video": "QkCSABl9djU"
         },
         {
             "endt": 5908,
@@ -10353,6 +10433,16 @@
             "video": "TC0BHNSHbgE"
         },
         {
+            "endt": 3067,
+            "length": "full",
+            "name": "くじらなわ",
+            "recommended": false,
+            "singType": "known",
+            "t": 2982,
+            "uuid": "67155267-1bee-4404-922a-2b8879dd251b",
+            "video": "QkCSABl9djU"
+        },
+        {
             "endt": 5016,
             "length": "full",
             "name": "ギリギリガガンガン",
@@ -11231,6 +11321,16 @@
             "t": 7121,
             "uuid": "f06159ba-50ef-429e-a222-38ad74cf74bc",
             "video": "cQifuD4aQrg"
+        },
+        {
+            "endt": 2511,
+            "length": "full",
+            "name": "ハム太郎とっとこうた",
+            "recommended": false,
+            "singType": "known",
+            "t": 2434,
+            "uuid": "93d537c4-fa70-44fb-8cea-ba0a83f068be",
+            "video": "QkCSABl9djU"
         }
     ],
     "ピンク・レディー": [
@@ -12925,6 +13025,16 @@
             "video": "F7brX4O5bRM"
         },
         {
+            "endt": 2788,
+            "length": "short",
+            "name": "焼肉デート",
+            "recommended": false,
+            "singType": "improvised",
+            "t": 2715,
+            "uuid": "14300529-6487-4589-b9e7-2e0bf37615b6",
+            "video": "QkCSABl9djU"
+        },
+        {
             "endt": 4125,
             "length": "full",
             "name": "絶対彼女",
@@ -13045,6 +13155,18 @@
             "t": 1724,
             "uuid": "fa6439ee-e672-493a-acd0-9992ae316345",
             "video": "DaV6YRDGbMs"
+        }
+    ],
+    "大石昌良": [
+        {
+            "endt": 7324,
+            "length": "short",
+            "name": "ようこそジャパリパークへ",
+            "recommended": false,
+            "singType": "improvised",
+            "t": 7190,
+            "uuid": "7d84bae6-59a6-4b2d-a846-eb2d87580e7f",
+            "video": "QkCSABl9djU"
         }
     ],
     "天月-あまつき-": [
@@ -14431,6 +14553,16 @@
             "t": 5999,
             "uuid": "e3ce6de0-4bf7-4ef0-bba5-647b85021d56",
             "video": "gC5t3yQjrFU"
+        },
+        {
+            "endt": 1527,
+            "length": "full",
+            "name": "犬にしてくれ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1343,
+            "uuid": "037da056-0969-4caa-81da-42f889e131ff",
+            "video": "QkCSABl9djU"
         },
         {
             "endt": 2847,
@@ -15895,6 +16027,16 @@
             "t": 4793,
             "uuid": "b8469b8c-8703-409f-8834-3edfde360079",
             "video": "SFwGbSgZ0HY"
+        },
+        {
+            "endt": 2089,
+            "length": "full",
+            "name": "ニャースのうた",
+            "recommended": false,
+            "singType": "known",
+            "t": 1894,
+            "uuid": "f5e40f50-4257-4007-9891-ccc5fc533254",
+            "video": "QkCSABl9djU"
         }
     ],
     "瑛人": [
