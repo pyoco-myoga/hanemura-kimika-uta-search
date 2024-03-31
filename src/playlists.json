@@ -69,5 +69,16 @@
                 "name": ""
             }
         ]
+    },
+    "4857ba86-16cc-42bc-bfb3-39441155fcc7": {
+        "title": "けいおん",
+        "description": "放課後ティータイムのプレイリスト",
+        "image": "/image/16x9/smile.png",
+        "filters": [
+            {
+                "artist": "放課後ティータイム",
+                "name": ""
+            }
+        ]
     }
 }

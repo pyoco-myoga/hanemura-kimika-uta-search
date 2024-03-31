@@ -677,6 +677,16 @@
             "video": "qvTeTqN2vCI"
         },
         {
+            "endt": 5361,
+            "length": "full",
+            "name": "アルエ",
+            "recommended": false,
+            "singType": "known",
+            "t": 5127,
+            "uuid": "1c363d88-9e6b-4bfe-82e7-344d92a33bf1",
+            "video": "YUzbawX5bIw"
+        },
+        {
             "endt": 5716,
             "length": "short",
             "name": "カルマ",
@@ -785,6 +795,16 @@
             "t": 1320,
             "uuid": "09c79f78-ddd8-4e33-9b87-0021ada1fbec",
             "video": "tUCNNHiUsu8"
+        },
+        {
+            "endt": 4500,
+            "length": "full",
+            "name": "ガラスのブルース",
+            "recommended": false,
+            "singType": "known",
+            "t": 4154,
+            "uuid": "05cef423-868f-4c2d-96bc-94a3517a5514",
+            "video": "tErmirQ5fSE"
         },
         {
             "endt": 6273,
@@ -1277,6 +1297,16 @@
             "video": "VB7oDws4b4I"
         },
         {
+            "endt": 1939,
+            "length": "full",
+            "name": "車輪の唄",
+            "recommended": false,
+            "singType": "known",
+            "t": 1672,
+            "uuid": "ad1a9b1f-31dd-424a-b9bf-997d38cb9248",
+            "video": "4Q4wXtMkQ5c"
+        },
+        {
             "endt": 2353,
             "length": "short",
             "name": "魔法の料理 ~君から君へ~",
@@ -1367,6 +1397,16 @@
             "t": 1960,
             "uuid": "20bd667b-6b3a-4d62-b73d-0e3a2de2fc5e",
             "video": "h76ssZe39Do"
+        },
+        {
+            "endt": 965,
+            "length": "full",
+            "name": "初恋サイダー",
+            "recommended": false,
+            "singType": "known",
+            "t": 747,
+            "uuid": "96b40123-a167-45ed-b525-ed02af554ec5",
+            "video": "zxHCrqjOX4o"
         }
     ],
     "B小町": [
@@ -1727,6 +1767,16 @@
             "video": "l57pc6mjqLY"
         },
         {
+            "endt": 1352,
+            "length": "full",
+            "name": "C7",
+            "recommended": false,
+            "singType": "known",
+            "t": 1105,
+            "uuid": "6de48eb5-4e78-420b-b118-2646bdb2ee36",
+            "video": "4Q4wXtMkQ5c"
+        },
+        {
             "endt": 2416,
             "length": "full",
             "name": "こいのうた",
@@ -1820,7 +1870,7 @@
             "endt": 5581,
             "length": "full",
             "name": "こいのうた",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 5237,
             "uuid": "32eb56fb-ff31-475c-ba76-d1ff840aa334",
@@ -1837,10 +1887,20 @@
             "video": "QkCSABl9djU"
         },
         {
+            "endt": 2297,
+            "length": "full",
+            "name": "とかげ3号",
+            "recommended": false,
+            "singType": "known",
+            "t": 2141,
+            "uuid": "d549972d-1097-4427-9e22-1cd706b9c589",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": 5844,
             "length": "short",
             "name": "浮舟",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 5758,
             "uuid": "c12bebd4-7d9f-467c-8ab8-19f3fabb4e10",
@@ -2002,7 +2062,7 @@
             "endt": 2279,
             "length": "full",
             "name": "グレープフルーツムーン",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 2043,
             "uuid": "1dd1db20-f2c2-43cd-a112-fa13d196fbf0",
@@ -2047,6 +2107,26 @@
             "t": 5696,
             "uuid": "ea5f1811-a9f0-4314-9a58-564c9b149f80",
             "video": "6vD3BK3xz0I"
+        },
+        {
+            "endt": 3150,
+            "length": "full",
+            "name": "佳代",
+            "recommended": false,
+            "singType": "known",
+            "t": 2835,
+            "uuid": "447a2c75-1167-4b98-9a43-9c49478d9a11",
+            "video": "YUzbawX5bIw"
+        },
+        {
+            "endt": 7175,
+            "length": "full",
+            "name": "佳代",
+            "recommended": false,
+            "singType": "known",
+            "t": 6830,
+            "uuid": "a4565aaf-95a5-4355-ac19-2262c0b7ec1e",
+            "video": "ttWw5t0BlYo"
         },
         {
             "endt": 9007,
@@ -2505,6 +2585,16 @@
             "t": 3669,
             "uuid": "01a47806-4c12-4a26-96ec-dc15f7465ff6",
             "video": "JUf40BrGCvY"
+        },
+        {
+            "endt": 4473,
+            "length": "full",
+            "name": "引っ越し",
+            "recommended": false,
+            "singType": "known",
+            "t": 4244,
+            "uuid": "d145e7b7-fe0e-4335-9410-d19435986c9a",
+            "video": "cz_Fs1qFcF4"
         }
     ],
     "Hi-STANDARD": [
@@ -2617,6 +2707,16 @@
             "t": 7685,
             "uuid": "f2d29717-f08c-4589-b089-5fd582315277",
             "video": "zlfH-xqlqyg"
+        },
+        {
+            "endt": 2954,
+            "length": "full",
+            "name": "DEAR MY FRIEND",
+            "recommended": false,
+            "singType": "known",
+            "t": 2771,
+            "uuid": "f50db01a-330e-4a5c-a93b-50fd1d3ddcc0",
+            "video": "cz_Fs1qFcF4"
         },
         {
             "endt": 2890,
@@ -3131,6 +3231,16 @@
             "video": "pf3b8MJQgiI"
         },
         {
+            "endt": 3873,
+            "length": "full",
+            "name": "可愛くてごめん",
+            "recommended": false,
+            "singType": "known",
+            "t": 3648,
+            "uuid": "7282c9c4-726f-4b2b-ab74-7b4acfe818da",
+            "video": "zxHCrqjOX4o"
+        },
+        {
             "endt": 3054,
             "length": "full",
             "name": "男の子の目的は何?",
@@ -3296,7 +3406,7 @@
             "endt": 4878,
             "length": "full",
             "name": "春 ~spring~",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 4646,
             "uuid": "294761e2-9064-4bac-85b8-0aab57cbebed",
@@ -3418,11 +3528,21 @@
             "endt": 4280,
             "length": "full",
             "name": "BLUE TEARS",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 4070,
             "uuid": "f69ae1b3-d34a-4686-b06c-7bda2dd20a28",
             "video": "m6NsIgeVkxk"
+        },
+        {
+            "endt": 5971,
+            "length": "full",
+            "name": "BLUE TEARS",
+            "recommended": false,
+            "singType": "known",
+            "t": 5775,
+            "uuid": "71754501-8bda-472e-98b2-d8a915b57d42",
+            "video": "YUzbawX5bIw"
         },
         {
             "endt": 6768,
@@ -3545,6 +3665,16 @@
             "video": "ZKFk4HCPrJQ"
         },
         {
+            "endt": 1529,
+            "length": "full",
+            "name": "Over Drive",
+            "recommended": false,
+            "singType": "known",
+            "t": 1295,
+            "uuid": "61d623a9-3f0d-4c5b-9c68-6e292000dd50",
+            "video": "VImNbe8fcFI"
+        },
+        {
             "endt": 8374,
             "length": "full",
             "name": "The Great Escape",
@@ -3603,6 +3733,16 @@
             "t": 5971,
             "uuid": "841ddcb7-6f91-4f90-9b9b-72d4c27905c2",
             "video": "QkCSABl9djU"
+        },
+        {
+            "endt": 3427,
+            "length": "full",
+            "name": "くじら12号",
+            "recommended": false,
+            "singType": "known",
+            "t": 3204,
+            "uuid": "689076be-8bdd-4a97-b175-ebdcbc08d374",
+            "video": "4Q4wXtMkQ5c"
         },
         {
             "endt": null,
@@ -3723,6 +3863,16 @@
             "t": 5803,
             "uuid": "d32109b9-dc8d-447e-9fa6-e0f1a24c9e10",
             "video": "ZKFk4HCPrJQ"
+        },
+        {
+            "endt": 3642,
+            "length": "full",
+            "name": "そばかす",
+            "recommended": false,
+            "singType": "known",
+            "t": 3409,
+            "uuid": "0464614b-3f14-4582-a9a3-64787c20b5d0",
+            "video": "tErmirQ5fSE"
         },
         {
             "endt": 3748,
@@ -4027,6 +4177,16 @@
             "t": 4525,
             "uuid": "56f0d266-3407-4a14-a607-21e19b947c5e",
             "video": "MTe2CAau8OY"
+        },
+        {
+            "endt": 2830,
+            "length": "full",
+            "name": "シルエット",
+            "recommended": false,
+            "singType": "known",
+            "t": 2593,
+            "uuid": "2d0e2de4-4d34-47e9-85e7-b19efb78d2ef",
+            "video": "PVEBIE-cUyI"
         }
     ],
     "Kanaria": [
@@ -4146,7 +4306,7 @@
             "endt": 718,
             "length": "full",
             "name": "Can't Take My Eyes Off Of You",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 534,
             "uuid": "dbb69bba-14a0-4a2d-89b3-5a3c590c0bb3",
@@ -4301,6 +4461,16 @@
             "t": 1368,
             "uuid": "d96956ee-4571-4559-b0fb-757b073c0a69",
             "video": "SQq8B4pdp20"
+        },
+        {
+            "endt": 4760,
+            "length": "full",
+            "name": "I Go Alone",
+            "recommended": false,
+            "singType": "known",
+            "t": 4601,
+            "uuid": "f7dced4a-872b-4b53-90af-e34154bc54da",
+            "video": "PVEBIE-cUyI"
         },
         {
             "endt": 4157,
@@ -4579,6 +4749,16 @@
             "t": 3252,
             "uuid": "39addf3f-5633-44f5-978d-76d21fee0083",
             "video": "K2t1wlhkWks"
+        },
+        {
+            "endt": 4171,
+            "length": "full",
+            "name": "小さな恋のうた",
+            "recommended": false,
+            "singType": "known",
+            "t": 3940,
+            "uuid": "d9e4614b-ea9a-4636-b9e7-f93936e64d71",
+            "video": "PVEBIE-cUyI"
         }
     ],
     "Mi": [
@@ -4795,6 +4975,16 @@
             "t": 5792,
             "uuid": "b68be417-8ef4-4f79-a2e8-d6580980aa1b",
             "video": "Ws1GLgo2YCI"
+        },
+        {
+            "endt": 1761,
+            "length": "full",
+            "name": "ファンサ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1503,
+            "uuid": "e59fa4ad-bbf4-4de1-b1bf-09c426e6ee74",
+            "video": "l_ppuTeVlyY"
         }
     ],
     "NiziU": [
@@ -5261,6 +5451,16 @@
             "video": "KWbxupx4loA"
         },
         {
+            "endt": 1066,
+            "length": "full",
+            "name": "ふたりごと",
+            "recommended": false,
+            "singType": "known",
+            "t": 777,
+            "uuid": "c0b0c502-863d-4422-bea3-1216ccd2076f",
+            "video": "7p6T8HtMeNo"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "もしも",
@@ -5319,6 +5519,16 @@
             "t": 1157,
             "uuid": "25bee330-b6ba-48c4-aa2b-62112b04e73c",
             "video": "FfPOzHtHfgk"
+        },
+        {
+            "endt": 1324,
+            "length": "full",
+            "name": "セプテンバーさん",
+            "recommended": false,
+            "singType": "known",
+            "t": 1020,
+            "uuid": "72215dd5-091d-4fac-b9c5-97aecfabce85",
+            "video": "YUzbawX5bIw"
         },
         {
             "endt": 5018,
@@ -5537,6 +5747,16 @@
             "t": 2173,
             "uuid": "c68ca3bf-a940-4970-9a1f-11d07938a905",
             "video": "SFwGbSgZ0HY"
+        },
+        {
+            "endt": 5756,
+            "length": "full",
+            "name": "RPG",
+            "recommended": false,
+            "singType": "known",
+            "t": 5475,
+            "uuid": "8fb4f3d6-e2fb-4a5a-83c8-58dd21e89dee",
+            "video": "__7grAgjm-Y"
         }
     ],
     "SHAKALABBITS": [
@@ -5649,6 +5869,16 @@
             "t": 7557,
             "uuid": "7ae1de7f-cf63-454c-83ea-3c1a90d1864a",
             "video": "awrpoBd1ono"
+        },
+        {
+            "endt": 1895,
+            "length": "full",
+            "name": "星空の下で",
+            "recommended": false,
+            "singType": "known",
+            "t": 1680,
+            "uuid": "6f67d8e6-d9fe-4343-af99-b01c71719311",
+            "video": "PVEBIE-cUyI"
         },
         {
             "endt": 7051,
@@ -6037,6 +6267,26 @@
             "video": "isKkfZ-EZrk"
         },
         {
+            "endt": 976,
+            "length": "full",
+            "name": "コバルトブルー",
+            "recommended": false,
+            "singType": "known",
+            "t": 765,
+            "uuid": "1d51dc5d-2c8d-487d-8455-44ab810753e3",
+            "video": "VImNbe8fcFI"
+        },
+        {
+            "endt": 5026,
+            "length": "full",
+            "name": "コバルトブルー",
+            "recommended": false,
+            "singType": "known",
+            "t": 4800,
+            "uuid": "aaf63e01-5016-4bfd-a40c-b87fe522eaed",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": 1598,
             "length": "full",
             "name": "冬のミルク",
@@ -6087,6 +6337,16 @@
             "t": 1917,
             "uuid": "fde06cd2-4376-44e6-a9b1-1505b43fc337",
             "video": "DF164rEd4Lg"
+        },
+        {
+            "endt": 1475,
+            "length": "full",
+            "name": "22:22",
+            "recommended": false,
+            "singType": "known",
+            "t": 1342,
+            "uuid": "e7439411-0534-4782-918f-455be6c5585f",
+            "video": "tErmirQ5fSE"
         },
         {
             "endt": 4396,
@@ -6329,6 +6589,16 @@
             "video": "kWcnApxbjS4"
         },
         {
+            "endt": 2203,
+            "length": "full",
+            "name": "キスしてほしい",
+            "recommended": false,
+            "singType": "known",
+            "t": 2015,
+            "uuid": "66a0413a-8458-431d-befb-fc4148052bc2",
+            "video": "PVEBIE-cUyI"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "シャララ",
@@ -6559,6 +6829,16 @@
             "video": "Tvt4KJ5jMiA"
         },
         {
+            "endt": 1856,
+            "length": "full",
+            "name": "夕暮れ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1589,
+            "uuid": "8ae2972b-cc24-4e11-91c1-d34d03ed013a",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": 1326,
             "length": "short",
             "name": "夜の盗賊団",
@@ -6689,6 +6969,16 @@
             "video": "gRhsjqjZQOg"
         },
         {
+            "endt": 995,
+            "length": "full",
+            "name": "歩く花",
+            "recommended": false,
+            "singType": "known",
+            "t": 752,
+            "uuid": "50b23a3e-c245-4fa3-b219-b71b8ba9f198",
+            "video": "cz_Fs1qFcF4"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "皆殺しのメロディ",
@@ -6797,6 +7087,16 @@
             "t": 5948,
             "uuid": "2b339af4-bfd2-42c5-a2c0-c9f3f6f5fef7",
             "video": "DF164rEd4Lg"
+        },
+        {
+            "endt": 5324,
+            "length": "full",
+            "name": "青空",
+            "recommended": false,
+            "singType": "known",
+            "t": 5063,
+            "uuid": "f59434b9-1fe3-4909-90c0-137009c3ec7b",
+            "video": "zxHCrqjOX4o"
         }
     ],
     "THE BOOM": [
@@ -6983,6 +7283,26 @@
             "video": "KWRh56a67pI"
         },
         {
+            "endt": 3960,
+            "length": "full",
+            "name": "パレードは続く",
+            "recommended": false,
+            "singType": "known",
+            "t": 3652,
+            "uuid": "bf05f8fd-f730-44ea-872b-9697829dc64c",
+            "video": "7p6T8HtMeNo"
+        },
+        {
+            "endt": 6047,
+            "length": "full",
+            "name": "パレードは続く",
+            "recommended": false,
+            "singType": "known",
+            "t": 5744,
+            "uuid": "af87e078-650a-430c-bc3f-901de777efdf",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": 1148,
             "length": "short",
             "name": "ボーイ",
@@ -7065,6 +7385,16 @@
             "t": 4341,
             "uuid": "aee35270-2139-4448-8607-6ea675b605fa",
             "video": "SQq8B4pdp20"
+        },
+        {
+            "endt": 1970,
+            "length": "full",
+            "name": "JAM",
+            "recommended": false,
+            "singType": "known",
+            "t": 1687,
+            "uuid": "7934dd56-3c91-4a77-bed1-db0bb302526f",
+            "video": "cz_Fs1qFcF4"
         },
         {
             "endt": 7834,
@@ -7175,6 +7505,16 @@
             "t": 5410,
             "uuid": "9cc5aaa2-da5e-46c6-990e-1d3996991bcc",
             "video": "S5KPANdE2Ew"
+        },
+        {
+            "endt": 6509,
+            "length": "full",
+            "name": "プライマル。",
+            "recommended": false,
+            "singType": "known",
+            "t": 6269,
+            "uuid": "7e26668a-c636-4dd6-9f0a-666e274ec20a",
+            "video": "ttWw5t0BlYo"
         },
         {
             "endt": 10609,
@@ -7351,6 +7691,16 @@
             "video": "MjujyA2aTKA"
         },
         {
+            "endt": 2461,
+            "length": "full",
+            "name": "我に返るスキマを埋めろ",
+            "recommended": false,
+            "singType": "known",
+            "t": 2207,
+            "uuid": "a81dc375-0348-4120-a9fd-b2d2683aee69",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": 4897,
             "length": "full",
             "name": "脳",
@@ -7473,6 +7823,16 @@
             "t": 700,
             "uuid": "34284283-0f73-4d47-b98a-2382eee9769b",
             "video": "tMqbWrAOer0"
+        },
+        {
+            "endt": 4487,
+            "length": "full",
+            "name": "怪獣の花唄",
+            "recommended": false,
+            "singType": "known",
+            "t": 4250,
+            "uuid": "df779dab-8747-4eb9-8825-cf81bb692a3a",
+            "video": "7p6T8HtMeNo"
         }
     ],
     "Whiteberry": [
@@ -7515,6 +7875,16 @@
             "t": 7084,
             "uuid": "ecab870d-d09f-44a6-8f70-2cc8d5519e3a",
             "video": "Eve0fkupAH4"
+        },
+        {
+            "endt": 2626,
+            "length": "full",
+            "name": "夏祭り",
+            "recommended": false,
+            "singType": "known",
+            "t": 2422,
+            "uuid": "1e50c340-0f64-47aa-ac7a-0fb77c75e916",
+            "video": "YUzbawX5bIw"
         }
     ],
     "YOASOBI": [
@@ -8010,7 +8380,7 @@
             "endt": 4562,
             "length": "full",
             "name": "CITY LIGHTS",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 4412,
             "uuid": "c7c90dda-02b2-4e0f-826d-67b1496b0936",
@@ -8157,6 +8527,16 @@
             "video": "tUCNNHiUsu8"
         },
         {
+            "endt": 2617,
+            "length": "full",
+            "name": "ベンガルトラとウィスキー",
+            "recommended": false,
+            "singType": "known",
+            "t": 2452,
+            "uuid": "08384e9b-7703-49b0-9030-7c7c55485583",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": 5908,
             "length": "full",
             "name": "君はダイヤモンドの輝き",
@@ -8235,6 +8615,16 @@
             "t": 1750,
             "uuid": "9c52975f-75f4-458f-bb8f-ebd677b65d4e",
             "video": "FfPOzHtHfgk"
+        },
+        {
+            "endt": 893,
+            "length": "full",
+            "name": "革命",
+            "recommended": false,
+            "singType": "known",
+            "t": 789,
+            "uuid": "523dc0d3-b5f8-412b-be68-12d1ab1f6057",
+            "video": "4Q4wXtMkQ5c"
         }
     ],
     "asmi": [
@@ -8477,6 +8867,16 @@
             "t": 3858,
             "uuid": "08295cd6-178f-4fee-849b-eb55c59f45a1",
             "video": "awrpoBd1ono"
+        },
+        {
+            "endt": 4923,
+            "length": "full",
+            "name": "9月になること",
+            "recommended": false,
+            "singType": "known",
+            "t": 4667,
+            "uuid": "4b3e4679-1dbf-42f3-ae83-86ac12b37bbb",
+            "video": "YUzbawX5bIw"
         },
         {
             "endt": 3877,
@@ -9395,6 +9795,16 @@
             "video": "xHN4c8lxhdg"
         },
         {
+            "endt": 3842,
+            "length": "full",
+            "name": "マリーゴールド",
+            "recommended": false,
+            "singType": "known",
+            "t": 3541,
+            "uuid": "574e9187-ca46-4cdb-86a7-451b09fefa1d",
+            "video": "VImNbe8fcFI"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "君はロックを聴かない",
@@ -9735,6 +10145,16 @@
             "video": "l57pc6mjqLY"
         },
         {
+            "endt": 2902,
+            "length": "full",
+            "name": "クロノスタシス",
+            "recommended": false,
+            "singType": "known",
+            "t": 2728,
+            "uuid": "0274f904-d878-43c4-9c0f-fb8c44d467d0",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": 2841,
             "length": "full",
             "name": "春と修羅",
@@ -10025,6 +10445,16 @@
             "t": 5684,
             "uuid": "86bc815a-11e9-4a6a-9478-c0c0f26af10d",
             "video": "SQq8B4pdp20"
+        },
+        {
+            "endt": 1137,
+            "length": "full",
+            "name": "カレーの歌",
+            "recommended": false,
+            "singType": "known",
+            "t": 944,
+            "uuid": "f6dd0591-2cf1-4c70-bcb3-f61688417197",
+            "video": "__7grAgjm-Y"
         },
         {
             "endt": 3056,
@@ -10397,6 +10827,16 @@
             "t": 3023,
             "uuid": "68d845ee-6ad8-451b-a9f6-3b2472a77919",
             "video": "Eve0fkupAH4"
+        },
+        {
+            "endt": 3009,
+            "length": "full",
+            "name": "モッシュレース",
+            "recommended": false,
+            "singType": "known",
+            "t": 2819,
+            "uuid": "3ba8c5c9-3222-4967-b4d2-4781a441ab81",
+            "video": "VImNbe8fcFI"
         }
     ],
     "しぐれうい": [
@@ -10587,6 +11027,16 @@
             "t": 6490,
             "uuid": "ba836973-e56f-4102-8450-15be9883fc06",
             "video": "FfPOzHtHfgk"
+        },
+        {
+            "endt": 4279,
+            "length": "full",
+            "name": "風になる",
+            "recommended": false,
+            "singType": "known",
+            "t": 4007,
+            "uuid": "ef9f6a09-e0b8-47bd-a8f6-57976efcf514",
+            "video": "VImNbe8fcFI"
         }
     ],
     "めいちゃん": [
@@ -10817,6 +11267,16 @@
             "video": "cMIUIvYyXFc"
         },
         {
+            "endt": 5203,
+            "length": "full",
+            "name": "発光体",
+            "recommended": false,
+            "singType": "known",
+            "t": 5071,
+            "uuid": "ef1d3e81-c692-47d9-ae27-5411d9480439",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": 8951,
             "length": "short",
             "name": "空洞です",
@@ -11036,7 +11496,7 @@
             "endt": 1859,
             "length": "full",
             "name": "今宵の月のように",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 1620,
             "uuid": "23d8db09-99a2-4172-851f-4f739ee444f8",
@@ -11277,6 +11737,16 @@
             "video": "76XmiF-6evQ"
         },
         {
+            "endt": 6384,
+            "length": "full",
+            "name": "全ては変わった",
+            "recommended": false,
+            "singType": "known",
+            "t": 6050,
+            "uuid": "57db254e-68e3-42f4-9e3b-341d98045e18",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": null,
             "length": "full",
             "name": "卒業",
@@ -11367,6 +11837,16 @@
             "video": "9k4o4eb9XKY"
         },
         {
+            "endt": 6089,
+            "length": "full",
+            "name": "卒業",
+            "recommended": false,
+            "singType": "known",
+            "t": 5848,
+            "uuid": "221fc349-adef-4b0f-b873-eafe555c4fdf",
+            "video": "ttWw5t0BlYo"
+        },
+        {
             "endt": 1759,
             "length": "full",
             "name": "告白",
@@ -11395,6 +11875,16 @@
             "t": 1022,
             "uuid": "52b8bc8b-6eed-4b99-9ed6-2ffc4ed68d30",
             "video": "lYZbkKlvDeI"
+        },
+        {
+            "endt": 4494,
+            "length": "full",
+            "name": "告白",
+            "recommended": false,
+            "singType": "known",
+            "t": 4274,
+            "uuid": "8f720e7e-baad-4d19-b9a2-90822dae4138",
+            "video": "YUzbawX5bIw"
         },
         {
             "endt": 12991,
@@ -11517,6 +12007,16 @@
             "video": "fCJMdTsZx9o"
         },
         {
+            "endt": 4963,
+            "length": "full",
+            "name": "忘れられない日々",
+            "recommended": false,
+            "singType": "known",
+            "t": 4716,
+            "uuid": "645b0140-4e98-47b1-b613-0ddfc484408b",
+            "video": "cz_Fs1qFcF4"
+        },
+        {
             "endt": 2184,
             "length": "full",
             "name": "日暮し",
@@ -11545,6 +12045,16 @@
             "t": 3088,
             "uuid": "c7d5b078-e1c3-459d-b223-9229d18554e7",
             "video": "O35uA39zK3I"
+        },
+        {
+            "endt": 3183,
+            "length": "full",
+            "name": "日暮し",
+            "recommended": false,
+            "singType": "known",
+            "t": 2923,
+            "uuid": "10a1fc58-f273-4321-ad70-ee18974fc11d",
+            "video": "tErmirQ5fSE"
         },
         {
             "endt": 5537,
@@ -12049,6 +12559,36 @@
             "video": "MjujyA2aTKA"
         },
         {
+            "endt": 5390,
+            "length": "full",
+            "name": "おやすみ泣き声、さよなら歌姫",
+            "recommended": false,
+            "singType": "known",
+            "t": 5155,
+            "uuid": "95774cbf-9b9a-44e5-bcf2-0db8a565f576",
+            "video": "cz_Fs1qFcF4"
+        },
+        {
+            "endt": 5857,
+            "length": "full",
+            "name": "おやすみ泣き声、さよなら歌姫",
+            "recommended": false,
+            "singType": "known",
+            "t": 5622,
+            "uuid": "97524060-a9ad-440c-9ed1-a4f030ddc8a8",
+            "video": "zxHCrqjOX4o"
+        },
+        {
+            "endt": 5466,
+            "length": "full",
+            "name": "おやすみ泣き声、さよなら歌姫",
+            "recommended": false,
+            "singType": "known",
+            "t": 5225,
+            "uuid": "290220ca-d411-42d8-9ca3-0e73323883f5",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": 1493,
             "length": "full",
             "name": "かえるの唄",
@@ -12117,6 +12657,16 @@
             "t": 719,
             "uuid": "23930555-3b42-4255-be0f-0aee2668e950",
             "video": "xHN4c8lxhdg"
+        },
+        {
+            "endt": 1549,
+            "length": "full",
+            "name": "さっきはごめんね、ありがとう",
+            "recommended": false,
+            "singType": "known",
+            "t": 1352,
+            "uuid": "90494dbc-892b-4b07-a562-9c2ed2ec6279",
+            "video": "PVEBIE-cUyI"
         },
         {
             "endt": 1803,
@@ -12257,6 +12807,16 @@
             "t": 5173,
             "uuid": "46f977b0-ec60-4aeb-a578-793e7bfd690c",
             "video": "kWcnApxbjS4"
+        },
+        {
+            "endt": 5263,
+            "length": "full",
+            "name": "愛の標識",
+            "recommended": false,
+            "singType": null,
+            "t": 5093,
+            "uuid": "99a13911-86df-4f2e-9455-97d48151240c",
+            "video": "7p6T8HtMeNo"
         },
         {
             "endt": 6083,
@@ -12711,6 +13271,16 @@
             "video": "DF164rEd4Lg"
         },
         {
+            "endt": 2434,
+            "length": "full",
+            "name": "ギリギリガガンガン",
+            "recommended": false,
+            "singType": "known",
+            "t": 2250,
+            "uuid": "c2946d50-cd31-49fc-af01-34f94577e2b1",
+            "video": "4Q4wXtMkQ5c"
+        },
+        {
             "endt": 4056,
             "length": "full",
             "name": "タリホー",
@@ -13127,6 +13697,16 @@
             "video": "VB7oDws4b4I"
         },
         {
+            "endt": 2729,
+            "length": "full",
+            "name": "愛のしるし",
+            "recommended": false,
+            "singType": "known",
+            "t": 2591,
+            "uuid": "69fbdabb-1a40-47ef-8b31-74dc7b0e9057",
+            "video": "VImNbe8fcFI"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "空も飛べるはず",
@@ -13232,11 +13812,21 @@
             "endt": 3749,
             "length": "full",
             "name": "Sunny Day Sunday",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 3597,
             "uuid": "7d191d66-da70-4484-80ac-da517663ca12",
             "video": "m6NsIgeVkxk"
+        },
+        {
+            "endt": 1927,
+            "length": "full",
+            "name": "Sunny Day Sunday",
+            "recommended": false,
+            "singType": "known",
+            "t": 1775,
+            "uuid": "b7e26c39-1c47-4080-a594-365a61d00d5e",
+            "video": "VImNbe8fcFI"
         }
     ],
     "セントチヒロ・チッチ": [
@@ -13279,6 +13869,16 @@
             "t": 825,
             "uuid": "1d141425-0350-4c05-a7eb-9975d94be080",
             "video": "pf3b8MJQgiI"
+        },
+        {
+            "endt": 6563,
+            "length": "full",
+            "name": "夜王子と月の姫",
+            "recommended": false,
+            "singType": "known",
+            "t": 6196,
+            "uuid": "e8ea3356-c9f6-41c2-9f0f-95180bd369c3",
+            "video": "cz_Fs1qFcF4"
         }
     ],
     "チェリッシュ": [
@@ -13358,7 +13958,7 @@
             "endt": 1342,
             "length": "full",
             "name": "ハナノユメ",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 1123,
             "uuid": "41ba4fe0-0958-407f-bff1-ea1138cd292c",
@@ -13445,6 +14045,26 @@
             "t": 11726,
             "uuid": "433b0dfe-fefe-4300-b813-ca305a43b1ca",
             "video": "cise9W9QpVU"
+        },
+        {
+            "endt": 1362,
+            "length": "full",
+            "name": "アンパンマンマーチ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1194,
+            "uuid": "755effc2-d76f-4eb6-a7f5-f22ae731c70f",
+            "video": "cz_Fs1qFcF4"
+        },
+        {
+            "endt": 6570,
+            "length": "full",
+            "name": "アンパンマンマーチ",
+            "recommended": false,
+            "singType": "known",
+            "t": 6395,
+            "uuid": "1a16ff49-6b1a-4e82-b529-a781a64a520d",
+            "video": "VImNbe8fcFI"
         }
     ],
     "ナードマグネット": [
@@ -13759,6 +14379,16 @@
             "t": 6897,
             "uuid": "5c9bd3e8-10cd-416a-87f4-8c41494495ca",
             "video": "-Nwe2Ek7WxQ"
+        },
+        {
+            "endt": 4246,
+            "length": "full",
+            "name": "ハム太郎とっとこうた",
+            "recommended": false,
+            "singType": "known",
+            "t": 4176,
+            "uuid": "37b61607-ef25-4a9c-bea9-5c7d02d6cdaf",
+            "video": "zxHCrqjOX4o"
         }
     ],
     "ピンク・レディー": [
@@ -14125,6 +14755,16 @@
             "video": "DF164rEd4Lg"
         },
         {
+            "endt": 4576,
+            "length": "full",
+            "name": "falling jimmy",
+            "recommended": false,
+            "singType": "known",
+            "t": 4438,
+            "uuid": "ea5cd2a3-a263-402c-adf6-0833f151e0aa",
+            "video": "VImNbe8fcFI"
+        },
+        {
             "endt": 5503,
             "length": "full",
             "name": "ぶっ生き返す",
@@ -14213,6 +14853,16 @@
             "t": 3372,
             "uuid": "28ea9808-35c1-45e8-96a5-4417573728d4",
             "video": "MjujyA2aTKA"
+        },
+        {
+            "endt": 4749,
+            "length": "full",
+            "name": "チューチュー ラブリー ムニムニ ムラムラ プリンプリン ボロン ヌルル レロレロ",
+            "recommended": false,
+            "singType": "known",
+            "t": 4547,
+            "uuid": "d35089ef-45b0-478f-bd8b-3a7b26d652f1",
+            "video": "zxHCrqjOX4o"
         },
         {
             "endt": 6748,
@@ -14349,6 +14999,16 @@
             "t": 7944,
             "uuid": "443d546e-33ce-4350-8b14-e31386ef4d91",
             "video": "UNkILr8yJuc"
+        },
+        {
+            "endt": 3898,
+            "length": "full",
+            "name": "サイケな恋人",
+            "recommended": false,
+            "singType": "known",
+            "t": 3582,
+            "uuid": "6e35712b-2ffd-4fd9-ab0b-b1e2d2034ba9",
+            "video": "cz_Fs1qFcF4"
         }
     ],
     "ヤバいTシャツ屋さん": [
@@ -14635,6 +15295,16 @@
             "t": 2734,
             "uuid": "8cb3fe77-cafa-4df7-bf87-1b4819869d64",
             "video": "JUf40BrGCvY"
+        },
+        {
+            "endt": 5612,
+            "length": "short",
+            "name": "サクラカウントダウン",
+            "recommended": false,
+            "singType": "known",
+            "t": 5388,
+            "uuid": "455ae81e-1d0f-4125-ab29-62522623152a",
+            "video": "ttWw5t0BlYo"
         }
     ],
     "井上あずみ": [
@@ -14813,6 +15483,16 @@
             "t": 1851,
             "uuid": "41f775ef-8ea0-46d0-b0f0-4bf2ee4d7bff",
             "video": "awrpoBd1ono"
+        },
+        {
+            "endt": 6031,
+            "length": "full",
+            "name": "若者よ、耳を貸せ",
+            "recommended": false,
+            "singType": "known",
+            "t": 5803,
+            "uuid": "7e668ba6-ac34-4efe-bfbd-f791853e3c79",
+            "video": "PVEBIE-cUyI"
         }
     ],
     "吉幾三": [
@@ -14877,6 +15557,16 @@
             "t": 5624,
             "uuid": "7d66dcf0-a4d6-4a7e-9dae-a57148b3e199",
             "video": "mw0jLK-Jk0g"
+        },
+        {
+            "endt": 4082,
+            "length": "full",
+            "name": "バレンタインデー・キッス",
+            "recommended": false,
+            "singType": "known",
+            "t": 3875,
+            "uuid": "04f892dd-104d-416f-ad24-80e0765ed420",
+            "video": "YUzbawX5bIw"
         }
     ],
     "坂本浩美": [
@@ -15007,6 +15697,16 @@
             "t": 3243,
             "uuid": "b75b5f77-ac19-4855-a027-4023f1c5e2ca",
             "video": "AlwoKLogVm8"
+        },
+        {
+            "endt": 1476,
+            "length": "full",
+            "name": "さくらんぼ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1281,
+            "uuid": "d297d8f3-08a7-4bce-89a4-dcf94d731d07",
+            "video": "zxHCrqjOX4o"
         },
         {
             "endt": 5337,
@@ -15251,6 +15951,16 @@
             "video": "JUf40BrGCvY"
         },
         {
+            "endt": 4307,
+            "length": "full",
+            "name": "VOID",
+            "recommended": false,
+            "singType": "known",
+            "t": 4143,
+            "uuid": "576bb73b-6ff9-4d17-981d-2cb237dd6fa3",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": 5035,
             "length": "short",
             "name": "あれそれ",
@@ -15299,6 +16009,16 @@
             "t": 5137,
             "uuid": "aee4cef9-a779-4a3a-8739-c0aed10f2ed4",
             "video": "Sv2tei8Mi84"
+        },
+        {
+            "endt": 1852,
+            "length": "full",
+            "name": "さようなら",
+            "recommended": false,
+            "singType": "known",
+            "t": 1725,
+            "uuid": "0e5c45ad-1fd4-49ae-9cb7-be192f59bd6f",
+            "video": "7p6T8HtMeNo"
         },
         {
             "endt": 481,
@@ -15429,6 +16149,16 @@
             "t": 1510,
             "uuid": "585fb454-b96a-4d00-b692-772289bb2ddb",
             "video": "F7brX4O5bRM"
+        },
+        {
+            "endt": 2117,
+            "length": "full",
+            "name": "パーティードレス",
+            "recommended": false,
+            "singType": "known",
+            "t": 1950,
+            "uuid": "b9c7d9cf-6bb5-4c65-806d-dcbdc06773b8",
+            "video": "7p6T8HtMeNo"
         },
         {
             "endt": 4102,
@@ -15701,6 +16431,16 @@
             "video": "T1rkvMTUI5Q"
         },
         {
+            "endt": 1917,
+            "length": "full",
+            "name": "君と映画",
+            "recommended": false,
+            "singType": "known",
+            "t": 1726,
+            "uuid": "d17ae3e6-d914-41bf-b657-3f64a970bbdf",
+            "video": "zxHCrqjOX4o"
+        },
+        {
             "endt": 1393,
             "length": "full",
             "name": "呪いは水色",
@@ -15801,6 +16541,16 @@
             "video": "6vD3BK3xz0I"
         },
         {
+            "endt": 2457,
+            "length": "full",
+            "name": "子供じゃないもん17",
+            "recommended": false,
+            "singType": "known",
+            "t": 2260,
+            "uuid": "7b2480db-cd7b-495c-ae4b-5cb32aed0dab",
+            "video": "ttWw5t0BlYo"
+        },
+        {
             "endt": 1300,
             "length": "full",
             "name": "新宿",
@@ -15849,6 +16599,16 @@
             "t": 3791,
             "uuid": "0dd72a61-6d6e-478e-8b96-162b6b1f5a60",
             "video": "eT5TOuPGRRY"
+        },
+        {
+            "endt": 4615,
+            "length": "full",
+            "name": "新宿",
+            "recommended": false,
+            "singType": "known",
+            "t": 4468,
+            "uuid": "be201558-915f-4b52-b21c-a53d811bb058",
+            "video": "4Q4wXtMkQ5c"
         },
         {
             "endt": 5111,
@@ -15919,6 +16679,16 @@
             "t": 1258,
             "uuid": "d1c8992e-c9c4-4187-b334-5a684d013ea1",
             "video": "kWcnApxbjS4"
+        },
+        {
+            "endt": 3346,
+            "length": "full",
+            "name": "絶対彼女",
+            "recommended": false,
+            "singType": "known",
+            "t": 3160,
+            "uuid": "aeaa9d64-13a8-4947-8709-653d710ecb0d",
+            "video": "cz_Fs1qFcF4"
         },
         {
             "endt": 3961,
@@ -16349,6 +17119,16 @@
             "video": "fCJMdTsZx9o"
         },
         {
+            "endt": 2312,
+            "length": "full",
+            "name": "エクレア",
+            "recommended": false,
+            "singType": "known",
+            "t": 2036,
+            "uuid": "6e2d1246-e38a-4326-92d1-ee4716fd9e1c",
+            "video": "l_ppuTeVlyY"
+        },
+        {
             "endt": 2737,
             "length": "short",
             "name": "キミの冒険",
@@ -16387,6 +17167,16 @@
             "t": 6082,
             "uuid": "bc4dd58a-58bf-479b-9752-40de39744966",
             "video": "SQq8B4pdp20"
+        },
+        {
+            "endt": 1128,
+            "length": "full",
+            "name": "式",
+            "recommended": false,
+            "singType": "known",
+            "t": 918,
+            "uuid": "72fc342d-d590-4457-a8f0-5963a360e518",
+            "video": "PVEBIE-cUyI"
         }
     ],
     "川島あい": [
@@ -16566,11 +17356,21 @@
             "endt": 3443,
             "length": "full",
             "name": "1/2",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 3174,
             "uuid": "4980c5d0-da9b-4c6b-8785-1c26c612e896",
             "video": "m6NsIgeVkxk"
+        },
+        {
+            "endt": 2432,
+            "length": "full",
+            "name": "1/2",
+            "recommended": false,
+            "singType": "known",
+            "t": 2167,
+            "uuid": "325bd1d7-869e-46d3-a335-82fcf5e54715",
+            "video": "zxHCrqjOX4o"
         }
     ],
     "広末涼子": [
@@ -16921,6 +17721,16 @@
             "video": "awrpoBd1ono"
         },
         {
+            "endt": 1604,
+            "length": "full",
+            "name": "Cから始まるABC",
+            "recommended": false,
+            "singType": "known",
+            "t": 1465,
+            "uuid": "d500b3af-c3d9-4d8f-8eca-926c402d3c47",
+            "video": "7p6T8HtMeNo"
+        },
+        {
             "endt": 3391,
             "length": "full",
             "name": "この街には君がいない",
@@ -17079,6 +17889,16 @@
             "t": 123,
             "uuid": "69773364-16d0-4bdd-968e-92a07ab31cd2",
             "video": "VB7oDws4b4I"
+        },
+        {
+            "endt": 1375,
+            "length": "full",
+            "name": "この高鳴りをなんと呼ぶ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1120,
+            "uuid": "aa65a5a6-e09b-4948-91b6-ab4b1bd618a4",
+            "video": "l_ppuTeVlyY"
         },
         {
             "endt": 2922,
@@ -17241,6 +18061,16 @@
             "video": "Ws1GLgo2YCI"
         },
         {
+            "endt": 2439,
+            "length": "full",
+            "name": "アイラブ言う",
+            "recommended": false,
+            "singType": "known",
+            "t": 2235,
+            "uuid": "09769708-e7ad-4380-9265-fb1b67332b67",
+            "video": "cz_Fs1qFcF4"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "バンドやろうぜ",
@@ -17381,6 +18211,16 @@
             "video": "JUf40BrGCvY"
         },
         {
+            "endt": 6577,
+            "length": "full",
+            "name": "バンドやろうぜ",
+            "recommended": false,
+            "singType": "known",
+            "t": 6393,
+            "uuid": "0a18e058-72fe-473c-a5c2-bc9c7dcccbda",
+            "video": "tErmirQ5fSE"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "バンドワゴン",
@@ -17459,6 +18299,16 @@
             "t": 8067,
             "uuid": "52ea1ebd-e267-44f4-aca8-cd0f3192115d",
             "video": "qvTeTqN2vCI"
+        },
+        {
+            "endt": 5797,
+            "length": "full",
+            "name": "バンドワゴン",
+            "recommended": false,
+            "singType": "known",
+            "t": 5534,
+            "uuid": "528b8c82-b111-4e7a-a949-f1c8e6cbef94",
+            "video": "7p6T8HtMeNo"
         },
         {
             "endt": 4725,
@@ -17601,6 +18451,16 @@
             "video": "tUCNNHiUsu8"
         },
         {
+            "endt": 1538,
+            "length": "full",
+            "name": "北極星",
+            "recommended": false,
+            "singType": "known",
+            "t": 1361,
+            "uuid": "4fd1a9cf-4365-4356-8a8f-d9b1ec9ee8af",
+            "video": "ttWw5t0BlYo"
+        },
+        {
             "endt": 215,
             "length": "short",
             "name": "忘れらんねえよ",
@@ -17724,7 +18584,7 @@
             "endt": 2892,
             "length": "full",
             "name": "犬にしてくれ",
-            "recommended": null,
+            "recommended": false,
             "singType": "known",
             "t": 2715,
             "uuid": "5566ad52-88af-4801-8e18-3a0f0d72e431",
@@ -17993,6 +18853,16 @@
             "video": "RJ0diVtj5dg"
         },
         {
+            "endt": 3974,
+            "length": "full",
+            "name": "ふでペン~ボールペン~",
+            "recommended": false,
+            "singType": "known",
+            "t": 3721,
+            "uuid": "e8feebd4-5b46-44a6-b628-21457e004e9a",
+            "video": "4Q4wXtMkQ5c"
+        },
+        {
             "endt": 2959,
             "length": "full",
             "name": "ふわふわ時間",
@@ -18133,6 +19003,16 @@
             "video": "6vD3BK3xz0I"
         },
         {
+            "endt": 3984,
+            "length": "full",
+            "name": "わたしの恋はホッチキス",
+            "recommended": false,
+            "singType": "known",
+            "t": 3736,
+            "uuid": "43374ef7-a440-4f25-a77a-7a307a7570ec",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": null,
             "length": null,
             "name": "天使にふれたよ",
@@ -18201,6 +19081,26 @@
             "t": 2244,
             "uuid": "91e08f64-1dcd-4245-a219-c7fae13890f3",
             "video": "3gY_36Q8M0c"
+        },
+        {
+            "endt": 5366,
+            "length": "full",
+            "name": "天使にふれたよ",
+            "recommended": false,
+            "singType": "known",
+            "t": 5082,
+            "uuid": "bb03989e-8002-4e58-a47e-8b43a49e4a2a",
+            "video": "PVEBIE-cUyI"
+        },
+        {
+            "endt": 2037,
+            "length": "full",
+            "name": "天使にふれたよ",
+            "recommended": false,
+            "singType": "known",
+            "t": 1745,
+            "uuid": "3373369b-b763-4062-92ec-e7cffb1d1767",
+            "video": "ttWw5t0BlYo"
         }
     ],
     "斉藤和義": [
@@ -18401,6 +19301,16 @@
             "t": 4542,
             "uuid": "00b41477-f970-42e8-a6ed-53e440e31846",
             "video": "FfPOzHtHfgk"
+        },
+        {
+            "endt": 3325,
+            "length": "full",
+            "name": "卒業写真",
+            "recommended": false,
+            "singType": "known",
+            "t": 3095,
+            "uuid": "daab1ab5-376f-425f-bb10-fd7caab3d737",
+            "video": "ttWw5t0BlYo"
         },
         {
             "endt": null,
@@ -18735,6 +19645,16 @@
             "t": 4873,
             "uuid": "ab730014-6979-4bdf-8a13-f0abc86af0b5",
             "video": "6vD3BK3xz0I"
+        },
+        {
+            "endt": 2884,
+            "length": "full",
+            "name": "赤いスイートピー",
+            "recommended": false,
+            "singType": "known",
+            "t": 2654,
+            "uuid": "8fab473c-4b4c-4125-8ff4-df4a834b24f2",
+            "video": "zxHCrqjOX4o"
         }
     ],
     "林原めぐみ": [
@@ -18821,6 +19741,16 @@
             "t": 4781,
             "uuid": "b9f7dfc9-da6a-487d-b34e-040a4f8cdfbb",
             "video": "KWRh56a67pI"
+        },
+        {
+            "endt": 2303,
+            "length": "full",
+            "name": "白い恋人達",
+            "recommended": false,
+            "singType": "known",
+            "t": 2047,
+            "uuid": "37017e48-b351-4bf9-8081-ffb418d6b11b",
+            "video": "YUzbawX5bIw"
         }
     ],
     "植村花菜": [
@@ -18957,6 +19887,16 @@
             "video": "9k4o4eb9XKY"
         },
         {
+            "endt": 1993,
+            "length": "full",
+            "name": "丸の内サディスティック",
+            "recommended": false,
+            "singType": "known",
+            "t": 1809,
+            "uuid": "e0c65ea4-ef53-4035-a23c-517c42cbe436",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": 7104,
             "length": "short",
             "name": "群青日和",
@@ -19027,6 +19967,16 @@
             "t": 1702,
             "uuid": "11ae353d-13c7-4225-a69a-3a03cad99825",
             "video": "02f6Jn5cg88"
+        },
+        {
+            "endt": 3832,
+            "length": "full",
+            "name": "今日がインフィニティ",
+            "recommended": false,
+            "singType": "known",
+            "t": 3632,
+            "uuid": "932442cf-e8c8-4e4f-9eea-e126586fb372",
+            "video": "ttWw5t0BlYo"
         }
     ],
     "水中、それは苦しい": [
@@ -19089,6 +20039,16 @@
             "t": 7248,
             "uuid": "c0686c59-6723-4b89-aa20-8f70a2417fde",
             "video": "MjujyA2aTKA"
+        },
+        {
+            "endt": 4843,
+            "length": "full",
+            "name": "農業、校長、そして手品",
+            "recommended": false,
+            "singType": "known",
+            "t": 4635,
+            "uuid": "993d718f-01fb-451e-a3c9-344351e982e1",
+            "video": "7p6T8HtMeNo"
         }
     ],
     "氷川きよし": [
@@ -19181,6 +20141,16 @@
             "t": 4730,
             "uuid": "4fb45f9e-17a8-4627-b0a5-4b9a7111b9ab",
             "video": "S5KPANdE2Ew"
+        },
+        {
+            "endt": 3240,
+            "length": "full",
+            "name": "限界突破×サバイバー",
+            "recommended": false,
+            "singType": "known",
+            "t": 3041,
+            "uuid": "a65a4a27-acad-4936-ba09-d2d243a2184d",
+            "video": "__7grAgjm-Y"
         }
     ],
     "浜田雅功&槇原敬之": [
@@ -19297,6 +20267,16 @@
             "t": 4341,
             "uuid": "78df8da5-c4ce-4618-abcc-a1b6964f9bbe",
             "video": "2RAXJlIb7ag"
+        },
+        {
+            "endt": 3016,
+            "length": "full",
+            "name": "God knows…",
+            "recommended": false,
+            "singType": null,
+            "t": 2752,
+            "uuid": "2584a309-c321-40e3-8539-0ee1c7fc74bd",
+            "video": "4Q4wXtMkQ5c"
         }
     ],
     "滝廉太郎": [
@@ -19473,6 +20453,16 @@
             "t": 7030,
             "uuid": "1a31f7e5-91c8-49bb-8dd3-5c09ca63e7cc",
             "video": "tUCNNHiUsu8"
+        },
+        {
+            "endt": 4927,
+            "length": "full",
+            "name": "ニャースのうた",
+            "recommended": false,
+            "singType": "known",
+            "t": 4727,
+            "uuid": "98a619f4-9133-40ab-9e11-e47048c19314",
+            "video": "VImNbe8fcFI"
         }
     ],
     "瑛人": [
@@ -19537,6 +20527,16 @@
             "t": 499,
             "uuid": "af725f57-b897-4de5-a254-c477134f80a2",
             "video": "RJ0diVtj5dg"
+        },
+        {
+            "endt": 5644,
+            "length": "full",
+            "name": "LOVEずっきゅん",
+            "recommended": false,
+            "singType": "known",
+            "t": 5428,
+            "uuid": "0b33ef81-820d-4549-90cf-0885d2c145bd",
+            "video": "VImNbe8fcFI"
         },
         {
             "endt": 5457,
@@ -19629,6 +20629,16 @@
             "video": "FfPOzHtHfgk"
         },
         {
+            "endt": 2947,
+            "length": "full",
+            "name": "地獄先生",
+            "recommended": false,
+            "singType": "known",
+            "t": 2733,
+            "uuid": "3431fbc1-d991-48a4-a483-380df4dcceff",
+            "video": "ttWw5t0BlYo"
+        },
+        {
             "endt": 5444,
             "length": "full",
             "name": "気になるあの娘",
@@ -19647,6 +20657,16 @@
             "t": 1717,
             "uuid": "eb58c6ee-7bcd-4d68-8f85-f795c53bda74",
             "video": "kWcnApxbjS4"
+        },
+        {
+            "endt": 1625,
+            "length": "full",
+            "name": "気になるあの娘",
+            "recommended": false,
+            "singType": "known",
+            "t": 1449,
+            "uuid": "2464e9f6-1cf2-4545-92cd-51c7904650f3",
+            "video": "__7grAgjm-Y"
         }
     ],
     "真島昌利": [
@@ -19809,7 +20829,7 @@
         {
             "endt": 3027,
             "length": "full",
-            "name": "ロックンロールは鳴り止まない",
+            "name": "ロックンロールは鳴り止まないっ",
             "recommended": false,
             "singType": "live",
             "t": 2820,
@@ -19819,7 +20839,7 @@
         {
             "endt": 4067,
             "length": "full",
-            "name": "ロックンロールは鳴り止まない",
+            "name": "ロックンロールは鳴り止まないっ",
             "recommended": false,
             "singType": "known",
             "t": 3862,
@@ -19829,7 +20849,7 @@
         {
             "endt": 5822,
             "length": "full",
-            "name": "ロックンロールは鳴り止まない",
+            "name": "ロックンロールは鳴り止まないっ",
             "recommended": true,
             "singType": "known",
             "t": 5588,
@@ -19839,7 +20859,7 @@
         {
             "endt": 3350,
             "length": "full",
-            "name": "ロックンロールは鳴り止まない",
+            "name": "ロックンロールは鳴り止まないっ",
             "recommended": true,
             "singType": "known",
             "t": 3125,
@@ -19849,12 +20869,22 @@
         {
             "endt": 5995,
             "length": "full",
-            "name": "ロックンロールは鳴り止まない",
+            "name": "ロックンロールは鳴り止まないっ",
             "recommended": false,
             "singType": "known",
             "t": 5764,
             "uuid": "e008472b-0a12-4c60-8b2a-37b8f11d915e",
             "video": "02f6Jn5cg88"
+        },
+        {
+            "endt": 1028,
+            "length": "full",
+            "name": "ロックンロールは鳴り止まないっ",
+            "recommended": false,
+            "singType": "known",
+            "t": 809,
+            "uuid": "1514c238-21b5-41ea-b356-43b8dd03c7df",
+            "video": "tErmirQ5fSE"
         }
     ],
     "福山雅治": [
@@ -20009,6 +21039,16 @@
             "t": 5847,
             "uuid": "06bd2113-023e-4785-9038-ec60010c2e55",
             "video": "FfPOzHtHfgk"
+        },
+        {
+            "endt": 7170,
+            "length": "full",
+            "name": "Rain",
+            "recommended": false,
+            "singType": "known",
+            "t": 6877,
+            "uuid": "fdb48129-096c-464c-b601-da9770714de7",
+            "video": "cz_Fs1qFcF4"
         }
     ],
     "童謡": [
@@ -20347,6 +21387,16 @@
             "t": 2258,
             "uuid": "c77c0fe3-da12-4bcd-9d8f-0afa37570a3a",
             "video": "mw0jLK-Jk0g"
+        },
+        {
+            "endt": 3248,
+            "length": "full",
+            "name": "お願いマッスル",
+            "recommended": false,
+            "singType": "known",
+            "t": 3024,
+            "uuid": "3e5bce20-4bea-496c-bb22-67e962788853",
+            "video": "7p6T8HtMeNo"
         }
     ],
     "細川たかし": [
@@ -20815,6 +21865,16 @@
             "video": "Eve0fkupAH4"
         },
         {
+            "endt": 915,
+            "length": "full",
+            "name": "きみのうた~銀杏BOYZを聴きながら~",
+            "recommended": false,
+            "singType": "known",
+            "t": 676,
+            "uuid": "014ab8a8-2441-41c6-b35f-0523ac894224",
+            "video": "l_ppuTeVlyY"
+        },
+        {
             "endt": 7493,
             "length": "full",
             "name": "学園青春RPG",
@@ -20863,6 +21923,16 @@
             "t": 7596,
             "uuid": "f5a8b544-09eb-4e8f-9215-ac57392a7259",
             "video": "6vD3BK3xz0I"
+        },
+        {
+            "endt": 6904,
+            "length": "full",
+            "name": "学園青春RPG",
+            "recommended": false,
+            "singType": "known",
+            "t": 6648,
+            "uuid": "ab68e9ae-b32f-43d8-a56d-ace7a52da79c",
+            "video": "YUzbawX5bIw"
         }
     ],
     "茂森あゆみ&速水けんたろう": [
@@ -21037,6 +22107,16 @@
             "t": 1280,
             "uuid": "4b82bbf1-c3e3-4514-8df1-b19efee9e95d",
             "video": "9k4o4eb9XKY"
+        },
+        {
+            "endt": 1089,
+            "length": "full",
+            "name": "春風",
+            "recommended": false,
+            "singType": "known",
+            "t": 829,
+            "uuid": "13f7bd3f-3e60-4f68-a281-6516c5ce10f4",
+            "video": "ttWw5t0BlYo"
         }
     ],
     "谷村新司": [
@@ -21267,6 +22347,36 @@
             "video": "8btHPk0kZfI"
         },
         {
+            "endt": 3999,
+            "length": "full",
+            "name": "BABY BABY",
+            "recommended": false,
+            "singType": "known",
+            "t": 3768,
+            "uuid": "3c1a1016-2504-493c-a897-7fb3902ca275",
+            "video": "tErmirQ5fSE"
+        },
+        {
+            "endt": 3410,
+            "length": "full",
+            "name": "NO FUTURE NO CRY",
+            "recommended": true,
+            "singType": "known",
+            "t": 3174,
+            "uuid": "3220dcc4-75b0-4066-900e-00344f3af0e5",
+            "video": "zxHCrqjOX4o"
+        },
+        {
+            "endt": 4721,
+            "length": "full",
+            "name": "SEXTEEN",
+            "recommended": false,
+            "singType": "known",
+            "t": 4528,
+            "uuid": "038b722e-126c-47df-ad88-3afad67cfa34",
+            "video": "__7grAgjm-Y"
+        },
+        {
             "endt": 4538,
             "length": "full",
             "name": "SKOOL KILL",
@@ -21347,6 +22457,16 @@
             "video": "VB7oDws4b4I"
         },
         {
+            "endt": 6454,
+            "length": "full",
+            "name": "あの娘に1ミリでもちょっかいかけたら殺す",
+            "recommended": false,
+            "singType": "known",
+            "t": 6243,
+            "uuid": "16170e82-e5c4-4fee-9518-f7e0767ff7ec",
+            "video": "YUzbawX5bIw"
+        },
+        {
             "endt": 2058,
             "length": "full",
             "name": "なんとなく僕たちは大人になるんだ",
@@ -21425,6 +22545,16 @@
             "t": 4647,
             "uuid": "a2ad0b76-25e2-41da-a3a7-d86db91c1944",
             "video": "tMqbWrAOer0"
+        },
+        {
+            "endt": 2314,
+            "length": "full",
+            "name": "なんとなく僕たちは大人になるんだ",
+            "recommended": false,
+            "singType": "known",
+            "t": 2048,
+            "uuid": "33e67ee7-013d-4223-80d6-7d5981e23d14",
+            "video": "VImNbe8fcFI"
         },
         {
             "endt": 2043,
@@ -21545,6 +22675,16 @@
             "t": 2518,
             "uuid": "c0d2113f-198f-43a2-9938-48f36c7a6a41",
             "video": "9k4o4eb9XKY"
+        },
+        {
+            "endt": 3475,
+            "length": "full",
+            "name": "ナイトライダー",
+            "recommended": false,
+            "singType": "known",
+            "t": 3106,
+            "uuid": "f87cc7c9-47f2-4f0b-a906-af5f2a6f9b50",
+            "video": "PVEBIE-cUyI"
         },
         {
             "endt": 3066,
@@ -21725,6 +22865,16 @@
             "t": 6767,
             "uuid": "4c69ffac-a22b-4f48-8604-a4c0fb464118",
             "video": "fCJMdTsZx9o"
+        },
+        {
+            "endt": 3665,
+            "length": "full",
+            "name": "夢で逢えたら",
+            "recommended": false,
+            "singType": "known",
+            "t": 3387,
+            "uuid": "194da0dc-cd24-4148-ac12-b1db50b8d8ca",
+            "video": "YUzbawX5bIw"
         },
         {
             "endt": 7531,
@@ -21987,6 +23137,16 @@
             "video": "-Nwe2Ek7WxQ"
         },
         {
+            "endt": 5659,
+            "length": "full",
+            "name": "東京",
+            "recommended": false,
+            "singType": "known",
+            "t": 5102,
+            "uuid": "b236c74e-8494-4b82-ba4f-af6893040ae4",
+            "video": "4Q4wXtMkQ5c"
+        },
+        {
             "endt": 696,
             "length": "short",
             "name": "漂流教室",
@@ -22237,6 +23397,16 @@
             "video": "9k4o4eb9XKY"
         },
         {
+            "endt": 7788,
+            "length": "full",
+            "name": "青春時代",
+            "recommended": false,
+            "singType": "known",
+            "t": 7388,
+            "uuid": "f1543295-6f1a-494b-9cc4-7768ad997784",
+            "video": "ttWw5t0BlYo"
+        },
+        {
             "endt": 5580,
             "length": "full",
             "name": "駆け抜けて性春",
@@ -22285,6 +23455,16 @@
             "t": 1729,
             "uuid": "e6e18b0b-a932-4837-b53c-f456d912cf73",
             "video": "ZdEd-7--HQA"
+        },
+        {
+            "endt": 2604,
+            "length": "full",
+            "name": "駆け抜けて性春",
+            "recommended": false,
+            "singType": "known",
+            "t": 2312,
+            "uuid": "d6be8c6a-1c31-4eb0-9810-70037cc836b2",
+            "video": "7p6T8HtMeNo"
         }
     ],
     "高野辰之・岡野貞一": [
