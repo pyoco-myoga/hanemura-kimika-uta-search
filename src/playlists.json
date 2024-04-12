@@ -80,5 +80,27 @@
                 "name": ""
             }
         ]
+    },
+    "9a304a04-a97a-4bb6-b47e-9cbbe42a0a11": {
+        "title": "クリープハイプ",
+        "description": "クリープハイプのプレイリスト",
+        "image": "/image/16x9/smile2.png",
+        "filters": [
+            {
+                "artist": "クリープハイプ",
+                "name": ""
+            }
+        ]
+    },
+    "7f0f7497-6539-4469-9292-5077ed7f2a93": {
+        "title": "BUMP OF CHICKEN",
+        "description": "BUMPのプレイリスト",
+        "image": "/image/16x9/smile3.png",
+        "filters": [
+            {
+                "artist": "BUMP OF CHICKEN",
+                "name": ""
+            }
+        ]
     }
 }
