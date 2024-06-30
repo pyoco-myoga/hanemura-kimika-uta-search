@@ -25,7 +25,7 @@ const searchWord = ref(q || "");
 const filterYoutubeURL = ref(v || "");
 
 onMounted(() => {
- const newURL = location.href.replace(/\?.*$/, "");
+  const newURL = location.href.replace(/\?.*$/, "");
   window.history.replaceState(newURL, document.title, newURL);
 });
 
@@ -63,6 +63,7 @@ const HITS_PER_PAGE = 100;
 
 type SearchOptions = "favorite" | "full" | "recommended";
 const validSearchOptions: Ref<Array<SearchOptions>> = ref(["recommended"]);
+let searchWordChangedTime = 0;
 
 let resultId: string = uuidv4();
 const showedSongs: Ref<{uuid: string, song: Song}[]> = ref([]);
@@ -104,6 +105,7 @@ async function search() {
 let searchTimerId: NodeJS.Timeout | null = null;
 
 watch([searchWord, validSearchOptions, filterYoutubeURL], () => {
+  searchWordChangedTime = Date.now();
   if (searchTimerId !== null) {
     clearTimeout(searchTimerId);
   }
@@ -119,7 +121,11 @@ watch([searchWord, validSearchOptions, filterYoutubeURL], () => {
 const load = async (state: StateHandler) => {
   searchTimerId = setTimeout(async () => {
     try {
+      const searchStartTime = Date.now();
       const result = await search();
+      if (searchStartTime < searchWordChangedTime) {
+        return
+      }
       showedSongs.value.push(
         ...result
       );
